@@ -1,0 +1,58 @@
+/* About */
+
+.section.about {
+  background: var(--color-bg-alt);
+  z-index: 2;
+}
+
+.about-grid {
+  max-width: 680px;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+}
+
+.about-text p + p {
+  margin-top: var(--space-md);
+}
+
+.about-text strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+
+/* See more */
+.about-more {
+  display: none;
+  margin-top: var(--space-md);
+}
+
+.about-more.is-open {
+  display: block;
+}
+
+.about-toggle {
+  margin-top: var(--space-md);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.about-toggle:hover {
+  color: var(--color-accent-hover);
+}
+
+.about-location {
+  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  font-weight: 500;
+}

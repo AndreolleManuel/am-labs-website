@@ -1,0 +1,146 @@
+/* Responsive */
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 15, 21, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--transition-base), opacity var(--transition-base);
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .hero-cta,
+  .hero-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Services */
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* Showcase */
+  .showcase-body {
+    padding: var(--space-lg);
+  }
+
+  /* Showcase preview — mobile: hide iframe preview */
+  .showcase-preview-frame {
+    display: none;
+  }
+
+  .showcase-preview-cta {
+    padding: 16px 20px;
+  }
+
+  /* Feature rows — mobile: stack vertically */
+  .feature-row,
+  .feature-row--reverse {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .feature-row--reverse .feature-media {
+    order: 0;
+  }
+
+  .feature-row--reverse .feature-text {
+    order: 0;
+  }
+
+  .showcase-features {
+    gap: var(--space-xl);
+  }
+
+  .showcase-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: var(--space-xl) 0;
+  }
+
+  /* Touch targets 44px minimum */
+  .showcase-expand-btn,
+  .showcase-demo-btn,
+  .showcase-site-btn {
+    min-height: 44px;
+  }
+
+  /* Stacking sticky on mobile — disabled */
+  .hero ~ .section,
+  .hero ~ section {
+    position: relative;
+    border-radius: 8px 8px 0 0;
+  }
+
+  /* Impact items — mobile */
+  .impact-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .impact-label {
+    align-self: flex-start;
+  }
+
+  /* Intermediate CTA */
+  .section-cta-break {
+    padding: var(--space-md) 0;
+  }
+
+  /* Flow wizard — mobile */
+  .flow-cards,
+  .flow-cards--2col {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-modules-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .flow-pills {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .flow-submit {
+    min-height: 44px;
+  }
+}

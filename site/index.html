@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AM Labs · Laboratoire digital</title>
+  <meta name="description" content="AM Labs · Manuel Andreolle, développeur full-stack à Montélimar. Applications métier, connecteurs et plateformes web sur mesure. 10 ans de terrain, disponible partout en France." />
+  <link rel="preload" href="/fonts/general-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <style>html,body{background:#0c0b14;color:#e8e6f0;}body{opacity:0;transition:opacity .15s ease;}body.ready{opacity:1;}</style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">AM<span>Labs</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">L'approche</a></li>
+        <li><a href="#services">Expertises</a></li>
+        <li><a href="#projects">Réalisations</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <main>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-brand"><span class="brand-am">AM</span><span class="accent">Labs</span></div>
+      <p class="hero-tagline">Laboratoire de solutions digitales</p>
+      <h1 class="hero-title">Votre métier est unique. Vos outils devraient l'être <span class="accent">aussi</span>.</h1>
+      <p class="hero-subtitle">Des outils sur mesure pensés par un profil terrain, pour simplifier votre quotidien technique et métier.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="hero-cta">
+          Lancer un projet
+          <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="#projects" class="hero-secondary">Voir les réalisations</a>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        Disponible pour de nouveaux défis
+      </div>
+    </div>
+  </section>
+
+  <!-- À propos -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">L'approche AM Labs</span>
+        <h2 class="section-title">L'esprit artisan. La précision du code.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal rd1">
+          <p>10 ans de terrain dans la sécurité. Technicien, formateur, référent logistique, interface directe entre les équipes terrain et les équipes dev. La personne consultée avant chaque déploiement, parce que quand une fonctionnalité touche 2 000 utilisateurs qui s'en servent huit heures par jour, <strong>elle doit coller à leur réalité</strong>.</p>
+          <p>Avoir utilisé et amélioré des dizaines d'outils avant d'en construire, ça change tout dans la manière de concevoir. Chaque fonctionnalité est pensée pour celui qui va l'utiliser. <strong>Pas pour une démo</strong>.</p>
+          <div class="about-more" id="about-more">
+            <p>Formation développeur full-stack O'Clock, puis deux produits livrés : un connecteur ERP au Panama et une plateforme de réservation en région parisienne. Utilisés au quotidien.</p>
+            <p class="about-location">Basé à Montélimar. Disponible sur place en Drôme-Ardèche et en remote partout ailleurs.</p>
+          </div>
+          <button class="about-toggle" id="about-toggle" type="button">En savoir plus</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Expertises</span>
+        <h2 class="section-title">Construire l'outil qui vous manque.</h2>
+        <p class="section-desc">De la réflexion au déploiement, un seul interlocuteur.</p>
+      </div>
+      <div class="services-list">
+        <div class="service-card reveal rd1">
+          <h3>Applications métier</h3>
+          <p>Dashboards, outils de gestion, automatisations. Des applications taillées pour vos process, pas l'inverse.</p>
+        </div>
+        <div class="service-card reveal rd2">
+          <h3>Connecteurs</h3>
+          <p>Vos outils ne se parlent pas ? On les connecte. ERP, e-commerce, CRM. Synchronisation temps réel, zéro ressaisie.</p>
+        </div>
+        <div class="service-card reveal rd3">
+          <h3>Sites & plateformes</h3>
+          <p>Vitrines, e-commerce, plateformes de réservation. Paiement, espace client et back-office intégrés.</p>
+        </div>
+      </div>
+      <div class="section-cta-break">
+        <a href="#contact" class="section-cta-link">Un besoin ? Parlons-en <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Méthode -->
+  <section class="section method" id="method">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Méthode</span>
+        <h2 class="section-title">De l'idée à la mise en prod.</h2>
+      </div>
+      <div class="method-grid">
+        <div class="method-card reveal rd1">
+          <div class="method-card-header"><span class="method-num">01</span><h3>Diagnostic</h3></div>
+          <p>On analyse vos points de blocage et vos objectifs. Échange gratuit, vision claire.</p>
+        </div>
+        <div class="method-card reveal rd2">
+          <div class="method-card-header"><span class="method-num">02</span><h3>Plan</h3></div>
+          <p>Cahier des charges précis et devis transparent. Pas de surprise sur le prix ou les délais.</p>
+        </div>
+        <div class="method-card reveal rd3">
+          <div class="method-card-header"><span class="method-num">03</span><h3>Chantier</h3></div>
+          <p>Développement par étapes. Vous testez l'outil au fur et à mesure de sa construction.</p>
+        </div>
+        <div class="method-card reveal rd4">
+          <div class="method-card-header"><span class="method-num">04</span><h3>Livraison</h3></div>
+          <p>Mise en ligne, formation et suivi. L'outil est adopté par vos équipes, pas de livraison fantôme.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projets -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Réalisations</span>
+        <h2 class="section-title">En production.</h2>
+        <p class="section-desc">Des produits livrés, déployés, utilisés au quotidien.</p>
+      </div>
+      <div class="projects-list">
+
+        <article class="showcase reveal rd1">
+          <div class="showcase-body">
+
+            <div class="showcase-header">
+              <span class="project-label">Client · Tool Innovation Panama</span>
+              <h3>Connecteur Odoo ↔ Wix</h3>
+              <p class="showcase-desc">Synchronisation bidirectionnelle Odoo ↔ Wix : dashboard temps réel, génération de contenu par IA, transit automatique des commandes. Application desktop livrée clé en main (Mac & Windows).</p>
+              <div class="showcase-impact">
+                <div class="impact-item">
+                  <span class="impact-label">Avant</span>
+                  <span>Ressaisie manuelle entre deux systèmes, erreurs de stock, commandes perdues</span>
+                </div>
+                <div class="impact-item impact-item--after">
+                  <span class="impact-label impact-label--after">Après</span>
+                  <span>Catalogue synchronisé en temps réel, commandes transitées sans intervention, zéro ressaisie</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-features is-collapsed">
+
+              <div class="feature-row reveal rd1" data-src="/screenshots/dashboard.png">
+                <div class="feature-media">
+                  <img src="/screenshots/dashboard.png" alt="Dashboard — monitoring temps réel" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Dashboard</span>
+                  <h4>Monitoring centralisé</h4>
+                  <p>État de la sync, alertes, métriques clés. Tout l'écosystème Odoo ↔ Wix en un coup d'œil.</p>
+                </div>
+              </div>
+
+              <div class="feature-row feature-row--reverse" data-src="/screenshots/ia-seo.png">
+                <div class="feature-media feature-media--compact">
+                  <img src="/screenshots/ia-seo.png" alt="IA & SEO — génération Gemini" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">IA & SEO</span>
+                  <h4>Contenu produit généré par IA</h4>
+                  <p>Fiches produit rédigées par Google Gemini, SEO optimisé automatiquement sur tout le catalogue.</p>
+                </div>
+              </div>
+
+              <div class="feature-row" data-src="/screenshots/commande.png">
+                <div class="feature-media">
+                  <img src="/screenshots/commande.png" alt="Commandes — transit automatique Wix → Odoo" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Commandes</span>
+                  <h4>Commandes en transit automatique</h4>
+                  <p>Chaque commande Wix remonte dans Odoo avec le bon produit, le bon client, sans intervention.</p>
+                </div>
+              </div>
+
+              <div class="feature-row feature-row--reverse" data-src="/screenshots/produit.png">
+                <div class="feature-media">
+                  <img src="/screenshots/produit.png" alt="Produits — fiches produit synchronisées" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Produits</span>
+                  <h4>Catalogue unifié</h4>
+                  <p>Prix, stock, images, descriptions SEO. Le catalogue Odoo se reflète sur Wix en temps réel.</p>
+                </div>
+              </div>
+
+              <div class="feature-row" data-src="/screenshots/sync.png">
+                <div class="feature-media">
+                  <img src="/screenshots/sync.png" alt="Synchronisation bidirectionnelle Odoo ↔ Wix" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Synchronisation</span>
+                  <h4>Réconciliation automatique</h4>
+                  <p>Détection de conflits, résolution automatique, sync continue. Les deux systèmes restent alignés.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <button class="showcase-expand-btn" type="button">
+              Explorer les fonctionnalités
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+
+            <button class="showcase-demo-btn" id="showcase-demo-btn" type="button">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              Voir la démo
+            </button>
+
+            <div class="project-stack">
+              <span>Node.js</span>
+              <span>TypeScript</span>
+              <span>React</span>
+              <span>Express</span>
+              <span>SQLite</span>
+              <span>Google Gemini</span>
+              <span>API Odoo</span>
+              <span>API Wix</span>
+            </div>
+
+          </div>
+        </article>
+
+        <article class="showcase showcase--atelier reveal rd2">
+          <div class="showcase-body">
+
+            <div class="showcase-header">
+              <span class="project-label">Client · L'Atelier Clamart</span>
+              <h3>Plateforme complète pour atelier d'arts créatifs</h3>
+              <p class="showcase-desc">Réservation, abonnements, crédits, planning, paiement Stripe, liste d'attente, mails transactionnels, back-office admin. Une plateforme pensée de A à Z pour remplacer les Google Sheets, les mails manuels et le tableau blanc.</p>
+              <div class="showcase-impact">
+                <div class="impact-item">
+                  <span class="impact-label">Avant</span>
+                  <span>Cahier papier, tableur Excel, réservations par téléphone, croix cochées à la main</span>
+                </div>
+                <div class="impact-item impact-item--after">
+                  <span class="impact-label impact-label--after">Après</span>
+                  <span>Réservations, paiements, planning et communication. 100% automatisés, zéro papier</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://www.atelierclamart.fr" target="_blank" rel="noopener noreferrer" class="showcase-preview">
+              <div class="showcase-preview-bar">
+                <div class="showcase-preview-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="showcase-preview-url">atelierclamart.fr</div>
+              </div>
+              <div class="showcase-preview-frame">
+                <iframe src="https://www.atelierclamart.fr" title="L'Atelier Clamart — site live" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                <div class="showcase-preview-overlay"></div>
+              </div>
+              <span class="showcase-preview-cta">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Visiter le site
+              </span>
+            </a>
+
+            <div class="showcase-features is-collapsed">
+
+              <div class="feature-row reveal rd1" data-src="/screenshots/atelier-planning.png">
+                <div class="feature-media">
+                  <img src="/screenshots/atelier-planning.png" alt="Planning hebdomadaire — vue admin avec créneaux et profs" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Planning</span>
+                  <h4>Vue semaine, jour par jour</h4>
+                  <p>Créneaux par prof, par lieu, par catégorie d'âge. Taux de remplissage en temps réel, récap charge enseignant en bas de page. Le planning qui remplace le tableau blanc.</p>
+                </div>
+              </div>
+
+              <div class="feature-row feature-row--reverse reveal" data-src="/screenshots/admin-overview.png">
+                <div class="feature-media">
+                  <img src="/screenshots/admin-overview.png" alt="Tableau de bord admin — KPIs et stats" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Tableau de bord</span>
+                  <h4>Les chiffres clés en un coup d'œil</h4>
+                  <p>Réservations du jour, activité du mois, nouveaux inscrits, clients actifs. Les 4 indicateurs essentiels visibles dès la connexion admin.</p>
+                </div>
+              </div>
+
+              <div class="feature-row reveal" data-src="/screenshots/admin-gestion.png">
+                <div class="feature-media">
+                  <img src="/screenshots/admin-gestion.png" alt="Gestion quotidienne — planning, réservations, clients, abonnements" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Gestion quotidienne</span>
+                  <h4>Tout le métier dans une interface</h4>
+                  <p>Planning, réservations, clients, abonnements. Chaque module ouvre sur une vue dédiée. Programme mensuel, semaine type, formules et catégories d'âge configurables.</p>
+                </div>
+              </div>
+
+              <div class="feature-row feature-row--reverse reveal" data-src="/screenshots/admin-contenu.png">
+                <div class="feature-media">
+                  <img src="/screenshots/admin-contenu.png" alt="Contenu & Programme — ateliers, semaine type, formules, catégories" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Contenu & Programme</span>
+                  <h4>Ateliers, formules et catégories</h4>
+                  <p>Programme thématique du mois, semaine type avec créneaux récurrents, formules de forfaits (10, 15, 20 séances), catégories par public et tranche d'âge.</p>
+                </div>
+              </div>
+
+              <div class="feature-row reveal" data-src="/screenshots/admin-comms.png">
+                <div class="feature-media">
+                  <img src="/screenshots/admin-comms.png" alt="Communication — demandes profs et notes partagées" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Communication</span>
+                  <h4>Coordination équipe intégrée</h4>
+                  <p>Demandes de séances par les profs, notes partagées entre l'équipe. Plus besoin de WhatsApp ou de post-its. Tout est centralisé dans l'outil.</p>
+                </div>
+              </div>
+
+              <div class="feature-row feature-row--reverse reveal" data-src="/screenshots/admin-finance-config.png">
+                <div class="feature-media">
+                  <img src="/screenshots/admin-finance-config.png" alt="Finance et configuration — paiements, stats, droits d'accès" loading="lazy" />
+                </div>
+                <div class="feature-text">
+                  <span class="feature-label">Finance & Config</span>
+                  <h4>Paiements, stats et paramétrage</h4>
+                  <p>Suivi des paiements, stats financières (CA, revenus, ventes par formule). Configuration complète : activités artistiques, profs, lieux, intégration Instagram, mise en avant et droits d'accès par rôle.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <button class="showcase-expand-btn" type="button">
+              Explorer les fonctionnalités
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+
+            <div class="showcase-highlights">
+              <div class="showcase-highlight">
+                <span class="showcase-highlight-title">Crédits par catégorie</span>
+                <span class="showcase-highlight-desc">Chaque tranche d'âge a ses crédits, ses formules, ses dates d'expiration. Alertes auto quand ça approche.</span>
+              </div>
+              <div class="showcase-highlight">
+                <span class="showcase-highlight-title">Abonnements annuels</span>
+                <span class="showcase-highlight-desc">Choix du créneau, réservation automatique chaque semaine, exclusion des vacances scolaires. Changement de créneau en cours d'année.</span>
+              </div>
+              <div class="showcase-highlight">
+                <span class="showcase-highlight-title">Liste d'attente intelligente</span>
+                <span class="showcase-highlight-desc">File d'attente automatique. Place libérée → notification avec 2h pour confirmer. Pas de réponse → passage au suivant.</span>
+              </div>
+              <div class="showcase-highlight">
+                <span class="showcase-highlight-title">Checkout Stripe intégré</span>
+                <span class="showcase-highlight-desc">Achat de crédits + réservation directe dans la même transaction. CB, factures auto, remboursement conditionnel.</span>
+              </div>
+            </div>
+
+            <div class="project-stack">
+              <span>Next.js</span>
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>PostgreSQL</span>
+              <span>Stripe</span>
+              <span>Tailwind</span>
+              <span>Brevo</span>
+            </div>
+
+          </div>
+        </article>
+
+      </div>
+      <div class="projects-cta reveal">
+        <a href="#contact" class="hero-cta">
+          Un projet en tête ? On en parle.
+          <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Contact</span>
+      </div>
+      <div class="contact-inner contact-inner--flow">
+
+        <div class="flow" id="brief-doc">
+
+          <!-- Intent -->
+          <div class="flow-block" id="flow-intent">
+            <p class="flow-question">Configurez votre projet.</p>
+            <div class="flow-cards flow-cards--2col">
+              <button class="flow-card flow-card--big" data-intent="project" type="button">
+                <span class="flow-card-title">J'ai un projet à lancer</span>
+                <span class="flow-card-desc">Application, site, connecteur, Web3...</span>
+              </button>
+              <button class="flow-card flow-card--big" data-intent="mission" type="button">
+                <span class="flow-card-title">Je cherche un développeur</span>
+                <span class="flow-card-desc">Mission freelance, CDI, CDD</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div class="flow-block flow-block--hidden" id="br-type-row">
+            <p class="flow-question">Qu'est-ce qu'on construit ?</p>
+            <p class="flow-hint">Plusieurs choix possibles.</p>
+            <div class="flow-cards">
+              <button class="flow-card" data-svc="app" type="button">
+                <span class="flow-card-title">Application métier</span>
+                <span class="flow-card-desc">Dashboard, gestion, automatisation</span>
+              </button>
+              <button class="flow-card" data-svc="connector" type="button">
+                <span class="flow-card-title">Connecteur</span>
+                <span class="flow-card-desc">Relier vos outils existants</span>
+              </button>
+              <button class="flow-card" data-svc="site" type="button">
+                <span class="flow-card-title">Site & plateforme</span>
+                <span class="flow-card-desc">Vitrine, e-commerce, réservation</span>
+              </button>
+              <button class="flow-card" data-svc="web3" type="button">
+                <span class="flow-card-title">Web3 / Blockchain</span>
+                <span class="flow-card-desc">Analyse on-chain, tracking, outils crypto</span>
+              </button>
+              <button class="flow-card" data-svc="conseil" type="button">
+                <span class="flow-card-title">Conseil & vision</span>
+                <span class="flow-card-desc">Pas encore d'idée claire</span>
+              </button>
+              <button class="flow-card" data-svc="other" type="button">
+                <span class="flow-card-title">Autre chose</span>
+                <span class="flow-card-desc">Parlons-en</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Modules -->
+          <div class="flow-block flow-block--hidden" id="br-modules-row">
+            <p class="flow-question">De quoi avez-vous besoin ?</p>
+            <p class="flow-hint">Sélectionnez les fonctionnalités clés.</p>
+            <div class="flow-modules-grid" id="br-modules"></div>
+          </div>
+
+          <!-- Budget -->
+          <div class="flow-block flow-block--hidden" id="br-budget-row">
+            <p class="flow-question">Quel budget ?</p>
+            <div class="flow-slider-wrap">
+              <div class="flow-budget-value" id="brief-slider-label">< 1 000 €</div>
+              <input type="range" class="flow-slider" id="brief-slider" min="0" max="4" value="0" step="1" />
+              <div class="flow-budget-range"><span>Petit</span><span>Ambitieux</span></div>
+              <div class="flow-budget-hint" id="brief-hint"></div>
+              <p class="flow-budget-disclaimer">Fourchette indicative. Le budget définitif est discuté ensemble.</p>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="flow-block flow-block--hidden" id="br-timeline-row">
+            <p class="flow-question">Quel délai ?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-tl="asap" type="button">Dès que possible</button>
+              <button class="flow-pill" data-tl="1-3" type="button">1 à 3 mois</button>
+              <button class="flow-pill" data-tl="norush" type="button">Pas de rush</button>
+              <button class="flow-pill" data-tl="dunno" type="button">Je sais pas encore</button>
+            </div>
+          </div>
+
+          <!-- Mission: Profil -->
+          <div class="flow-block flow-block--hidden" id="br-mtype-row">
+            <p class="flow-question">Quel type de profil ?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-mt="fullstack" type="button">Fullstack</button>
+              <button class="flow-pill" data-mt="frontend" type="button">Frontend</button>
+              <button class="flow-pill" data-mt="backend" type="button">Backend</button>
+              <button class="flow-pill" data-mt="conseil" type="button">Conseil technique</button>
+            </div>
+          </div>
+
+          <!-- Mission: Cadre -->
+          <div class="flow-block flow-block--hidden" id="br-mcadre-row">
+            <p class="flow-question">Quel cadre ?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-mc="freelance" type="button">Freelance</button>
+              <button class="flow-pill" data-mc="cdi" type="button">CDI</button>
+              <button class="flow-pill" data-mc="cdd" type="button">CDD</button>
+            </div>
+          </div>
+
+          <!-- Mission: Durée -->
+          <div class="flow-block flow-block--hidden" id="br-mduree-row">
+            <p class="flow-question">Quelle durée ?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-md="court" type="button">Moins d'un mois</button>
+              <button class="flow-pill" data-md="moyen" type="button">1 à 3 mois</button>
+              <button class="flow-pill" data-md="long" type="button">3 à 6 mois</button>
+              <button class="flow-pill" data-md="xl" type="button">6 mois+</button>
+            </div>
+          </div>
+
+          <!-- Mission: Remote -->
+          <div class="flow-block flow-block--hidden" id="br-mremote-row">
+            <p class="flow-question">Organisation ?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-mr="full" type="button">Full remote</button>
+              <button class="flow-pill" data-mr="hybrid" type="button">Hybride</button>
+              <button class="flow-pill" data-mr="onsite" type="button">Présentiel</button>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="flow-block flow-block--hidden" id="flow-contact">
+            <p class="flow-question">On en parle ?</p>
+            <div class="flow-fields">
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+              <div class="form-group">
+                <label for="brief-name">Nom</label>
+                <input type="text" id="brief-name" name="name" placeholder="Votre nom" maxlength="100" required />
+              </div>
+              <div class="form-group">
+                <label for="brief-email">Email</label>
+                <input type="email" id="brief-email" name="email" placeholder="votre@email.com" maxlength="254" required />
+              </div>
+              <div class="form-group">
+                <label for="brief-message">Quelque chose à ajouter ? <span style="opacity:0.5">(optionnel)</span></label>
+                <textarea id="brief-message" name="message" rows="3" placeholder="Contexte, détails, questions..." maxlength="5000"></textarea>
+              </div>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAACukDbqptql46TBo" data-theme="dark"></div>
+              <label class="form-consent">
+                <input type="checkbox" id="brief-consent" required />
+                <span>En envoyant ce formulaire, j'accepte que mes données soient traitées pour répondre à ma demande.</span>
+              </label>
+              <button class="flow-submit" id="brief-submit" type="button">Envoyer mon projet</button>
+            </div>
+          </div>
+
+          <p class="contact-reassurance">Échange gratuit et sans engagement.</p>
+          <a href="mailto:contact@amlabs.dev" class="contact-email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+            contact@amlabs.dev
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 AM Labs · Manuel Andreolle · Montélimar · <a href="#mentions" id="mentions-link">Mentions légales</a></p>
+    </div>
+  </footer>
+
+  <!-- Video Modal -->
+  <div class="video-modal" id="video-modal" aria-hidden="true">
+    <div class="video-modal-backdrop"></div>
+    <div class="video-modal-content">
+      <button class="video-modal-close" aria-label="Fermer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+      </button>
+      <video id="video-modal-player" src="/video/demo-tool-innovation.mp4" controls preload="none"></video>
+    </div>
+  </div>
+
+  <!-- Mentions légales modal -->
+  <div class="mentions-modal" id="mentions-modal" aria-hidden="true">
+    <div class="mentions-backdrop"></div>
+    <div class="mentions-content">
+      <button class="mentions-close" aria-label="Fermer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+      </button>
+      <h3>Mentions légales</h3>
+      <div class="mentions-body">
+        <p><strong>Éditeur du site</strong><br>
+        Manuel Andreolle · AM Labs<br>
+        Auto-entrepreneur<br>
+        SIRET : 993 095 744 00013<br>
+        Montélimar, France<br>
+        Contact : <a href="mailto:contact@amlabs.dev">contact@amlabs.dev</a></p>
+
+        <p><strong>Hébergement</strong><br>
+        GitHub Pages · GitHub, Inc.<br>
+        88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA</p>
+
+        <p><strong>Données personnelles</strong><br>
+        Les données collectées via le formulaire de contact (nom, email, message) sont utilisées uniquement pour répondre à votre demande. Elles sont transmises via Web3Forms et ne sont ni stockées ni revendues. Conformément au RGPD, vous pouvez exercer vos droits d'accès, de rectification et de suppression en écrivant à <a href="mailto:contact@amlabs.dev">contact@amlabs.dev</a>.</p>
+
+        <p><strong>Propriété intellectuelle</strong><br>
+        L'ensemble du contenu de ce site (textes, images, code) est la propriété d'AM Labs. Toute reproduction sans autorisation est interdite.</p>
+
+        <p><strong>Cookies</strong><br>
+        Ce site n'utilise aucun cookie ni outil de tracking.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

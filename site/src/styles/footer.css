@@ -1,0 +1,120 @@
+/* Footer */
+
+.footer {
+  padding: var(--space-lg) 0 var(--space-xl);
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  z-index: 10;
+}
+
+.footer .container {
+  position: relative;
+  padding-top: var(--space-lg);
+}
+
+.footer .container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+.footer a {
+  color: var(--color-accent-dim);
+  transition: color var(--transition-fast);
+}
+
+.footer a:hover {
+  color: var(--color-accent);
+}
+
+.footer p + p {
+  margin-top: var(--space-xs);
+}
+
+/* Legal notice modal */
+.mentions-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mentions-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mentions-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.mentions-content {
+  position: relative;
+  width: 90vw;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-hover);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.mentions-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+}
+
+.mentions-body p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+.mentions-body strong {
+  color: var(--color-text);
+}
+
+.mentions-body a {
+  color: var(--color-accent);
+}
+
+.mentions-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.mentions-close:hover {
+  background: rgba(139, 92, 246, 0.6);
+}

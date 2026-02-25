@@ -1,0 +1,143 @@
+/* Services — numbered list with smooth transitions */
+
+.services {
+  z-index: 3;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.service-card {
+  padding: var(--space-xl) var(--space-lg);
+  background: rgba(139, 92, 246, 0.04);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover {
+  border-color: var(--color-border-hover);
+  background: rgba(139, 92, 246, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.1);
+}
+
+.service-card h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+  transition: color 0.3s ease;
+}
+
+.service-card:hover h3 {
+  color: var(--color-accent-hover);
+}
+
+.service-card p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+/* Intermediate CTA between sections */
+.section-cta-break {
+  text-align: center;
+  padding: var(--space-lg) 0;
+  position: relative;
+  z-index: 3;
+}
+
+.section-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+
+.section-cta-link:hover {
+  color: var(--color-accent);
+}
+
+.section-cta-link svg {
+  transition: transform 0.3s ease;
+}
+
+.section-cta-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   Method — 4-step process (2x2 grid)
+   ============================================ */
+
+.section.method {
+  z-index: 3;
+}
+
+.method-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.method-card {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.method-card:last-child {
+  border-bottom: none;
+}
+
+.method-card:hover {
+  padding-left: var(--space-sm);
+}
+
+.method-card-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: 0.3rem;
+}
+
+.method-num {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--color-accent);
+  opacity: 0.4;
+  line-height: 1;
+  transition: opacity 0.3s ease;
+}
+
+.method-card:hover .method-num {
+  opacity: 0.8;
+}
+
+.method-card h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 600;
+  color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+.method-card:hover h3 {
+  color: var(--color-accent-hover);
+}
+
+.method-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  padding-left: calc(clamp(1.2rem, 2.5vw, 1.5rem) + var(--space-sm));
+}

@@ -1,0 +1,17 @@
+node_modules
+dist
+.DS_Store
+*.local
+*.log
+
+# Dev screenshots
+pixel-mid.png
+screenshot-*.png
+
+# Dev tools
+CLAUDE.md
+agents/
+copy-actuel.md
+.claude/
+storytelling.md
+design-direction.md

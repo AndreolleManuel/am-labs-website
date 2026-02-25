@@ -1,0 +1,616 @@
+/* Projects — full-width stacked, with accent stripe + smooth transitions */
+
+.section.projects {
+  background: var(--color-bg-alt);
+  z-index: 4;
+  box-shadow: 0 -10px 60px rgba(139, 92, 246, 0.1),
+              0 -1px 0 rgba(139, 92, 246, 0.18);
+  /* top computed dynamically by JS to stick when the bottom reaches the viewport */
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Tech stack */
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-stack span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  color: var(--color-text-muted);
+  transition: all 0.3s ease;
+}
+
+.project:hover .project-stack span {
+  border-color: var(--color-border-hover);
+}
+
+/* CTA after projects */
+.projects-cta {
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+/* ============================================
+   Showcase — Tool Innovation tabbed display
+   ============================================ */
+
+.showcase {
+}
+
+.showcase-body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  min-width: 0;
+}
+
+/* Header */
+.showcase-header {
+  margin-bottom: var(--space-lg);
+}
+
+.showcase-header h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  transition: color 0.3s ease;
+}
+
+.showcase-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 680px;
+}
+
+/* Stack inside showcase reuses .project-stack */
+.showcase .project-stack {
+  padding-top: var(--space-lg);
+}
+
+/* ============================================
+   Showcase Preview — browser mockup with iframe
+   ============================================ */
+
+.showcase-preview {
+  display: block;
+  text-decoration: none;
+  margin-bottom: var(--space-xl);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  background: #0a0915;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.showcase-preview:hover {
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 16px 60px rgba(139, 92, 246, 0.12), 0 0 0 1px rgba(139, 92, 246, 0.1);
+}
+
+/* Browser bar */
+.showcase-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.showcase-preview-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.showcase-preview-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.showcase-preview-url {
+  flex: 1;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* Iframe container */
+.showcase-preview-frame {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+}
+
+.showcase-preview-frame iframe {
+  width: 100%;
+  height: calc(100% + 70px);
+  border: none;
+  pointer-events: none;
+  transform: translateY(-70px);
+}
+
+/* Gradient overlay at bottom for fade effect */
+.showcase-preview-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, #0a0915, transparent);
+  pointer-events: none;
+}
+
+/* CTA label */
+.showcase-preview-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: color 0.3s ease;
+}
+
+.showcase-preview:hover .showcase-preview-cta {
+  color: #fff;
+}
+
+/* ============================================
+   Showcase Features — zigzag image + text
+   ============================================ */
+
+.showcase-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-xl);
+}
+
+/* Feature row — image + text side by side */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Zigzag — reverse puts text left, image right */
+.feature-row--reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.feature-row--reverse .feature-media {
+  order: 2;
+}
+
+.feature-row--reverse .feature-text {
+  order: 1;
+}
+
+/* Image — natural aspect ratio, no fixed height */
+.feature-media img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+
+.feature-row:hover .feature-media img {
+  transform: scale(1.02);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.15);
+}
+
+/* Tall screenshot — crop to top, full image in lightbox */
+.feature-media--tall img {
+  max-height: 420px;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Compact — show full image scaled down */
+.feature-media--compact img {
+  max-height: 650px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Text block */
+.feature-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.feature-text h4 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  transition: color 0.3s ease;
+}
+
+.feature-row:hover .feature-text h4 {
+  color: var(--color-accent-hover);
+}
+
+.feature-text p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* ============================================
+   Lightbox — fullscreen screenshot viewer
+   ============================================ */
+
+.bento-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.bento-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bento-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.bento-lightbox-scroll {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.bento-lightbox-img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 60px rgba(139, 92, 246, 0.15), 0 30px 80px rgba(0, 0, 0, 0.5);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-lightbox.open .bento-lightbox-img {
+  transform: scale(1);
+}
+
+.bento-lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.bento-lightbox-close:hover {
+  background: rgba(139, 92, 246, 0.6);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.bento-lightbox-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   Demo video button
+   ============================================ */
+
+.showcase-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.showcase-demo-btn:hover {
+  background: rgba(139, 92, 246, 0.25);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+/* ============================================
+   "View site" button
+   ============================================ */
+
+.showcase-site-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 100px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.showcase-site-btn:hover {
+  background: rgba(139, 92, 246, 0.25);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+/* ============================================
+   Showcase highlights — text-only feature pills
+   ============================================ */
+
+.showcase-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.showcase-highlight {
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.showcase-highlight:hover {
+  background: rgba(139, 92, 246, 0.08);
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+.showcase-highlight-title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.showcase-highlight-desc {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Expand / Collapse features
+   ============================================ */
+
+.showcase-features.is-collapsed .feature-row:nth-child(n+3) {
+  display: none;
+}
+
+/* Atelier — same rule, show first 2 features when collapsed */
+.showcase--atelier .showcase-features.is-collapsed .feature-row:nth-child(n+3) {
+  display: none;
+}
+
+.showcase--atelier .showcase-features.is-collapsed ~ .showcase-highlights {
+  display: none;
+}
+
+/* ============================================
+   Showcase Impact — before/after
+   ============================================ */
+
+.showcase-impact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.impact-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.impact-label {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-muted);
+}
+
+.impact-label--after {
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--color-success);
+}
+
+.impact-item--after {
+  color: var(--color-text-secondary);
+}
+
+.showcase-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.showcase-expand-btn:hover {
+  color: #fff;
+  border-color: var(--color-border-hover);
+}
+
+.showcase-expand-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.showcase-expand-btn.is-expanded svg {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   Video Modal — fullscreen overlay
+   ============================================ */
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.video-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.video-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.video-modal-content {
+  position: relative;
+  width: 90vw;
+  max-width: 960px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border-hover);
+  box-shadow: 0 0 60px rgba(139, 92, 246, 0.15), 0 30px 80px rgba(0, 0, 0, 0.5);
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-modal.open .video-modal-content {
+  transform: scale(1) translateY(0);
+}
+
+.video-modal-content video {
+  display: block;
+  width: 100%;
+  background: #000;
+}
+
+.video-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.video-modal-close:hover {
+  background: rgba(139, 92, 246, 0.6);
+  border-color: rgba(139, 92, 246, 0.4);
+}
