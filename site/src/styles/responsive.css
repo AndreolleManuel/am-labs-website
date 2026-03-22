@@ -60,9 +60,9 @@
     padding: var(--space-lg);
   }
 
-  /* Showcase preview — mobile: hide iframe preview */
+  /* Showcase preview — mobile: shorter */
   .showcase-preview-frame {
-    display: none;
+    height: 280px;
   }
 
   .showcase-preview-cta {
