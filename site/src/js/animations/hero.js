@@ -21,18 +21,10 @@ export async function initHeroAnimation() {
   const inner = document.querySelector('.hero-inner');
   if (!inner) return;
 
-  // Wait for the browser to restore scroll position after a refresh
-  await new Promise((r) => setTimeout(r, 120));
-
-  // Mobile: simple staggered fade-in instead of heavy CNC laser animation
-  if (window.innerWidth < 768) {
-    const els = ['.hero-brand', '.hero-tagline', '.hero-title', '.hero-subtitle', '.hero-actions', '.hero-badge'];
-    els.forEach((sel, i) => {
-      const el = inner.querySelector(sel);
-      if (el) gsap.to(el, { opacity: 1, y: 0, duration: 0.5, delay: i * 0.12, ease: 'power2.out' });
-    });
-    return;
-  }
+  // Wait for the browser to restore scroll position and layout to settle
+  // Mobile needs more time for fonts + layout reflow
+  const isMobile = window.innerWidth < 768;
+  await new Promise((r) => setTimeout(r, isMobile ? 300 : 120));
 
   // Skip if the page is scrolled past the hero (refresh at bottom of page)
   // Note: we cannot use getBoundingClientRect because the hero is sticky
@@ -68,7 +60,8 @@ export async function initHeroAnimation() {
   const dpr = window.devicePixelRatio || 1;
   const sparkMargin = 80;
   const numRows = Math.max(Math.ceil(innerRect.height / ROW_HEIGHT), 1);
-  const durationMs = 1500;
+  // Scale duration with height so the laser doesn't rush on tall mobile layouts
+  const durationMs = Math.max(1500, numRows * 80);
 
   // Pre-compute the rect of each element
   const elRects = elements.map((el) => {
