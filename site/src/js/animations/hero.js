@@ -44,7 +44,7 @@ export async function initHeroAnimation() {
 
   // Skip if scrolled past hero
   if (window.scrollY > window.innerHeight * 0.3) {
-    gsap.set('.hero-inner > *', { opacity: 1, clearProps: 'willChange' });
+    gsap.set('.hero-inner > *', { opacity: 1 });
     return;
   }
 
@@ -68,10 +68,13 @@ export async function initHeroAnimation() {
   }
   if (!elements.length) return;
 
-  // Make visible but clipped
+  // Make all elements visible — the parent will be clipped instead
   for (const el of elements) {
-    gsap.set(el, { opacity: 1, clipPath: 'inset(0 0 100% 0)' });
+    gsap.set(el, { opacity: 1 });
   }
+
+  // Clip the parent container (1 repaint instead of 6)
+  gsap.set(inner, { clipPath: 'inset(0 0 100% 0)' });
 
   // Force reflow to ensure rects are accurate
   inner.offsetHeight;
@@ -82,12 +85,6 @@ export async function initHeroAnimation() {
   const numRows = Math.max(Math.ceil(innerRect.height / ROW_HEIGHT), 1);
   const durationMs = Math.max(1500, numRows * 80);
   const durationSec = durationMs / 1000;
-
-  // Pre-compute element rects
-  const elRects = elements.map((el) => {
-    const r = el.getBoundingClientRect();
-    return { el, top: r.top, bottom: r.bottom, height: r.height };
-  });
 
   // Laser dot — position absolute inside hero instead of fixed on body
   const dot = document.createElement('div');
@@ -173,13 +170,10 @@ export async function initHeroAnimation() {
         const sparkX = sparkMargin + (laserVpX - innerLeft);
         const sparkY = sparkMargin + (laserVpY - innerTop);
 
-        // Clip-path reveal
-        for (const { el, top, height } of elRects) {
-          if (height <= 0) continue;
-          const revealPx = laserVpY - top;
-          const revealPct = Math.max(0, Math.min((revealPx / height) * 100, 100));
-          el.style.clipPath = `inset(0 0 ${Math.max(100 - revealPct, 0)}% 0)`;
-        }
+        // Clip-path reveal — single clip on parent (1 repaint vs 6)
+        const revealPx = laserVpY - innerTop;
+        const revealPct = Math.max(0, Math.min((revealPx / innerRect.height) * 100, 100));
+        inner.style.clipPath = `inset(0 0 ${Math.max(100 - revealPct, 0)}% 0)`;
 
         // Dot fade at end
         if (progress > 0.93) {
@@ -233,8 +227,9 @@ export async function initHeroAnimation() {
             canvasRunning = false;
             dot.remove();
             sparkCanvas.remove();
-            for (const { el } of elRects) {
-              gsap.set(el, { clearProps: 'clipPath,willChange' });
+            gsap.set(inner, { clearProps: 'clipPath' });
+            for (const el of elements) {
+              gsap.set(el, { clearProps: 'willChange' });
             }
             // Resume glow animation
             if (glow) glow.style.animationPlayState = '';
