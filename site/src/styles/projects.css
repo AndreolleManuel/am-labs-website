@@ -144,10 +144,9 @@
 
 .showcase-preview-frame iframe {
   width: 100%;
-  height: calc(100% + 70px);
+  height: 100%;
   border: none;
   pointer-events: none;
-  transform: translateY(-70px);
 }
 
 /* Gradient overlay at bottom for fade effect */
