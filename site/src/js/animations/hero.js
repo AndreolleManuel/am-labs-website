@@ -103,18 +103,22 @@ export async function initHeroAnimation() {
   const sCtx = sparkCanvas.getContext('2d');
   sCtx.scale(dpr, dpr);
 
-  // ---- Animation loop ----
+  // ---- Animation via GSAP ticker (more robust than manual rAF on mobile) ----
   return new Promise((resolve) => {
     const sparks = [];
-    const t0 = performance.now();
-    let lastT = t0;
+    const state = { progress: 0 };
+    const durationSec = durationMs / 1000;
+    let lastProgress = 0;
     let firing = true;
 
-    (function tick(now) {
-      const dt = Math.min((now - lastT) / 1000, 0.05);
-      lastT = now;
-
-      const progress = Math.min((now - t0) / durationMs, 1);
+    const tween = gsap.to(state, {
+      progress: 1,
+      duration: durationSec,
+      ease: 'none',
+      onUpdate: () => {
+        const progress = state.progress;
+        const dt = Math.max((progress - lastProgress) * durationSec, 0.001);
+        lastProgress = progress;
 
       // ---- Laser position (horizontal zigzag, row by row) ----
       const rowProgress = progress * numRows;
@@ -192,17 +196,41 @@ export async function initHeroAnimation() {
       sCtx.globalAlpha = 1;
 
       if (progress >= 1) firing = false;
-
-      if (progress < 1 || sparks.length > 0) {
-        requestAnimationFrame(tick);
-      } else {
-        dot.remove();
-        sparkCanvas.remove();
-        for (const { el } of elRects) {
-          gsap.set(el, { clearProps: 'clipPath' });
-        }
-        resolve();
-      }
-    })(performance.now());
+      },
+      onComplete: () => {
+        // Let remaining sparks fade out
+        const fadeOut = () => {
+          if (sparks.length === 0) {
+            dot.remove();
+            sparkCanvas.remove();
+            for (const { el } of elRects) {
+              gsap.set(el, { clearProps: 'clipPath' });
+            }
+            resolve();
+            return;
+          }
+          const dt = 0.016;
+          for (let i = sparks.length - 1; i >= 0; i--) {
+            sparks[i].age += dt;
+            if (sparks[i].age >= sparks[i].life) { sparks.splice(i, 1); continue; }
+            sparks[i].x += sparks[i].vx * dt;
+            sparks[i].y += sparks[i].vy * dt;
+            sparks[i].vy += 40 * dt;
+          }
+          sCtx.clearRect(0, 0, cw, ch);
+          for (const s of sparks) {
+            const t = s.age / s.life;
+            sCtx.globalAlpha = (1 - t) * (1 - t);
+            sCtx.fillStyle = t < 0.3 ? '#fff' : accent;
+            sCtx.beginPath();
+            sCtx.arc(s.x, s.y, s.size * (1 - t * 0.5), 0, Math.PI * 2);
+            sCtx.fill();
+          }
+          sCtx.globalAlpha = 1;
+          requestAnimationFrame(fadeOut);
+        };
+        fadeOut();
+      },
+    });
   });
 }
