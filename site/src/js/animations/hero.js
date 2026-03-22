@@ -76,8 +76,12 @@ export async function initHeroAnimation() {
     gsap.set(el, { opacity: 1 });
   }
 
-  // Clip the parent container (1 repaint instead of 6)
-  gsap.set(inner, { clipPath: 'inset(0 0 100% 0)' });
+  // Mask the parent container — use CSS mask on Safari (GPU-composited) or clipPath elsewhere
+  if (isSafari) {
+    inner.style.webkitMaskImage = 'linear-gradient(to bottom, black 0%, transparent 0%)';
+  } else {
+    gsap.set(inner, { clipPath: 'inset(0 0 100% 0)' });
+  }
 
   // Force reflow to ensure rects are accurate
   inner.offsetHeight;
@@ -181,10 +185,14 @@ export async function initHeroAnimation() {
         const sparkX = sparkMargin + (laserVpX - innerLeft);
         const sparkY = sparkMargin + (laserVpY - innerTop);
 
-        // Clip-path reveal — single clip on parent (1 repaint vs 6)
+        // Reveal — mask on Safari (GPU), clipPath elsewhere
         const revealPx = laserVpY - innerTop;
         const revealPct = Math.max(0, Math.min((revealPx / innerRect.height) * 100, 100));
-        inner.style.clipPath = `inset(0 0 ${Math.max(100 - revealPct, 0)}% 0)`;
+        if (isSafari) {
+          inner.style.webkitMaskImage = `linear-gradient(to bottom, black ${revealPct}%, transparent ${revealPct}%)`;
+        } else {
+          inner.style.clipPath = `inset(0 0 ${Math.max(100 - revealPct, 0)}% 0)`;
+        }
 
         // Dot fade at end
         if (progress > 0.93) {
@@ -224,7 +232,8 @@ export async function initHeroAnimation() {
           canvasRunning = false;
           dot.remove();
           if (sparkCanvas) sparkCanvas.remove();
-          gsap.set(inner, { clearProps: 'clipPath' });
+          if (isSafari) { inner.style.webkitMaskImage = ''; }
+          else { gsap.set(inner, { clearProps: 'clipPath' }); }
           for (const el of elements) {
             gsap.set(el, { clearProps: 'willChange' });
           }
