@@ -24,6 +24,16 @@ export async function initHeroAnimation() {
   // Wait for the browser to restore scroll position after a refresh
   await new Promise((r) => setTimeout(r, 120));
 
+  // Mobile: simple staggered fade-in instead of heavy CNC laser animation
+  if (window.innerWidth < 768) {
+    const els = ['.hero-brand', '.hero-tagline', '.hero-title', '.hero-subtitle', '.hero-actions', '.hero-badge'];
+    els.forEach((sel, i) => {
+      const el = inner.querySelector(sel);
+      if (el) gsap.to(el, { opacity: 1, y: 0, duration: 0.5, delay: i * 0.12, ease: 'power2.out' });
+    });
+    return;
+  }
+
   // Skip if the page is scrolled past the hero (refresh at bottom of page)
   // Note: we cannot use getBoundingClientRect because the hero is sticky
   // and always remains visible in the viewport
