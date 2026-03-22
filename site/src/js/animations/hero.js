@@ -143,10 +143,11 @@ export async function initHeroAnimation() {
     }
     requestAnimationFrame(renderSparks);
 
-    gsap.to(state, {
+    const tween = gsap.to(state, {
       progress: 1,
       duration: durationSec,
       ease: 'none',
+      paused: true,
       onUpdate: () => {
         const progress = state.progress;
 
@@ -238,6 +239,13 @@ export async function initHeroAnimation() {
         };
         checkDone();
       },
+    });
+
+    // Start only after a confirmed paint frame
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        tween.play();
+      });
     });
   });
 }
