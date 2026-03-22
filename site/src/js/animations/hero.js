@@ -52,6 +52,9 @@ export async function initHeroAnimation() {
     getComputedStyle(document.documentElement)
       .getPropertyValue('--color-accent').trim() || '#8b5cf6';
 
+  // Detect Safari (no canvas sparks — WebKit can't handle clipPath + canvas simultaneously)
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
   // Pause glowDrift CSS animation during CNC (reduce GPU contention)
   const glow = document.querySelector('.hero-glow');
   if (glow) glow.style.animationPlayState = 'paused';
@@ -98,22 +101,27 @@ export async function initHeroAnimation() {
   ].join(';');
   inner.appendChild(dot);
 
-  // Spark canvas — absolute inside hero
+  // Spark canvas — only on non-Safari browsers
   const cw = innerRect.width + sparkMargin * 2;
   const ch = innerRect.height + sparkMargin * 2;
-  const sparkCanvas = document.createElement('canvas');
-  sparkCanvas.width = cw * dpr;
-  sparkCanvas.height = ch * dpr;
-  sparkCanvas.style.cssText = [
-    'position:absolute',
-    `left:${-sparkMargin}px`,
-    `top:${-sparkMargin}px`,
-    `width:${cw}px`, `height:${ch}px`,
-    'pointer-events:none', 'z-index:10000',
-  ].join(';');
-  inner.appendChild(sparkCanvas);
-  const sCtx = sparkCanvas.getContext('2d');
-  sCtx.scale(dpr, dpr);
+  let sparkCanvas = null;
+  let sCtx = null;
+
+  if (!isSafari) {
+    sparkCanvas = document.createElement('canvas');
+    sparkCanvas.width = cw * dpr;
+    sparkCanvas.height = ch * dpr;
+    sparkCanvas.style.cssText = [
+      'position:absolute',
+      `left:${-sparkMargin}px`,
+      `top:${-sparkMargin}px`,
+      `width:${cw}px`, `height:${ch}px`,
+      'pointer-events:none', 'z-index:10000',
+    ].join(';');
+    inner.appendChild(sparkCanvas);
+    sCtx = sparkCanvas.getContext('2d');
+    sCtx.scale(dpr, dpr);
+  }
 
   // Pre-compute offsets relative to inner (not viewport)
   const innerTop = innerRect.top;
@@ -123,25 +131,27 @@ export async function initHeroAnimation() {
   return new Promise((resolve) => {
     const state = { progress: 0 };
 
-    // Separate canvas render loop (decoupled from DOM updates)
-    let canvasRunning = true;
-    function renderSparks() {
-      if (!canvasRunning) return;
-      sCtx.clearRect(0, 0, cw, ch);
-      for (let i = 0; i < POOL_SIZE; i++) {
-        const s = sparkPool[i];
-        if (!s.active) continue;
-        const t = s.age / s.life;
-        sCtx.globalAlpha = (1 - t) * (1 - t);
-        sCtx.fillStyle = t < 0.3 ? '#fff' : accent;
-        sCtx.beginPath();
-        sCtx.arc(s.x, s.y, s.size * (1 - t * 0.5), 0, Math.PI * 2);
-        sCtx.fill();
+    // Separate canvas render loop (only on non-Safari)
+    let canvasRunning = !isSafari;
+    if (!isSafari) {
+      function renderSparks() {
+        if (!canvasRunning) return;
+        sCtx.clearRect(0, 0, cw, ch);
+        for (let i = 0; i < POOL_SIZE; i++) {
+          const s = sparkPool[i];
+          if (!s.active) continue;
+          const t = s.age / s.life;
+          sCtx.globalAlpha = (1 - t) * (1 - t);
+          sCtx.fillStyle = t < 0.3 ? '#fff' : accent;
+          sCtx.beginPath();
+          sCtx.arc(s.x, s.y, s.size * (1 - t * 0.5), 0, Math.PI * 2);
+          sCtx.fill();
+        }
+        sCtx.globalAlpha = 1;
+        requestAnimationFrame(renderSparks);
       }
-      sCtx.globalAlpha = 1;
       requestAnimationFrame(renderSparks);
     }
-    requestAnimationFrame(renderSparks);
 
     const tween = gsap.to(state, {
       progress: 1,
@@ -181,8 +191,8 @@ export async function initHeroAnimation() {
           dot.style.opacity = String(Math.max(0, (1 - progress) / 0.07));
         }
 
-        // Emit sparks (using pool, zero allocation)
-        if (progress < 0.95) {
+        // Emit sparks (only on non-Safari)
+        if (!isSafari && progress < 0.95) {
           const count = 2 + Math.floor(Math.random() * 2);
           for (let i = 0; i < count; i++) {
             const angle = Math.random() * Math.PI * 2;
@@ -196,7 +206,8 @@ export async function initHeroAnimation() {
           }
         }
 
-        // Update sparks physics (no splice, just deactivate)
+        // Update sparks physics (only on non-Safari)
+        if (isSafari) return;
         const dt = 0.016;
         for (let i = 0; i < POOL_SIZE; i++) {
           const s = sparkPool[i];
@@ -209,7 +220,24 @@ export async function initHeroAnimation() {
         }
       },
       onComplete: () => {
-        // Wait for remaining sparks to fade
+        const cleanup = () => {
+          canvasRunning = false;
+          dot.remove();
+          if (sparkCanvas) sparkCanvas.remove();
+          gsap.set(inner, { clearProps: 'clipPath' });
+          for (const el of elements) {
+            gsap.set(el, { clearProps: 'willChange' });
+          }
+          if (glow) glow.style.animationPlayState = '';
+          resolve();
+        };
+
+        if (isSafari) {
+          cleanup();
+          return;
+        }
+
+        // Wait for remaining sparks to fade (non-Safari only)
         const checkDone = () => {
           let anyActive = false;
           for (let i = 0; i < POOL_SIZE; i++) {
@@ -225,16 +253,7 @@ export async function initHeroAnimation() {
           if (anyActive) {
             requestAnimationFrame(checkDone);
           } else {
-            canvasRunning = false;
-            dot.remove();
-            sparkCanvas.remove();
-            gsap.set(inner, { clearProps: 'clipPath' });
-            for (const el of elements) {
-              gsap.set(el, { clearProps: 'willChange' });
-            }
-            // Resume glow animation
-            if (glow) glow.style.animationPlayState = '';
-            resolve();
+            cleanup();
           }
         };
         checkDone();
