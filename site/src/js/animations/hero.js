@@ -8,30 +8,43 @@
 
 import { gsap } from './index.js';
 
-/* ---- CNC Laser global reveal ---- */
+const ROW_HEIGHT = 35;
 
-const ROW_HEIGHT = 35; // height of each horizontal pass (px)
+// ---- Spark object pool (zero allocation during animation) ----
+const POOL_SIZE = 200;
+const sparkPool = [];
+for (let i = 0; i < POOL_SIZE; i++) {
+  sparkPool.push({ x: 0, y: 0, vx: 0, vy: 0, life: 0, age: 0, size: 0, active: false });
+}
+
+function acquireSpark(x, y, vx, vy, life, size) {
+  for (let i = 0; i < POOL_SIZE; i++) {
+    if (!sparkPool[i].active) {
+      const s = sparkPool[i];
+      s.x = x; s.y = y; s.vx = vx; s.vy = vy;
+      s.life = life; s.age = 0; s.size = size; s.active = true;
+      return s;
+    }
+  }
+  return null;
+}
 
 export async function initHeroAnimation() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    gsap.set('.hero-inner > *', { opacity: 1 });
+    gsap.set('.hero-inner > *', { opacity: 1, clearProps: 'willChange' });
     return;
   }
 
   const inner = document.querySelector('.hero-inner');
   if (!inner) return;
 
-  // Wait for the page to be fully rendered before starting the animation
-  // requestAnimationFrame x2 ensures at least one paint cycle has completed
+  // Wait for the page to be fully rendered
   await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-  // Extra settle time for layout reflow
   await new Promise((r) => setTimeout(r, 200));
 
-  // Skip if the page is scrolled past the hero (refresh at bottom of page)
-  // Note: we cannot use getBoundingClientRect because the hero is sticky
-  // and always remains visible in the viewport
+  // Skip if scrolled past hero
   if (window.scrollY > window.innerHeight * 0.3) {
-    gsap.set('.hero-inner > *', { opacity: 1 });
+    gsap.set('.hero-inner > *', { opacity: 1, clearProps: 'willChange' });
     return;
   }
 
@@ -39,7 +52,11 @@ export async function initHeroAnimation() {
     getComputedStyle(document.documentElement)
       .getPropertyValue('--color-accent').trim() || '#8b5cf6';
 
-  // ---- Collect all elements to reveal ----
+  // Pause glowDrift CSS animation during CNC (reduce GPU contention)
+  const glow = document.querySelector('.hero-glow');
+  if (glow) glow.style.animationPlayState = 'paused';
+
+  // Collect elements to reveal
   const elements = [];
   const selectors = [
     '.hero-brand', '.hero-tagline', '.hero-title',
@@ -51,142 +68,72 @@ export async function initHeroAnimation() {
   }
   if (!elements.length) return;
 
-  // Make visible but clipped (hidden from bottom → revealed from top)
+  // Make visible but clipped
   for (const el of elements) {
     gsap.set(el, { opacity: 1, clipPath: 'inset(0 0 100% 0)' });
   }
 
-  // ---- Global hero-inner area ----
+  // Force reflow to ensure rects are accurate
+  inner.offsetHeight;
+
   const innerRect = inner.getBoundingClientRect();
   const dpr = window.devicePixelRatio || 1;
   const sparkMargin = 80;
   const numRows = Math.max(Math.ceil(innerRect.height / ROW_HEIGHT), 1);
-  // Scale duration with height so the laser doesn't rush on tall mobile layouts
   const durationMs = Math.max(1500, numRows * 80);
+  const durationSec = durationMs / 1000;
 
-  // Pre-compute the rect of each element
+  // Pre-compute element rects
   const elRects = elements.map((el) => {
     const r = el.getBoundingClientRect();
-    return {
-      el,
-      top: r.top,
-      bottom: r.bottom,
-      height: r.height,
-    };
+    return { el, top: r.top, bottom: r.bottom, height: r.height };
   });
 
-  // ---- Laser dot (DOM element) ----
+  // Laser dot — position absolute inside hero instead of fixed on body
   const dot = document.createElement('div');
   dot.style.cssText = [
-    'position:fixed', 'left:0', 'top:0',
+    'position:absolute', 'left:0', 'top:0',
     'width:8px', 'height:8px',
     'border-radius:50%', 'background:#fff',
     `box-shadow:0 0 4px 2px #fff, 0 0 10px 4px ${accent}, 0 0 25px 8px ${accent}50, 0 0 45px 12px ${accent}20`,
     'pointer-events:none', 'z-index:10001',
     'will-change:transform',
   ].join(';');
-  document.body.appendChild(dot);
+  inner.appendChild(dot);
 
-  // ---- Spark canvas (covers the entire hero-inner) ----
+  // Spark canvas — absolute inside hero
   const cw = innerRect.width + sparkMargin * 2;
   const ch = innerRect.height + sparkMargin * 2;
   const sparkCanvas = document.createElement('canvas');
   sparkCanvas.width = cw * dpr;
   sparkCanvas.height = ch * dpr;
   sparkCanvas.style.cssText = [
-    'position:fixed',
-    `left:${innerRect.left - sparkMargin}px`,
-    `top:${innerRect.top - sparkMargin}px`,
+    'position:absolute',
+    `left:${-sparkMargin}px`,
+    `top:${-sparkMargin}px`,
     `width:${cw}px`, `height:${ch}px`,
     'pointer-events:none', 'z-index:10000',
   ].join(';');
-  document.body.appendChild(sparkCanvas);
+  inner.appendChild(sparkCanvas);
   const sCtx = sparkCanvas.getContext('2d');
   sCtx.scale(dpr, dpr);
 
-  // ---- Animation via GSAP ticker (more robust than manual rAF on mobile) ----
+  // Pre-compute offsets relative to inner (not viewport)
+  const innerTop = innerRect.top;
+  const innerLeft = innerRect.left;
+
+  // ---- GSAP-driven animation ----
   return new Promise((resolve) => {
-    const sparks = [];
     const state = { progress: 0 };
-    const durationSec = durationMs / 1000;
-    let lastProgress = 0;
-    let firing = true;
 
-    const tween = gsap.to(state, {
-      progress: 1,
-      duration: durationSec,
-      ease: 'none',
-      onUpdate: () => {
-        const progress = state.progress;
-        const dt = Math.max((progress - lastProgress) * durationSec, 0.001);
-        lastProgress = progress;
-
-      // ---- Laser position (horizontal zigzag, row by row) ----
-      const rowProgress = progress * numRows;
-      const currentRow = Math.min(Math.floor(rowProgress), numRows - 1);
-      const withinRow = Math.min(rowProgress - currentRow, 1);
-      const goingRight = currentRow % 2 === 0;
-
-      // Y: starts from top, moves down
-      const laserVpY = innerRect.top + Math.min((currentRow + 0.5) * ROW_HEIGHT, innerRect.height);
-      // X: zigzag left↔right
-      const laserVpX = goingRight
-        ? innerRect.left + withinRow * innerRect.width
-        : innerRect.left + (1 - withinRow) * innerRect.width;
-
-      // Position in the spark canvas
-      const sparkX = sparkMargin + (laserVpX - innerRect.left);
-      const sparkY = sparkMargin + (laserVpY - innerRect.top);
-
-      // Update dot
-      dot.style.transform = `translate(${laserVpX - 4}px, ${laserVpY - 4}px)`;
-
-      // ---- Clip-path: reveal each element based on laser Y position ----
-      for (const { el, top, bottom, height } of elRects) {
-        if (height <= 0) continue;
-        // How many pixels from the top of the element are revealed
-        const revealPx = laserVpY - top;
-        const revealPct = Math.max(0, Math.min((revealPx / height) * 100, 100));
-        // inset(top right bottom left) — clip from the bottom
-        el.style.clipPath = `inset(0 0 ${Math.max(100 - revealPct, 0)}% 0)`;
-      }
-
-      // Fade out the dot at the end
-      if (progress > 0.93) {
-        dot.style.opacity = String(Math.max(0, (1 - progress) / 0.07));
-      }
-
-      // ---- Sparks ----
-      if (firing && progress < 0.95) {
-        const count = 2 + Math.floor(Math.random() * 2);
-        for (let i = 0; i < count; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const speed = 30 + Math.random() * 80;
-          sparks.push({
-            x: sparkX,
-            y: sparkY,
-            vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed,
-            life: 0.1 + Math.random() * 0.25,
-            age: 0,
-            size: 0.5 + Math.random() * 1.5,
-          });
-        }
-      }
-
-      // Update sparks
-      for (let i = sparks.length - 1; i >= 0; i--) {
-        const s = sparks[i];
-        s.age += dt;
-        if (s.age >= s.life) { sparks.splice(i, 1); continue; }
-        s.x += s.vx * dt;
-        s.y += s.vy * dt;
-        s.vy += 40 * dt;
-      }
-
-      // Draw sparks
+    // Separate canvas render loop (decoupled from DOM updates)
+    let canvasRunning = true;
+    function renderSparks() {
+      if (!canvasRunning) return;
       sCtx.clearRect(0, 0, cw, ch);
-      for (const s of sparks) {
+      for (let i = 0; i < POOL_SIZE; i++) {
+        const s = sparkPool[i];
+        if (!s.active) continue;
         const t = s.age / s.life;
         sCtx.globalAlpha = (1 - t) * (1 - t);
         sCtx.fillStyle = t < 0.3 ? '#fff' : accent;
@@ -195,42 +142,106 @@ export async function initHeroAnimation() {
         sCtx.fill();
       }
       sCtx.globalAlpha = 1;
+      requestAnimationFrame(renderSparks);
+    }
+    requestAnimationFrame(renderSparks);
 
-      if (progress >= 1) firing = false;
+    gsap.to(state, {
+      progress: 1,
+      duration: durationSec,
+      ease: 'none',
+      onUpdate: () => {
+        const progress = state.progress;
+
+        // Laser position
+        const rowProgress = progress * numRows;
+        const currentRow = Math.min(Math.floor(rowProgress), numRows - 1);
+        const withinRow = Math.min(rowProgress - currentRow, 1);
+        const goingRight = currentRow % 2 === 0;
+
+        const laserVpY = innerTop + Math.min((currentRow + 0.5) * ROW_HEIGHT, innerRect.height);
+        const laserVpX = goingRight
+          ? innerLeft + withinRow * innerRect.width
+          : innerLeft + (1 - withinRow) * innerRect.width;
+
+        // Position relative to inner
+        const dotX = laserVpX - innerLeft - 4;
+        const dotY = laserVpY - innerTop - 4;
+        dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
+
+        // Spark position in canvas coords
+        const sparkX = sparkMargin + (laserVpX - innerLeft);
+        const sparkY = sparkMargin + (laserVpY - innerTop);
+
+        // Clip-path reveal
+        for (const { el, top, height } of elRects) {
+          if (height <= 0) continue;
+          const revealPx = laserVpY - top;
+          const revealPct = Math.max(0, Math.min((revealPx / height) * 100, 100));
+          el.style.clipPath = `inset(0 0 ${Math.max(100 - revealPct, 0)}% 0)`;
+        }
+
+        // Dot fade at end
+        if (progress > 0.93) {
+          dot.style.opacity = String(Math.max(0, (1 - progress) / 0.07));
+        }
+
+        // Emit sparks (using pool, zero allocation)
+        if (progress < 0.95) {
+          const count = 2 + Math.floor(Math.random() * 2);
+          for (let i = 0; i < count; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = 30 + Math.random() * 80;
+            acquireSpark(
+              sparkX, sparkY,
+              Math.cos(angle) * speed, Math.sin(angle) * speed,
+              0.1 + Math.random() * 0.25,
+              0.5 + Math.random() * 1.5
+            );
+          }
+        }
+
+        // Update sparks physics (no splice, just deactivate)
+        const dt = 0.016;
+        for (let i = 0; i < POOL_SIZE; i++) {
+          const s = sparkPool[i];
+          if (!s.active) continue;
+          s.age += dt;
+          if (s.age >= s.life) { s.active = false; continue; }
+          s.x += s.vx * dt;
+          s.y += s.vy * dt;
+          s.vy += 40 * dt;
+        }
       },
       onComplete: () => {
-        // Let remaining sparks fade out
-        const fadeOut = () => {
-          if (sparks.length === 0) {
+        // Wait for remaining sparks to fade
+        const checkDone = () => {
+          let anyActive = false;
+          for (let i = 0; i < POOL_SIZE; i++) {
+            const s = sparkPool[i];
+            if (!s.active) continue;
+            anyActive = true;
+            s.age += 0.016;
+            if (s.age >= s.life) { s.active = false; continue; }
+            s.x += s.vx * 0.016;
+            s.y += s.vy * 0.016;
+            s.vy += 40 * 0.016;
+          }
+          if (anyActive) {
+            requestAnimationFrame(checkDone);
+          } else {
+            canvasRunning = false;
             dot.remove();
             sparkCanvas.remove();
             for (const { el } of elRects) {
-              gsap.set(el, { clearProps: 'clipPath' });
+              gsap.set(el, { clearProps: 'clipPath,willChange' });
             }
+            // Resume glow animation
+            if (glow) glow.style.animationPlayState = '';
             resolve();
-            return;
           }
-          const dt = 0.016;
-          for (let i = sparks.length - 1; i >= 0; i--) {
-            sparks[i].age += dt;
-            if (sparks[i].age >= sparks[i].life) { sparks.splice(i, 1); continue; }
-            sparks[i].x += sparks[i].vx * dt;
-            sparks[i].y += sparks[i].vy * dt;
-            sparks[i].vy += 40 * dt;
-          }
-          sCtx.clearRect(0, 0, cw, ch);
-          for (const s of sparks) {
-            const t = s.age / s.life;
-            sCtx.globalAlpha = (1 - t) * (1 - t);
-            sCtx.fillStyle = t < 0.3 ? '#fff' : accent;
-            sCtx.beginPath();
-            sCtx.arc(s.x, s.y, s.size * (1 - t * 0.5), 0, Math.PI * 2);
-            sCtx.fill();
-          }
-          sCtx.globalAlpha = 1;
-          requestAnimationFrame(fadeOut);
         };
-        fadeOut();
+        checkDone();
       },
     });
   });
