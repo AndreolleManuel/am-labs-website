@@ -29,9 +29,11 @@ import { lenis } from './js/animations/index.js';
 import { initHeroAnimation } from './js/animations/hero.js';
 import { initReveals } from './js/animations/reveals.js';
 
-// Wait for fonts then reveal the page and start the animation together
-document.fonts.ready.then(() => {
+// Wait for fonts, reveal the page, then start animation after first paint
+document.fonts.ready.then(async () => {
   document.body.classList.add('ready');
+  // Wait for the opacity transition to complete before starting the animation
+  await new Promise((r) => setTimeout(r, 150));
   initHeroAnimation();
 });
 initReveals();

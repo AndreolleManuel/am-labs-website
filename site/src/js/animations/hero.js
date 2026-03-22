@@ -21,10 +21,11 @@ export async function initHeroAnimation() {
   const inner = document.querySelector('.hero-inner');
   if (!inner) return;
 
-  // Wait for the browser to restore scroll position and layout to settle
-  // Mobile needs more time for fonts + layout reflow
-  const isMobile = window.innerWidth < 768;
-  await new Promise((r) => setTimeout(r, isMobile ? 300 : 120));
+  // Wait for the page to be fully rendered before starting the animation
+  // requestAnimationFrame x2 ensures at least one paint cycle has completed
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  // Extra settle time for layout reflow
+  await new Promise((r) => setTimeout(r, 200));
 
   // Skip if the page is scrolled past the hero (refresh at bottom of page)
   // Note: we cannot use getBoundingClientRect because the hero is sticky
