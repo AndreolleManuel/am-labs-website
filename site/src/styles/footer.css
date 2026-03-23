@@ -37,6 +37,20 @@
   margin-top: var(--space-xs);
 }
 
+.footer-linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-md);
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-linkedin:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
 /* Legal notice modal */
 .mentions-modal {
   position: fixed;
