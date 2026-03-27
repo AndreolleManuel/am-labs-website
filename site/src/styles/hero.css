@@ -233,3 +233,14 @@
   .hero-glow { animation: none; }
   .hero-badge-dot { animation: none; }
 }
+
+/* Safari mobile performance: reduce blur radius which is very expensive on WebKit */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    .hero-glow {
+      filter: blur(30px);
+      width: 600px;
+      height: 400px;
+    }
+  }
+}

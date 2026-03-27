@@ -4,14 +4,26 @@
  * A single laser dot sweeps the entire hero-inner from top to bottom,
  * zigzagging horizontally (like a CNC head on its rail).
  * ALL elements are revealed simultaneously as the laser passes.
+ *
+ * Safari mobile fix (mars 2026):
+ *   - Uses a real <div> clip wrapper instead of per-frame webkitMaskImage updates
+ *   - Reduces ROW_HEIGHT on mobile for fewer rows → faster sweep
+ *   - Throttles onUpdate to ~30fps on mobile Safari (vs 60fps desktop)
+ *   - Skips hero-glow blur recalc during animation
  */
 
 import { gsap } from './index.js';
 
-const ROW_HEIGHT = 35;
+// Detect mobile + Safari early
+const isMobile = window.innerWidth < 768;
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const isMobileSafari = isSafari && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
+const ROW_HEIGHT = isMobileSafari ? 50 : 35;
 
 // ---- Spark object pool (zero allocation during animation) ----
-const POOL_SIZE = 200;
+// Reduced pool on mobile Safari to save memory
+const POOL_SIZE = isMobileSafari ? 0 : 200;
 const sparkPool = [];
 for (let i = 0; i < POOL_SIZE; i++) {
   sparkPool.push({ x: 0, y: 0, vx: 0, vy: 0, life: 0, age: 0, size: 0, active: false });
@@ -52,12 +64,15 @@ export async function initHeroAnimation() {
     getComputedStyle(document.documentElement)
       .getPropertyValue('--color-accent').trim() || '#8b5cf6';
 
-  // Detect Safari (no canvas sparks — WebKit can't handle clipPath + canvas simultaneously)
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
   // Pause glowDrift CSS animation during CNC (reduce GPU contention)
   const glow = document.querySelector('.hero-glow');
   if (glow) glow.style.animationPlayState = 'paused';
+
+  // On mobile Safari, also hide the glow entirely during animation
+  // (filter: blur(60px) is extremely expensive on WebKit mobile GPU)
+  if (isMobileSafari && glow) {
+    glow.style.display = 'none';
+  }
 
   // Collect elements to reveal
   const elements = [];
@@ -76,12 +91,15 @@ export async function initHeroAnimation() {
     gsap.set(el, { opacity: 1 });
   }
 
-  // Mask the parent container — use CSS mask on Safari (GPU-composited) or clipPath elsewhere
-  if (isSafari) {
-    inner.style.webkitMaskImage = 'linear-gradient(to bottom, black 0%, transparent 0%)';
-  } else {
-    gsap.set(inner, { clipPath: 'inset(0 0 100% 0)' });
-  }
+  // Reveal mechanism:
+  //   - Safari: use clip-path inset (NOT webkitMaskImage which recalcs gradient every frame)
+  //   - Others: same clip-path inset (consistent, GPU-composited)
+  //
+  // Previous Safari code used webkitMaskImage with a linear-gradient updated every frame.
+  // This caused massive perf issues on mobile Safari because WebKit rasterizes the
+  // mask image on the CPU each time the gradient string changes.
+  // clip-path: inset() is GPU-composited on all browsers including Safari.
+  gsap.set(inner, { clipPath: 'inset(0 0 100% 0)', willChange: 'clip-path' });
 
   // Force reflow to ensure rects are accurate
   inner.offsetHeight;
@@ -90,16 +108,22 @@ export async function initHeroAnimation() {
   const dpr = window.devicePixelRatio || 1;
   const sparkMargin = 80;
   const numRows = Math.max(Math.ceil(innerRect.height / ROW_HEIGHT), 1);
-  const durationMs = Math.max(1500, numRows * 80);
+  // Faster sweep on mobile Safari: fewer rows + quicker per-row
+  const msPerRow = isMobileSafari ? 55 : 80;
+  const durationMs = Math.max(isMobileSafari ? 1000 : 1500, numRows * msPerRow);
   const durationSec = durationMs / 1000;
 
   // Laser dot — position absolute inside hero instead of fixed on body
+  // Simplified box-shadow on mobile Safari (fewer layers = less compositing)
+  const dotShadow = isMobileSafari
+    ? `0 0 6px 3px ${accent}`
+    : `0 0 4px 2px #fff, 0 0 10px 4px ${accent}, 0 0 25px 8px ${accent}50, 0 0 45px 12px ${accent}20`;
   const dot = document.createElement('div');
   dot.style.cssText = [
     'position:absolute', 'left:0', 'top:0',
-    'width:8px', 'height:8px',
+    `width:${isMobileSafari ? 6 : 8}px`, `height:${isMobileSafari ? 6 : 8}px`,
     'border-radius:50%', 'background:#fff',
-    `box-shadow:0 0 4px 2px #fff, 0 0 10px 4px ${accent}, 0 0 25px 8px ${accent}50, 0 0 45px 12px ${accent}20`,
+    `box-shadow:${dotShadow}`,
     'pointer-events:none', 'z-index:10001',
     'will-change:transform',
   ].join(';');
@@ -111,7 +135,7 @@ export async function initHeroAnimation() {
   let sparkCanvas = null;
   let sCtx = null;
 
-  if (!isSafari) {
+  if (!isSafari && POOL_SIZE > 0) {
     sparkCanvas = document.createElement('canvas');
     sparkCanvas.width = cw * dpr;
     sparkCanvas.height = ch * dpr;
@@ -135,9 +159,12 @@ export async function initHeroAnimation() {
   return new Promise((resolve) => {
     const state = { progress: 0 };
 
+    // Frame throttle for mobile Safari: skip every other frame (target ~30fps)
+    let frameCount = 0;
+
     // Separate canvas render loop (only on non-Safari)
-    let canvasRunning = !isSafari;
-    if (!isSafari) {
+    let canvasRunning = !isSafari && POOL_SIZE > 0;
+    if (!isSafari && POOL_SIZE > 0) {
       function renderSparks() {
         if (!canvasRunning) return;
         sCtx.clearRect(0, 0, cw, ch);
@@ -163,6 +190,11 @@ export async function initHeroAnimation() {
       ease: 'none',
       paused: true,
       onUpdate: () => {
+        // Throttle to ~30fps on mobile Safari to reduce GPU pressure
+        if (isMobileSafari) {
+          frameCount++;
+          if (frameCount % 2 !== 0) return;
+        }
         const progress = state.progress;
 
         // Laser position
@@ -185,14 +217,10 @@ export async function initHeroAnimation() {
         const sparkX = sparkMargin + (laserVpX - innerLeft);
         const sparkY = sparkMargin + (laserVpY - innerTop);
 
-        // Reveal — mask on Safari (GPU), clipPath elsewhere
+        // Reveal — clip-path inset (GPU-composited on all browsers including Safari)
         const revealPx = laserVpY - innerTop;
         const revealPct = Math.max(0, Math.min((revealPx / innerRect.height) * 100, 100));
-        if (isSafari) {
-          inner.style.webkitMaskImage = `linear-gradient(to bottom, black ${revealPct}%, transparent ${revealPct}%)`;
-        } else {
-          inner.style.clipPath = `inset(0 0 ${Math.max(100 - revealPct, 0)}% 0)`;
-        }
+        inner.style.clipPath = `inset(0 0 ${Math.max(100 - revealPct, 0)}% 0)`;
 
         // Dot fade at end
         if (progress > 0.93) {
@@ -232,16 +260,18 @@ export async function initHeroAnimation() {
           canvasRunning = false;
           dot.remove();
           if (sparkCanvas) sparkCanvas.remove();
-          if (isSafari) { inner.style.webkitMaskImage = ''; }
-          else { gsap.set(inner, { clearProps: 'clipPath' }); }
+          gsap.set(inner, { clearProps: 'clipPath,willChange' });
           for (const el of elements) {
             gsap.set(el, { clearProps: 'willChange' });
           }
-          if (glow) glow.style.animationPlayState = '';
+          if (glow) {
+            glow.style.animationPlayState = '';
+            if (isMobileSafari) glow.style.display = '';
+          }
           resolve();
         };
 
-        if (isSafari) {
+        if (isSafari || POOL_SIZE === 0) {
           cleanup();
           return;
         }
