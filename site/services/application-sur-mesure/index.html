@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Application métier sur mesure - outils de gestion pour PME en Drôme/Ardèche | AM Labs</title>
+  <meta name="description" content="Développement d'applications métier sur mesure : gestion d'interventions, planning, CRM, dashboards. Pour PME en Drôme/Ardèche. À partir de 5 500 €." />
+  <link rel="canonical" href="https://amlabs.dev/services/application-sur-mesure/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Application métier sur mesure | AM Labs" />
+  <meta property="og:description" content="Quand aucun SaaS ne couvre votre process métier, je construis l'outil exact qui vous manque. Référence : Atelier Clamart." />
+  <meta property="og:url" content="https://amlabs.dev/services/application-sur-mesure/" />
+  <meta property="og:site_name" content="AM Labs" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:image" content="https://amlabs.dev/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AM Labs - Développeur full-stack à Montélimar" />
+  <meta name="twitter:image" content="https://amlabs.dev/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Application métier sur mesure | AM Labs" />
+  <meta name="twitter:description" content="Outils de gestion pensés pour votre métier réel, pas pour une démo." />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="author" content="Manuel Andreolle" />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="FR-DRM" />
+  <meta name="geo.placename" content="Montélimar" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://amlabs.dev/#business",
+    "name": "AM Labs",
+    "alternateName": "Andreolle Manuel Labs",
+    "description": "Agence web et développeur full-stack à Montélimar. Création de sites internet, applications métier sur mesure, connecteurs ERP/e-commerce.",
+    "url": "https://amlabs.dev",
+    "logo": "https://amlabs.dev/favicon.png",
+    "telephone": "+33645543161",
+    "email": "contact@amlabs.dev",
+    "founder": {
+      "@type": "Person",
+      "name": "Manuel Andreolle",
+      "jobTitle": "Développeur full-stack",
+      "url": "https://www.linkedin.com/in/manuel-andreolle/"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Montélimar",
+      "addressRegion": "Drôme",
+      "postalCode": "26200",
+      "addressCountry": "FR"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Montélimar" },
+      { "@type": "AdministrativeArea", "name": "Drôme" },
+      { "@type": "AdministrativeArea", "name": "Ardèche" },
+      { "@type": "Country", "name": "France" }
+    ],
+    "priceRange": "€€€",
+    "knowsAbout": ["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "Prisma", "Stripe"],
+    "sameAs": ["https://www.linkedin.com/in/manuel-andreolle/"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Développement d'application métier sur mesure",
+    "provider": { "@id": "https://amlabs.dev/#business" },
+    "areaServed": { "@type": "Country", "name": "France" },
+    "name": "Application métier sur mesure",
+    "description": "Développement d'applications métier complètes pour PME : gestion d'interventions, planning, CRM, dashboards, suivi clients. Quand aucun SaaS ne couvre votre process réel.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": "5500",
+        "maxPrice": "15000",
+        "priceCurrency": "EUR"
+      },
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://amlabs.dev/" },
+      { "@type": "ListItem", "position": 2, "name": "Services" },
+      { "@type": "ListItem", "position": 3, "name": "Application sur mesure" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quand faut-il une application sur mesure plutôt qu'un SaaS du marché ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Quand votre process métier est spécifique et qu'aucun SaaS ne le couvre proprement (vous êtes obligé de bricoler avec Excel + emails + 3 outils en parallèle), quand le coût total des SaaS empilés dépasse 200-300 €/mois, ou quand vous avez besoin d'un outil que vos concurrents n'ont pas. À partir de 50-200 utilisateurs, le sur mesure devient souvent plus rentable que les abonnements SaaS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien coûte une application sur mesure ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entre 5 500 € et 15 000 € pour une première version (MVP) avec 3 à 5 modules métier. Au-delà, on parle de 20 000-50 000 € pour des plateformes complètes type SaaS multi-clients. Le pricing dépend du nombre de modules, de la complexité métier et de l'infrastructure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps pour développer une app métier ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Comptez 6 à 12 semaines pour une première version utilisable en production. Le projet démarre par 2-3 ateliers de cadrage avec vous (1 semaine), suivis de prototypes validés avant tout développement (1 semaine), puis du développement par sprints (4-8 semaines), et d'une phase de tests et formation (1 semaine)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qui héberge l'application ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hébergement professionnel inclus la 1ère année (Vercel + Supabase ou Neon, infrastructure managée en Europe). À partir de la 2ème année, vous pouvez soit poursuivre via mon contrat de maintenance qui inclut l'hébergement, soit reprendre la gestion en interne - je vous transfère tout proprement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vous travaillez avec des cabinets DPE / installateurs / transporteurs ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Pour les services terrain (alarme, plomberie, fibre, climatisation, diagnostic immobilier DPE), je conçois des outils sur mesure adaptés à vos process : gestion d'interventions, planning techniciens, tournée optimisée, signature client, photos GPS, PV PDF."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/fonts/general-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin />
+  <style>html,body{background:#0c0b14;color:#e8e6f0;}body{opacity:0;transition:opacity .15s ease;}body.ready{opacity:1;}</style>
+</head>
+<body>
+
+  <noscript>
+    <nav class="nav nav-fallback">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">AM<span>Labs</span></a>
+        <a href="/contact/" class="nav-cta">Contact</a>
+      </div>
+    </nav>
+  </noscript>
+
+  <div id="nav-placeholder"></div>
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="Fil d'ariane" class="breadcrumb">
+          <ol>
+            <li><a href="/">Accueil</a></li>
+            <li>Services</li>
+            <li aria-current="page">Application sur mesure</li>
+          </ol>
+        </nav>
+        <span class="page-eyebrow">Service · AM Labs Montélimar</span>
+        <h1 class="page-title">Application métier sur mesure pour PME en <span class="accent">Drôme</span> et Ardèche.</h1>
+        <p class="page-subtitle">Quand aucun SaaS ne couvre votre process réel, je construis l'outil qui vous manque. Pensé avec vous, livré par étapes, utilisé par vos équipes.</p>
+        <div class="page-cta-row">
+          <a href="/contact/" class="hero-cta">
+            Cadrer mon projet (gratuit)
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="/realisations/atelier-clamart/" class="hero-secondary">Voir l'étude de cas Atelier Clamart</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Pour qui</span>
+          <h2 class="section-title">Quand votre métier ne rentre dans aucune case du marché.</h2>
+        </div>
+        <div class="services-list">
+          <div class="service-card reveal rd1">
+            <h3>Services terrain (alarme, plomberie, fibre, climatisation)</h3>
+            <p>Gestion d'interventions, planning techniciens, tournée optimisée, signature client, photos GPS, PV PDF. Outil pensé pour vos équipes terrain et leur réalité quotidienne.</p>
+          </div>
+          <div class="service-card reveal rd2">
+            <h3>Cabinets DPE / diagnostic immobilier</h3>
+            <p>Planning structuré, fiches RDV obligatoires, codes d'accès chiffrés AES-256, optimisation tournée. Sans toucher à LICIEL, je m'occupe de tout ce qu'il y a autour.</p>
+          </div>
+          <div class="service-card reveal rd3">
+            <h3>PME établies sur Excel + emails</h3>
+            <p>Cabinet d'expertise, transporteur, garage, atelier créatif. Quand votre activité tourne sur 3 Excel et 200 emails par semaine, c'est qu'il vous faut un outil métier.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section method">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Méthode de développement</span>
+          <h2 class="section-title">De votre métier réel à l'outil en production.</h2>
+        </div>
+        <div class="method-grid">
+          <div class="method-card reveal rd1">
+            <div class="method-card-header"><span class="method-num">01</span><h3>Cadrage</h3></div>
+            <p>2-3 ateliers chez vous pour comprendre votre métier réel, pas le besoin déclaré. Ce que vos équipes font vraiment, pas ce qu'elles devraient faire.</p>
+          </div>
+          <div class="method-card reveal rd2">
+            <div class="method-card-header"><span class="method-num">02</span><h3>Maquettes validées</h3></div>
+            <p>Prototypes interactifs avant tout développement. Vous ajustez tant que ce n'est pas le bon outil - c'est gratuit et rapide à ce stade.</p>
+          </div>
+          <div class="method-card reveal rd3">
+            <div class="method-card-header"><span class="method-num">03</span><h3>Développement par sprints</h3></div>
+            <p>Vous testez l'outil au fur et à mesure de sa construction. Chaque sprint livre des modules utilisables, pas une promesse.</p>
+          </div>
+          <div class="method-card reveal rd4">
+            <div class="method-card-header"><span class="method-num">04</span><h3>Mise en prod &amp; formation</h3></div>
+            <p>Hébergement géré, formation 2h équipe, manuel utilisateur, garantie 90 jours. L'outil est adopté, pas posé.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="tarifs">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Tarifs indicatifs</span>
+          <h2 class="section-title">Combien ça coûte.</h2>
+          <p class="section-desc">Tarifs HT. Acompte 30 % à la commande, 40 % à la livraison de la maquette validée, 30 % à la mise en production.</p>
+        </div>
+        <div class="services-list">
+          <div class="service-card reveal rd1">
+            <h3>App MVP (3-5 modules)</h3>
+            <p><strong>5 500 € → 9 000 €</strong> · 6-8 semaines<br>Première version utilisable en production avec 3 à 5 modules métier essentiels (gestion clients, planning, factures, suivi).</p>
+          </div>
+          <div class="service-card reveal rd2">
+            <h3>App complète (5-10 modules)</h3>
+            <p><strong>9 000 € → 15 000 €</strong> · 8-12 semaines<br>Plateforme complète avec authentification multi-rôles, exports, statistiques, modules avancés.</p>
+          </div>
+          <div class="service-card reveal rd3">
+            <h3>SaaS multi-clients ou plateforme complexe</h3>
+            <p><strong>Sur devis</strong> · 12-24 semaines<br>Architecture multi-tenant, modules métier complexes, intégrations avancées. À partir de 20 000 €.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Référence client</span>
+          <h2 class="section-title">L'Atelier Clamart : plateforme complète, en production.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>Plateforme complète développée pour <strong>L'Atelier Clamart</strong>, structure d'ateliers d'arts créatifs en région parisienne : réservation, abonnements, crédits par catégorie d'âge, planning hebdomadaire, paiement Stripe, liste d'attente intelligente, mails transactionnels, back-office admin, gestion multi-professeurs.</p>
+            <p>Stack : Next.js, React, TypeScript, PostgreSQL, Stripe, Brevo. ~2 500 lignes de code backend, en production depuis mars 2026, utilisée quotidiennement par les équipes et les clientes.</p>
+            <p><a href="/realisations/atelier-clamart/" class="cta-link">Voir l'étude de cas complète →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Questions fréquentes</span>
+          <h2 class="section-title">Vos questions, mes réponses.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Quand faut-il une application sur mesure plutôt qu'un SaaS du marché ?</summary>
+            <p>Quand votre process métier est spécifique et qu'aucun SaaS ne le couvre proprement (vous êtes obligé de bricoler avec Excel + emails + 3 outils en parallèle), quand le coût total des SaaS empilés dépasse 200-300 €/mois, ou quand vous avez besoin d'un outil que vos concurrents n'ont pas. À partir de 50-200 utilisateurs, le sur mesure devient souvent plus rentable que les abonnements SaaS.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Combien coûte une application sur mesure ?</summary>
+            <p>Entre 5 500 € et 15 000 € pour une première version (MVP) avec 3 à 5 modules métier. Au-delà, on parle de 20 000-50 000 € pour des plateformes complètes type SaaS multi-clients. Le pricing dépend du nombre de modules, de la complexité métier et de l'infrastructure.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Combien de temps pour développer une app métier ?</summary>
+            <p>Comptez 6 à 12 semaines pour une première version utilisable en production. Le projet démarre par 2-3 ateliers de cadrage avec vous (1 semaine), suivis de prototypes validés avant tout développement (1 semaine), puis du développement par sprints (4-8 semaines), et d'une phase de tests et formation (1 semaine).</p>
+          </details>
+          <details class="faq-item">
+            <summary>Qui héberge l'application ?</summary>
+            <p>Hébergement professionnel inclus la 1ère année (Vercel + Supabase ou Neon, infrastructure managée en Europe). À partir de la 2ème année, vous pouvez soit poursuivre via mon <a href="/services/maintenance-site-web/">contrat de maintenance</a> qui inclut l'hébergement, soit reprendre la gestion en interne - je vous transfère tout proprement.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Vous travaillez avec des cabinets DPE / installateurs / transporteurs ?</summary>
+            <p>Oui. Pour les services terrain (alarme, plomberie, fibre, climatisation, diagnostic immobilier DPE), je conçois des outils sur mesure adaptés à vos process : gestion d'interventions, planning techniciens, tournée optimisée, signature client, photos GPS, PV PDF.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-cta-block reveal">
+          <h2>Vous gérez votre activité sur 3 Excel et 200 mails par semaine ?</h2>
+          <p>Cadrons votre projet ensemble. Échange gratuit de 30 minutes, devis chiffré sous 48h.</p>
+          <a href="/contact/" class="hero-cta">
+            Cadrer mon projet
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

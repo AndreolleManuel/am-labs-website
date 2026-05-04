@@ -21,6 +21,11 @@
   <meta property="og:url" content="https://amlabs.dev/" />
   <meta property="og:site_name" content="AM Labs" />
   <meta property="og:locale" content="fr_FR" />
+  <meta property="og:image" content="https://amlabs.dev/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AM Labs - Développeur full-stack à Montélimar" />
+  <meta name="twitter:image" content="https://amlabs.dev/og-image.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -31,33 +36,103 @@
   <meta name="geo.region" content="FR-DRM" />
   <meta name="geo.placename" content="Montélimar" />
 
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org LocalBusiness (référencé par les autres pages via @id) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": "https://amlabs.dev/#business",
     "name": "AM Labs",
-    "description": "Développeur full-stack à Montélimar. Applications métier, connecteurs et plateformes web sur mesure.",
+    "alternateName": "Andreolle Manuel Labs",
+    "description": "Agence web et développeur full-stack à Montélimar. Création de sites internet, applications métier sur mesure, connecteurs ERP/e-commerce.",
     "url": "https://amlabs.dev",
+    "logo": "https://amlabs.dev/favicon.png",
+    "telephone": "+33645543161",
     "email": "contact@amlabs.dev",
     "founder": {
       "@type": "Person",
-      "name": "Manuel Andreolle"
+      "name": "Manuel Andreolle",
+      "jobTitle": "Développeur full-stack & fondateur AM Labs",
+      "url": "https://www.linkedin.com/in/manuel-andreolle/"
     },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Montélimar",
       "addressRegion": "Drôme",
+      "postalCode": "26200",
       "addressCountry": "FR"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "44.5556",
+      "longitude": "4.7491"
+    },
     "areaServed": [
-      { "@type": "Place", "name": "Montélimar" },
-      { "@type": "Place", "name": "Drôme" },
-      { "@type": "Place", "name": "Ardèche" },
+      { "@type": "City", "name": "Montélimar" },
+      { "@type": "City", "name": "Valence" },
+      { "@type": "City", "name": "Aubenas" },
+      { "@type": "City", "name": "Privas" },
+      { "@type": "City", "name": "Nyons" },
+      { "@type": "City", "name": "Pierrelatte" },
+      { "@type": "City", "name": "Tournon-sur-Rhône" },
+      { "@type": "AdministrativeArea", "name": "Drôme" },
+      { "@type": "AdministrativeArea", "name": "Ardèche" },
       { "@type": "Country", "name": "France" }
     ],
-    "serviceType": ["Développement web", "Applications métier", "Intégration de systèmes", "Plateformes web"],
-    "knowsAbout": ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "PostgreSQL", "Stripe"]
+    "serviceType": ["Création de site internet", "Application métier sur mesure", "Connecteur ERP / e-commerce", "Audit SEO", "Maintenance site web"],
+    "priceRange": "€€",
+    "knowsAbout": ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "PostgreSQL", "Stripe", "Odoo", "Wix", "Vite"],
+    "sameAs": ["https://www.linkedin.com/in/manuel-andreolle/"]
+  }
+  </script>
+
+  <!-- FAQ Schema (gros booster SEO local) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quels services propose AM Labs ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cinq prestations principales : création de site internet (1 800-9 000 €), application métier sur mesure (5 500-15 000 €), connecteur ERP / e-commerce (3 500-8 000 €), audit SEO et numérique (500-1 500 €), maintenance site web mensuelle (150-450 €/mois)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Où intervient AM Labs en Drôme/Ardèche ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Basé à Montélimar (26200), j'interviens en physique dans un rayon de 60 km : Valence, Aubenas, Privas, Nyons, Pierrelatte, Tournon-sur-Rhône, Dieulefit, Crest, Bollène, Pont-Saint-Esprit, Romans, Avignon nord et alentours. Au-delà, je travaille à distance avec mes clients partout en France."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment se déroule un projet avec AM Labs ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Quatre étapes : 1) Diagnostic gratuit (échange 30-60 min en visio ou sur place), 2) Devis cadré sous 24-48h avec périmètre clair, tarif HT, délai et jalons, 3) Développement par étapes avec validation client à chaque jalon, 4) Mise en ligne, formation et garantie 30-90 jours selon la prestation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien coûte une prestation AM Labs ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Site vitrine pro : 1 800-3 500 €. Site avec module métier : 4 500-9 000 €. Application métier sur mesure : 5 500-15 000 €. Connecteur ERP / e-commerce : 3 500-8 000 €. Audit SEO : 500-1 500 €. Maintenance mensuelle : 150-450 €/mois. Acompte 30 % à la commande, jamais 100 % à la livraison."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Pourquoi choisir AM Labs plutôt qu'une agence web classique ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trois raisons : un seul interlocuteur du diagnostic à la mise en ligne (vous parlez à la personne qui code), 10 ans d'expérience terrain dans la tech avant le code (je comprends comment fonctionne une PME), et tarifs transparents HT sans frais cachés ni 'sur devis' flou."
+        }
+      }
+    ]
   }
   </script>
 
@@ -68,23 +143,18 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">AM<span>Labs</span></a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about">L'approche</a></li>
-        <li><a href="#services">Expertises</a></li>
-        <li><a href="#projects">Réalisations</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Nav fallback (sans JS) -->
+  <noscript>
+    <nav class="nav nav-fallback">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">AM<span>Labs</span></a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
+    </nav>
+  </noscript>
+
+  <!-- Placeholder injecté par partials-loader.js (charge /partials/nav.html) -->
+  <div id="nav-placeholder"></div>
 
   <!-- Scroll progress -->
   <div class="scroll-progress" id="scroll-progress"></div>
@@ -98,9 +168,9 @@
     </div>
     <div class="hero-inner">
       <div class="hero-brand"><span class="brand-am">AM</span><span class="accent">Labs</span></div>
-      <p class="hero-tagline">Laboratoire de solutions digitales</p>
+      <p class="hero-tagline">Agence web &amp; développeur full-stack à Montélimar (Drôme)</p>
       <h1 class="hero-title">Votre métier est unique. Vos outils devraient l'être <span class="accent">aussi</span>.</h1>
-      <p class="hero-subtitle">Des outils sur mesure pensés par un profil terrain, pour simplifier votre quotidien technique et métier.</p>
+      <p class="hero-subtitle">Sites internet, applications métier sur mesure et connecteurs ERP pour PME en Drôme/Ardèche. 10 ans de terrain avant le code.</p>
       <div class="hero-actions">
         <a href="#contact" class="hero-cta">
           Lancer un projet
@@ -192,6 +262,23 @@
     </div>
   </section>
 
+  <!-- Zones d'intervention (boost SEO local) -->
+  <section class="section about" id="zones">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Zone d'intervention</span>
+        <h2 class="section-title">Présent en <span class="accent">Drôme/Ardèche</span>, partout en France à distance.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Basé à <strong>Montélimar (26200)</strong>, j'interviens en physique dans tout le sud de la Drôme et la Drôme provençale, ainsi qu'en Ardèche : <strong>Valence, Aubenas, Privas, Nyons, Pierrelatte, Tournon, Dieulefit, Crest, Bollène, Pont-Saint-Esprit, Romans</strong> et leurs alentours.</p>
+          <p>Pour les rendez-vous physiques, je me déplace dans un rayon d'environ <strong>60 km autour de Montélimar</strong> sans frais. Au-delà, je travaille à distance avec mes clients partout en France - visio + outils collaboratifs, processus rodé sur mes projets <a href="/realisations/atelier-clamart/">Atelier Clamart (région parisienne)</a> et <a href="/realisations/tool-innovation-panama/">Tool Innovation Panama (Amérique centrale)</a>.</p>
+          <p><a href="/agence-web-montelimar/" class="cta-link">→ Voir la page dédiée Agence web Montélimar</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Projets -->
   <section class="section projects" id="projects">
     <div class="container">
@@ -225,7 +312,7 @@
 
               <div class="feature-row reveal rd1" data-src="/screenshots/dashboard.png">
                 <div class="feature-media">
-                  <img src="/screenshots/dashboard.png" alt="Dashboard — monitoring temps réel" loading="lazy" />
+                  <img src="/screenshots/dashboard.png" alt="Dashboard - monitoring temps réel" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">Dashboard</span>
@@ -236,7 +323,7 @@
 
               <div class="feature-row feature-row--reverse" data-src="/screenshots/ia-seo.png">
                 <div class="feature-media feature-media--compact">
-                  <img src="/screenshots/ia-seo.png" alt="IA & SEO — génération Gemini" loading="lazy" />
+                  <img src="/screenshots/ia-seo.png" alt="IA & SEO - génération Gemini" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">IA & SEO</span>
@@ -247,7 +334,7 @@
 
               <div class="feature-row" data-src="/screenshots/commande.png">
                 <div class="feature-media">
-                  <img src="/screenshots/commande.png" alt="Commandes — transit automatique Wix → Odoo" loading="lazy" />
+                  <img src="/screenshots/commande.png" alt="Commandes - transit automatique Wix → Odoo" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">Commandes</span>
@@ -258,7 +345,7 @@
 
               <div class="feature-row feature-row--reverse" data-src="/screenshots/produit.png">
                 <div class="feature-media">
-                  <img src="/screenshots/produit.png" alt="Produits — fiches produit synchronisées" loading="lazy" />
+                  <img src="/screenshots/produit.png" alt="Produits - fiches produit synchronisées" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">Produits</span>
@@ -325,7 +412,7 @@
 
             <a href="https://www.atelierclamart.fr" target="_blank" rel="noopener noreferrer" class="showcase-preview">
               <div class="showcase-preview-frame">
-                <iframe src="https://www.atelierclamart.fr" title="L'Atelier Clamart — site live" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                <iframe src="https://www.atelierclamart.fr" title="L'Atelier Clamart - site live" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
                 <div class="showcase-preview-overlay"></div>
               </div>
               <span class="showcase-preview-cta">
@@ -338,7 +425,7 @@
 
               <div class="feature-row reveal rd1" data-src="/screenshots/atelier-planning.png">
                 <div class="feature-media">
-                  <img src="/screenshots/atelier-planning.png" alt="Planning hebdomadaire — vue admin avec créneaux et profs" loading="lazy" />
+                  <img src="/screenshots/atelier-planning.png" alt="Planning hebdomadaire - vue admin avec créneaux et profs" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">Planning</span>
@@ -349,7 +436,7 @@
 
               <div class="feature-row feature-row--reverse reveal" data-src="/screenshots/admin-overview.png">
                 <div class="feature-media">
-                  <img src="/screenshots/admin-overview.png" alt="Tableau de bord admin — KPIs et stats" loading="lazy" />
+                  <img src="/screenshots/admin-overview.png" alt="Tableau de bord admin - KPIs et stats" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">Tableau de bord</span>
@@ -360,7 +447,7 @@
 
               <div class="feature-row reveal" data-src="/screenshots/admin-gestion.png">
                 <div class="feature-media">
-                  <img src="/screenshots/admin-gestion.png" alt="Gestion quotidienne — planning, réservations, clients, abonnements" loading="lazy" />
+                  <img src="/screenshots/admin-gestion.png" alt="Gestion quotidienne - planning, réservations, clients, abonnements" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">Gestion quotidienne</span>
@@ -371,7 +458,7 @@
 
               <div class="feature-row feature-row--reverse reveal" data-src="/screenshots/admin-contenu.png">
                 <div class="feature-media">
-                  <img src="/screenshots/admin-contenu.png" alt="Contenu & Programme — ateliers, semaine type, formules, catégories" loading="lazy" />
+                  <img src="/screenshots/admin-contenu.png" alt="Contenu & Programme - ateliers, semaine type, formules, catégories" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">Contenu & Programme</span>
@@ -382,7 +469,7 @@
 
               <div class="feature-row reveal" data-src="/screenshots/admin-comms.png">
                 <div class="feature-media">
-                  <img src="/screenshots/admin-comms.png" alt="Communication — demandes profs et notes partagées" loading="lazy" />
+                  <img src="/screenshots/admin-comms.png" alt="Communication - demandes profs et notes partagées" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">Communication</span>
@@ -393,7 +480,7 @@
 
               <div class="feature-row feature-row--reverse reveal" data-src="/screenshots/admin-finance-config.png">
                 <div class="feature-media">
-                  <img src="/screenshots/admin-finance-config.png" alt="Finance et configuration — paiements, stats, droits d'accès" loading="lazy" />
+                  <img src="/screenshots/admin-finance-config.png" alt="Finance et configuration - paiements, stats, droits d'accès" loading="lazy" />
                 </div>
                 <div class="feature-text">
                   <span class="feature-label">Finance & Config</span>
@@ -447,6 +534,38 @@
           Un projet en tête ? On en parle.
           <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Questions fréquentes</span>
+        <h2 class="section-title">Vos questions, mes réponses.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Quels services propose AM Labs ?</summary>
+          <p>Cinq prestations principales : <a href="/services/creation-site-web/">création de site internet</a> (1 800-9 000 €), <a href="/services/application-sur-mesure/">application métier sur mesure</a> (5 500-15 000 €), <a href="/services/connecteur-erp-ecommerce/">connecteur ERP / e-commerce</a> (3 500-8 000 €), <a href="/services/audit-seo-numerique/">audit SEO &amp; numérique</a> (500-1 500 €), <a href="/services/maintenance-site-web/">maintenance site web mensuelle</a> (150-450 €/mois).</p>
+        </details>
+        <details class="faq-item">
+          <summary>Où intervient AM Labs en Drôme/Ardèche ?</summary>
+          <p>Basé à Montélimar (26200), j'interviens en physique dans un rayon de 60 km : Valence, Aubenas, Privas, Nyons, Pierrelatte, Tournon-sur-Rhône, Dieulefit, Crest, Bollène, Pont-Saint-Esprit, Romans, Avignon nord et alentours. Au-delà, je travaille à distance avec mes clients partout en France.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Comment se déroule un projet avec AM Labs ?</summary>
+          <p>Quatre étapes : 1) Diagnostic gratuit (échange 30-60 min en visio ou sur place pour comprendre votre besoin), 2) Devis cadré sous 24-48h avec périmètre clair, tarif HT, délai et jalons, 3) Développement par étapes avec validation client à chaque jalon, 4) Mise en ligne, formation et garantie 30-90 jours selon la prestation.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Combien coûte une prestation AM Labs ?</summary>
+          <p>Site vitrine pro : 1 800-3 500 €. Site avec module métier : 4 500-9 000 €. Application métier sur mesure : 5 500-15 000 €. Connecteur ERP / e-commerce : 3 500-8 000 €. Audit SEO : 500-1 500 €. Maintenance mensuelle : 150-450 €/mois. Acompte 30 % à la commande, jamais 100 % à la livraison.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Pourquoi vous plutôt qu'une agence web classique ?</summary>
+          <p>Trois raisons : un seul interlocuteur du diagnostic à la mise en ligne (vous parlez à la personne qui code), 10 ans d'expérience terrain dans la tech avant le code (je comprends comment fonctionne une PME), et tarifs transparents HT sans frais cachés ni "sur devis" flou.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -616,17 +735,8 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>
-        &copy; 2026 AM Labs · Manuel Andreolle · Montélimar · <a href="#mentions" id="mentions-link">Mentions légales</a>
-      </p>
-      <a href="https://www.linkedin.com/in/manuel-andreolle/" target="_blank" rel="noopener noreferrer" class="footer-linkedin" aria-label="LinkedIn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      </a>
-    </div>
-  </footer>
+  <!-- Placeholder injecté par partials-loader.js (charge /partials/footer.html) -->
+  <div id="footer-placeholder"></div>
 
   <!-- Video Modal -->
   <div class="video-modal" id="video-modal" aria-hidden="true">
@@ -636,38 +746,6 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
       </button>
       <video id="video-modal-player" src="/video/demo-tool-innovation.mp4" controls preload="none"></video>
-    </div>
-  </div>
-
-  <!-- Mentions légales modal -->
-  <div class="mentions-modal" id="mentions-modal" aria-hidden="true">
-    <div class="mentions-backdrop"></div>
-    <div class="mentions-content">
-      <button class="mentions-close" aria-label="Fermer">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
-      </button>
-      <h3>Mentions légales</h3>
-      <div class="mentions-body">
-        <p><strong>Éditeur du site</strong><br>
-        Manuel Andreolle · AM Labs<br>
-        Auto-entrepreneur<br>
-        SIRET : 993 095 744 00013<br>
-        Montélimar, France<br>
-        Contact : <a href="mailto:contact@amlabs.dev">contact@amlabs.dev</a></p>
-
-        <p><strong>Hébergement</strong><br>
-        GitHub Pages · GitHub, Inc.<br>
-        88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA</p>
-
-        <p><strong>Données personnelles</strong><br>
-        Les données collectées via le formulaire de contact (nom, email, message) sont utilisées uniquement pour répondre à votre demande. Elles sont transmises via Web3Forms et ne sont ni stockées ni revendues. Conformément au RGPD, vous pouvez exercer vos droits d'accès, de rectification et de suppression en écrivant à <a href="mailto:contact@amlabs.dev">contact@amlabs.dev</a>.</p>
-
-        <p><strong>Propriété intellectuelle</strong><br>
-        L'ensemble du contenu de ce site (textes, images, code) est la propriété d'AM Labs. Toute reproduction sans autorisation est interdite.</p>
-
-        <p><strong>Cookies</strong><br>
-        Ce site n'utilise aucun cookie ni outil de tracking.</p>
-      </div>
     </div>
   </div>
 

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Connecteur ERP &amp; e-commerce - synchronisation Wix, Odoo, Sage, Shopify | AM Labs</title>
+  <meta name="description" content="Connecteur sur mesure pour synchroniser vos outils : Wix ↔ Odoo, Shopify ↔ Sage, e-commerce ↔ ERP. Plus de double saisie, plus d'erreurs. À partir de 3 500 €." />
+  <link rel="canonical" href="https://amlabs.dev/services/connecteur-erp-ecommerce/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Connecteur ERP &amp; e-commerce | AM Labs" />
+  <meta property="og:description" content="Synchroniser vos outils sans double saisie. Connecteurs sur mesure entre votre ERP, votre boutique et vos autres logiciels métier. Référence : Tool Innovation Panama." />
+  <meta property="og:url" content="https://amlabs.dev/services/connecteur-erp-ecommerce/" />
+  <meta property="og:site_name" content="AM Labs" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:image" content="https://amlabs.dev/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AM Labs - Développeur full-stack à Montélimar" />
+  <meta name="twitter:image" content="https://amlabs.dev/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Connecteur ERP &amp; e-commerce | AM Labs" />
+  <meta name="twitter:description" content="Connecteurs sur mesure entre votre ERP, boutique et logiciels métier." />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="author" content="Manuel Andreolle" />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="FR-DRM" />
+  <meta name="geo.placename" content="Montélimar" />
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://amlabs.dev/#business",
+    "name": "AM Labs",
+    "alternateName": "Andreolle Manuel Labs",
+    "description": "Agence web et développeur full-stack à Montélimar. Création de sites internet, applications métier sur mesure, connecteurs ERP/e-commerce.",
+    "url": "https://amlabs.dev",
+    "logo": "https://amlabs.dev/favicon.png",
+    "telephone": "+33645543161",
+    "email": "contact@amlabs.dev",
+    "founder": {
+      "@type": "Person",
+      "name": "Manuel Andreolle",
+      "jobTitle": "Développeur full-stack",
+      "url": "https://www.linkedin.com/in/manuel-andreolle/"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Montélimar",
+      "addressRegion": "Drôme",
+      "postalCode": "26200",
+      "addressCountry": "FR"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Montélimar" },
+      { "@type": "AdministrativeArea", "name": "Drôme" },
+      { "@type": "AdministrativeArea", "name": "Ardèche" },
+      { "@type": "Country", "name": "France" }
+    ],
+    "priceRange": "€€",
+    "knowsAbout": ["Odoo", "Wix", "Shopify", "Sage", "Cegid", "Pennylane", "API REST", "Webhooks", "Node.js", "TypeScript"],
+    "sameAs": ["https://www.linkedin.com/in/manuel-andreolle/"]
+  }
+  </script>
+
+  <!-- Schema.org Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Développement de connecteur ERP / e-commerce",
+    "provider": { "@id": "https://amlabs.dev/#business" },
+    "areaServed": { "@type": "Country", "name": "France" },
+    "name": "Connecteur ERP &amp; e-commerce sur mesure",
+    "description": "Synchronisation automatique entre votre ERP (Odoo, Sage, Cegid) et votre boutique en ligne (Wix, Shopify, WooCommerce). Plus de double saisie, plus d'erreurs de stock, plus de commandes perdues.",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": "3500",
+        "maxPrice": "8000",
+        "priceCurrency": "EUR"
+      },
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <!-- BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://amlabs.dev/" },
+      { "@type": "ListItem", "position": 2, "name": "Services" },
+      { "@type": "ListItem", "position": 3, "name": "Connecteur ERP / e-commerce" }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quels outils peut-on connecter ensemble ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tous les outils qui exposent une API REST ou des webhooks. Concrètement : ERP comme Odoo, Sage Business Cloud, Cegid (selon version), Pennylane ; boutiques en ligne comme Wix, Shopify, WooCommerce, PrestaShop ; CRM comme HubSpot, Pipedrive ; logiciels métier comme Silae, Brevo, Mailchimp. Si l'outil n'a pas d'API ouverte, on peut souvent passer par export/import CSV automatisé."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien coûte un connecteur sur mesure ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entre 3 500 € et 8 000 € selon la complexité (nombre d'outils, sens de synchronisation, volume de données, fréquence). Un connecteur Wix ↔ Odoo bidirectionnel avec dashboard de monitoring se situe autour de 5 000-7 000 €. Un connecteur unidirectionnel simple peut tomber à 3 500 €."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Est-ce que ça fonctionne en temps réel ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui pour la plupart des cas. Les commandes peuvent transiter en temps réel via webhook (déclenché par l'événement). Les stocks et catalogues peuvent se synchroniser en continu (toutes les 5-15 minutes) ou par batch quotidien selon vos besoins et le rate-limit des APIs concernées."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps pour livrer un connecteur ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Comptez 3 à 5 semaines selon la complexité. La phase d'audit (1 jour) permet de cartographier précisément les flux à synchroniser. Le développement prend 2 à 4 semaines. Une phase de tests en parallèle de votre activité d'1 à 2 semaines termine le projet, avec bascule progressive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Que se passe-t-il si une API change ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les APIs évoluent (Wix, Odoo modifient régulièrement leurs versions). Avec un contrat de maintenance Pro (450 €/mois), je surveille les évolutions et adapte le connecteur sans interruption de service. Sans contrat, je peux intervenir au cas par cas en facturation à l'heure (90 €/h)."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/fonts/general-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin />
+  <style>html,body{background:#0c0b14;color:#e8e6f0;}body{opacity:0;transition:opacity .15s ease;}body.ready{opacity:1;}</style>
+</head>
+<body>
+
+  <noscript>
+    <nav class="nav nav-fallback">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">AM<span>Labs</span></a>
+        <a href="/contact/" class="nav-cta">Contact</a>
+      </div>
+    </nav>
+  </noscript>
+
+  <div id="nav-placeholder"></div>
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="Fil d'ariane" class="breadcrumb">
+          <ol>
+            <li><a href="/">Accueil</a></li>
+            <li>Services</li>
+            <li aria-current="page">Connecteur ERP / e-commerce</li>
+          </ol>
+        </nav>
+        <span class="page-eyebrow">Service · AM Labs Montélimar</span>
+        <h1 class="page-title">Connecteur ERP &amp; e-commerce - vos outils <span class="accent">enfin</span> alignés.</h1>
+        <p class="page-subtitle">Synchronisation automatique entre votre ERP, votre boutique en ligne et vos autres logiciels métier. Plus de double saisie, plus d'erreurs de stock, plus de commandes perdues.</p>
+        <div class="page-cta-row">
+          <a href="/contact/" class="hero-cta">
+            Demander un devis (sous 24h)
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="/realisations/tool-innovation-panama/" class="hero-secondary">Voir l'étude de cas Tool Innovation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- POUR QUI ? -->
+    <section class="section services">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Pour qui</span>
+          <h2 class="section-title">Quand vous avez besoin d'un connecteur sur mesure.</h2>
+        </div>
+        <div class="services-list">
+          <div class="service-card reveal rd1">
+            <h3>E-commerce avec ERP</h3>
+            <p>Vous vendez en ligne (Wix, Shopify, WooCommerce) et vous gérez votre activité dans Odoo, Sage ou Cegid. Vos stocks ne sont jamais à jour, vos commandes mettent du temps à arriver, vos équipes saisissent deux fois.</p>
+          </div>
+          <div class="service-card reveal rd2">
+            <h3>PME multi-logiciels</h3>
+            <p>Vous avez un CRM, un outil de facturation, un outil de paie, un site web - et aucun ne se parle. Chaque mise à jour client, chaque nouveau prospect demande 5 saisies dans 5 outils différents.</p>
+          </div>
+          <div class="service-card reveal rd3">
+            <h3>Magasin physique + boutique en ligne</h3>
+            <p>Votre caisse magasin et votre boutique en ligne ont des stocks séparés. Vous vendez le dernier exemplaire en magasin et la commande tombe sur le site. Cauchemar de réconciliation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CE QUI EST INCLUS -->
+    <section class="section method">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Ce qui est inclus</span>
+          <h2 class="section-title">De l'audit à la mise en production.</h2>
+        </div>
+        <div class="method-grid">
+          <div class="method-card reveal rd1">
+            <div class="method-card-header"><span class="method-num">01</span><h3>Audit sur place</h3></div>
+            <p>1 demi-journée chez vous : cartographie des flux, identification des points de blocage et des données à synchroniser.</p>
+          </div>
+          <div class="method-card reveal rd2">
+            <div class="method-card-header"><span class="method-num">02</span><h3>Connecteur sur mesure</h3></div>
+            <p>Synchronisation uni ou bidirectionnelle, en temps réel ou par batch. Logs persistants pour audit, gestion des conflits.</p>
+          </div>
+          <div class="method-card reveal rd3">
+            <div class="method-card-header"><span class="method-num">03</span><h3>Dashboard de monitoring</h3></div>
+            <p>Vue temps réel des synchronisations, alertes en cas d'erreur, statistiques de volumétrie. Vous gardez la main.</p>
+          </div>
+          <div class="method-card reveal rd4">
+            <div class="method-card-header"><span class="method-num">04</span><h3>Formation &amp; garantie</h3></div>
+            <p>Formation 1h équipe, documentation utilisateur et technique, garantie 60 jours après mise en production.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARIFS -->
+    <section class="section services" id="tarifs">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Tarifs indicatifs</span>
+          <h2 class="section-title">Combien ça coûte.</h2>
+          <p class="section-desc">Tarifs HT. Acompte 30 % à la commande, 40 % à la maquette validée, 30 % à la mise en production.</p>
+        </div>
+        <div class="services-list">
+          <div class="service-card reveal rd1">
+            <h3>Connecteur unidirectionnel</h3>
+            <p><strong>3 500 € → 5 000 €</strong> · 3-4 semaines<br>Synchronisation dans un sens (ex : Wix → Odoo). Idéal pour faire transiter les commandes sans toucher aux stocks.</p>
+          </div>
+          <div class="service-card reveal rd2">
+            <h3>Connecteur bidirectionnel</h3>
+            <p><strong>5 000 € → 8 000 €</strong> · 4-5 semaines<br>Sync dans les 2 sens (catalogue + stock + commandes). Avec dashboard de monitoring complet, c'est ce que j'ai livré pour Tool Innovation Panama.</p>
+          </div>
+          <div class="service-card reveal rd3">
+            <h3>Connecteur multi-outils</h3>
+            <p><strong>Sur devis</strong> · 5-8 semaines<br>3+ outils synchronisés (ex : ERP + e-commerce + CRM + paie). Architecture orchestrée, file d'attente, gestion des dépendances.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RÉFÉRENCE TOOL INNOVATION -->
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Référence client</span>
+          <h2 class="section-title">Tool Innovation Panama : Wix ↔ Odoo, livré et en production.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>Connecteur bidirectionnel complet entre la boutique Wix et l'ERP Odoo de Tool Innovation Panama : <strong>synchronisation des produits, stocks, prix, images, commandes</strong>, génération de fiches produit SEO par IA Gemini, dashboard de monitoring temps réel.</p>
+            <p>Application desktop livrée clé en main (Mac &amp; Windows), formation utilisateurs incluse, garantie de fonctionnement.</p>
+            <p><a href="/realisations/tool-innovation-panama/" class="cta-link">Voir l'étude de cas complète →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Questions fréquentes</span>
+          <h2 class="section-title">Vos questions, mes réponses.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Quels outils peut-on connecter ensemble ?</summary>
+            <p>Tous les outils qui exposent une API REST ou des webhooks. Concrètement : ERP comme Odoo, Sage Business Cloud, Cegid (selon version), Pennylane ; boutiques en ligne comme Wix, Shopify, WooCommerce, PrestaShop ; CRM comme HubSpot, Pipedrive ; logiciels métier comme Silae, Brevo, Mailchimp. Si l'outil n'a pas d'API ouverte, on peut souvent passer par export/import CSV automatisé.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Combien coûte un connecteur sur mesure ?</summary>
+            <p>Entre 3 500 € et 8 000 € selon la complexité (nombre d'outils, sens de synchronisation, volume de données, fréquence). Un connecteur Wix ↔ Odoo bidirectionnel avec dashboard de monitoring se situe autour de 5 000-7 000 €. Un connecteur unidirectionnel simple peut tomber à 3 500 €.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Est-ce que ça fonctionne en temps réel ?</summary>
+            <p>Oui pour la plupart des cas. Les commandes peuvent transiter en temps réel via webhook (déclenché par l'événement). Les stocks et catalogues peuvent se synchroniser en continu (toutes les 5-15 minutes) ou par batch quotidien selon vos besoins et le rate-limit des APIs concernées.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Combien de temps pour livrer un connecteur ?</summary>
+            <p>Comptez 3 à 5 semaines selon la complexité. La phase d'audit (1 jour) permet de cartographier précisément les flux à synchroniser. Le développement prend 2 à 4 semaines. Une phase de tests en parallèle de votre activité d'1 à 2 semaines termine le projet, avec bascule progressive.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Que se passe-t-il si une API change ?</summary>
+            <p>Les APIs évoluent (Wix, Odoo modifient régulièrement leurs versions). Avec un contrat de <a href="/services/maintenance-site-web/">maintenance Pro (450 €/mois)</a>, je surveille les évolutions et adapte le connecteur sans interruption de service. Sans contrat, je peux intervenir au cas par cas en facturation à l'heure (90 €/h).</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section">
+      <div class="container">
+        <div class="contact-cta-block reveal">
+          <h2>Vous galérez avec deux outils qui ne se parlent pas ?</h2>
+          <p>On en parle gratuitement, sans engagement. Audit + devis chiffré sous 48h.</p>
+          <a href="/contact/" class="hero-cta">
+            Démarrer mon connecteur
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

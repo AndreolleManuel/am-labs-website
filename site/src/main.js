@@ -13,9 +13,11 @@ import './styles/services.css';
 import './styles/projects.css';
 import './styles/contact.css';
 import './styles/footer.css';
+import './styles/pages.css'; // Composants pages internes (page-hero, breadcrumb, FAQ, etc.)
 import './styles/responsive.css';
 
 // JS
+import { loadPartials } from './js/partials-loader.js';
 import './js/nav.js';
 import './js/wizard.js';
 import './js/bento.js';
@@ -23,6 +25,10 @@ import './js/videoModal.js';
 import './js/showcaseExpand.js';
 
 import './js/easter.js';
+
+// Charge nav + footer dans les pages qui ont les placeholders
+// (sur la home actuelle qui a sa nav inline, le loader détecte l'absence de placeholder et ne fait rien)
+loadPartials();
 
 // Animations (GSAP + Lenis)
 import { lenis } from './js/animations/index.js';

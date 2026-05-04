@@ -1,0 +1,576 @@
+/* ==============================================
+   AM Labs — Pages internes (services, réalisations, etc.)
+   Composants partagés : page-hero, breadcrumb, FAQ, CTA block
+   ============================================== */
+
+/* ===== Page hero (intro pour pages internes) ===== */
+.page-hero {
+  padding: calc(var(--nav-height) + 60px) 0 80px;
+  background: radial-gradient(ellipse at top center, rgba(139, 92, 246, 0.08), transparent 60%);
+}
+
+.page-hero .container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.page-eyebrow {
+  display: inline-block;
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.page-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+  max-width: 900px;
+  letter-spacing: -0.02em;
+}
+
+.page-title .accent {
+  color: var(--color-accent);
+}
+
+.page-subtitle {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--color-text-muted);
+  max-width: 720px;
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.page-cta-row {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* ===== Breadcrumb ===== */
+.breadcrumb {
+  margin-bottom: var(--space-md);
+}
+
+.breadcrumb ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: '/';
+  margin-left: 0.5rem;
+  opacity: 0.4;
+}
+
+.breadcrumb a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent);
+}
+
+.breadcrumb [aria-current='page'] {
+  color: var(--color-text);
+}
+
+/* ===== FAQ ===== */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md, 12px);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-sm);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+.faq-item[open] {
+  background: rgba(139, 92, 246, 0.04);
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  list-style: none;
+  position: relative;
+  padding-right: 32px;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+
+.faq-item[open] summary::after {
+  content: '−';
+}
+
+.faq-item p {
+  margin: var(--space-sm) 0 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.faq-item a {
+  color: var(--color-accent);
+}
+
+/* ===== CTA block (final de page) ===== */
+.contact-cta-block {
+  text-align: center;
+  padding: var(--space-xl) var(--space-lg);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(139, 92, 246, 0.02));
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  border-radius: var(--radius-lg, 24px);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.contact-cta-block h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.01em;
+}
+
+.contact-cta-block p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* ===== Hero CTA réutilisable (pour les pages internes) ===== */
+/* Reprend le style de .hero-cta défini dans hero.css mais utilisable hors hero */
+.page-hero .hero-cta,
+.contact-cta-block .hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.page-hero .hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: calc(var(--nav-height) + 40px) 0 60px;
+  }
+}
+
+/* ==============================================
+   Override z-index + sticky pour les sections
+   insérées sur la home (zones d'intervention + FAQ).
+
+   La home empile les sections par z-index croissant + position sticky :
+   hero(0) -> about(2) -> services(3) -> method(3) -> projects(4) -> contact(5) -> footer(10)
+
+   On insère :
+   - zones entre method (3) et projects (4) -> z-index 4
+   - faq entre projects (4) et contact (5) -> z-index 5
+
+   Et on remonte contact + footer pour qu'ils continuent a couvrir derriere.
+   ============================================== */
+
+/* Section "Zones d'intervention" - couvre method/services (z 3)
+   La classe .section.about lui donne deja background var(--color-bg-alt) - opaque, c'est OK
+   Sticky pour s'empiler comme les autres sections de la home */
+.section.about#zones {
+  z-index: 4;
+  position: sticky;
+  top: 0;
+}
+
+/* Section "FAQ" - couvre projects (z 4)
+   Pas de classe specifique => on lui donne explicitement background opaque + sticky */
+.section#faq {
+  z-index: 5;
+  position: sticky;
+  top: 0;
+  background: var(--color-bg);
+}
+
+/* Contact remonte a 6 pour couvrir FAQ (5) */
+.section.contact {
+  z-index: 6;
+}
+
+/* Footer remonte a 11 pour rester au-dessus de tout */
+.footer {
+  z-index: 11;
+}
+
+/* ==============================================
+   Curseur par défaut (flèche) sur les blocs de contenu
+   non interactifs des pages internes.
+   Évite le curseur texte (I-beam) qui apparait par défaut
+   du navigateur sur tout élément texte. La sélection reste possible.
+   ============================================== */
+.page-hero,
+.page-hero p,
+.page-hero h1,
+.page-hero .page-eyebrow,
+.page-hero .breadcrumb,
+.section-header,
+.section-header h2,
+.section-header p,
+.service-card,
+.service-card h3,
+.service-card p,
+.method-card,
+.method-card h3,
+.method-card p,
+.method-card-header,
+.about-text,
+.about-text p,
+.about-text strong,
+.faq-item,
+.faq-item p,
+.contact-cta-block,
+.contact-cta-block h2,
+.contact-cta-block p {
+  cursor: default;
+}
+
+/* Mais on garde le curseur pointer/text sur les éléments interactifs */
+.faq-item summary {
+  cursor: pointer;
+}
+
+a, button, .hero-cta, .hero-secondary, .nav-cta {
+  cursor: pointer;
+}
+
+/* ==============================================
+   Études de cas — composants visuels
+   (Chiffres clés, stack pills, avant/après)
+   ============================================== */
+
+/* ===== Chiffres clés (metrics) ===== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.metric-card {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  background: rgba(139, 92, 246, 0.04);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  border-radius: var(--radius-md, 12px);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: default;
+}
+
+.metric-card:hover {
+  border-color: rgba(139, 92, 246, 0.35);
+  transform: translateY(-2px);
+}
+
+.metric-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.02em;
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.3;
+}
+
+/* ===== Stack technique en pills ===== */
+.tech-stack {
+  margin-top: var(--space-md);
+}
+
+.tech-stack-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-pill {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: default;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tech-pill:hover {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+/* ===== Avant / Après en grille 2 colonnes ===== */
+.before-after-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.before-after-col {
+  padding: var(--space-lg);
+  border-radius: var(--radius-md, 12px);
+  cursor: default;
+}
+
+.before-after-col.is-before {
+  background: rgba(239, 68, 68, 0.04);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+}
+
+.before-after-col.is-after {
+  background: rgba(34, 197, 94, 0.04);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.before-after-col h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.before-after-col.is-before h4 {
+  color: rgb(248, 113, 113);
+}
+
+.before-after-col.is-after h4 {
+  color: rgb(74, 222, 128);
+}
+
+.before-after-col h4::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.before-after-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.before-after-col li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.6rem;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.before-after-col li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+}
+
+.before-after-col.is-before li::before {
+  content: '×';
+  color: rgb(248, 113, 113);
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.before-after-col.is-after li::before {
+  content: '✓';
+  color: rgb(74, 222, 128);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .before-after-grid {
+    grid-template-columns: 1fr;
+  }
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .metric-card {
+    padding: var(--space-md) 0.75rem;
+  }
+}
+
+/* ==============================================
+   Galerie de screenshots pour études de cas
+   ============================================== */
+
+.screenshots-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.screenshot-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: var(--radius-md, 12px);
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: default;
+}
+
+.screenshot-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(139, 92, 246, 0.15);
+}
+
+.screenshot-card-media {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #0a0913;
+  overflow: hidden;
+}
+
+.screenshot-card-media img,
+.screenshot-card-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.screenshot-card:hover .screenshot-card-media img {
+  transform: scale(1.03);
+}
+
+.screenshot-card-caption {
+  padding: var(--space-md);
+}
+
+.screenshot-card-caption h4 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 0.4rem 0;
+  letter-spacing: -0.01em;
+}
+
+.screenshot-card-caption p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Vidéo demo : badge "lecture" en overlay */
+.screenshot-card.is-video .screenshot-card-media::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  background: rgba(139, 92, 246, 0.9);
+  border-radius: 50%;
+  pointer-events: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>');
+  background-size: 28px;
+  background-position: 56% center;
+  background-repeat: no-repeat;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.screenshot-card.is-video:hover .screenshot-card-media::after {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .screenshots-gallery {
+    grid-template-columns: 1fr;
+  }
+}

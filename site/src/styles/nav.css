@@ -40,7 +40,8 @@
   left: 0;
   right: 0;
   height: var(--nav-height);
-  z-index: 100;
+  /* z-index > scroll-progress (101) pour que les sous-menus (z 110 dans ce stacking context) couvrent la barre de scroll */
+  z-index: 200;
   background: transparent;
   transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
@@ -125,6 +126,95 @@
   background: var(--color-text);
   border-radius: 2px;
   transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+/* ===== Sous-menus de navigation (pages internes multipages) ===== */
+.nav-has-submenu {
+  position: relative;
+}
+
+.nav-submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: rgba(10, 10, 16, 0.96);
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: 14px;
+  padding: 0.5rem 0;
+  list-style: none;
+  min-width: 250px;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  z-index: 110;
+}
+
+.nav-has-submenu:hover > .nav-submenu,
+.nav-has-submenu:focus-within > .nav-submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-submenu li {
+  list-style: none;
+}
+
+.nav-submenu li a {
+  display: block;
+  padding: 0.55rem 1.1rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 0;
+  background: transparent;
+  white-space: nowrap;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.nav-submenu li a:hover {
+  color: var(--color-accent);
+  background: rgba(139, 92, 246, 0.08);
+}
+
+/* Lien actif (page courante) */
+.nav-links a.is-active {
+  color: var(--color-text);
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.nav-submenu li a.is-active {
+  color: var(--color-accent);
+  background: rgba(139, 92, 246, 0.08);
+}
+
+/* Nav fallback (sans JS) */
+.nav-fallback .nav-inner {
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  /* En mobile, les sous-menus deviennent inline (visibles dans le menu déroulant) */
+  .nav-submenu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    padding: 0 0 0.5rem 1rem;
+    min-width: 0;
+  }
 }
 
 /* Scroll progress bar */
