@@ -14,10 +14,15 @@
     top: var(--nav-height);
     left: 0;
     right: 0;
-    bottom: 0;
-    background: rgba(15, 15, 21, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    /* Pas de bottom: 0 — le backdrop-filter de .nav.scrolled fait de .nav le
+       containing block de ce panneau fixed, et bottom: 0 s'y résoudrait sur
+       64px de haut (panneau écrasé). Une hauteur explicite donne le même
+       rendu quel que soit le containing block. */
+    height: calc(100vh - var(--nav-height));
+    height: calc(100dvh - var(--nav-height));
+    /* Fond opaque, sans backdrop-filter : imbriqué sous celui de .nav.scrolled,
+       le blur ne s'applique pas et le contenu derrière restait lisible. */
+    background: #0f0f15;
     flex-direction: column;
     align-items: center;
     justify-content: center;
