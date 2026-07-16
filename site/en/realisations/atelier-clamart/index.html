@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Case study: L'Atelier Clamart - booking platform for a creative arts studio | AM Labs</title>
+  <meta name="description" content="Case study: complete booking platform for a creative arts studio near Paris. Bookings, memberships, age-based credits, Stripe payments, smart waitlist, full back office. Live since March 2026." />
+  <link rel="canonical" href="https://amlabs.dev/en/realisations/atelier-clamart/" />
+  <link rel="alternate" hreflang="fr" href="https://amlabs.dev/realisations/atelier-clamart/" />
+  <link rel="alternate" hreflang="en" href="https://amlabs.dev/en/realisations/atelier-clamart/" />
+  <link rel="alternate" hreflang="x-default" href="https://amlabs.dev/realisations/atelier-clamart/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Case study: L'Atelier Clamart | AM Labs" />
+  <meta property="og:description" content="Complete platform for a creative arts studio: bookings, memberships, credits, Stripe payments, smart waitlist, full back office." />
+  <meta property="og:url" content="https://amlabs.dev/en/realisations/atelier-clamart/" />
+  <meta property="og:site_name" content="AM Labs" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://amlabs.dev/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AM Labs - Full-stack developer based in Montélimar, France" />
+  <meta name="twitter:image" content="https://amlabs.dev/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case study: L'Atelier Clamart | AM Labs" />
+  <meta name="twitter:description" content="Complete booking platform: Stripe, credits, waitlist, back office." />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="author" content="Manuel Andreolle" />
+  <meta name="robots" content="index, follow" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://amlabs.dev/#business",
+    "name": "AM Labs",
+    "url": "https://amlabs.dev",
+    "logo": "https://amlabs.dev/favicon.png",
+    "telephone": "+33645543161",
+    "email": "contact@amlabs.dev",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Montélimar",
+      "addressRegion": "Drôme",
+      "postalCode": "26200",
+      "addressCountry": "FR"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Booking platform for L'Atelier Clamart",
+    "creator": { "@id": "https://amlabs.dev/#business" },
+    "about": "Complete web platform for a creative arts studio: bookings, memberships, age-category credits, weekly scheduling, Stripe payments, smart waitlist, transactional emails, full admin back office",
+    "url": "https://www.atelierclamart.fr",
+    "datePublished": "2026-03-01",
+    "inLanguage": "en"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://amlabs.dev/en/" },
+      { "@type": "ListItem", "position": 2, "name": "L'Atelier Clamart", "item": "https://amlabs.dev/en/realisations/atelier-clamart/" }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/fonts/general-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin />
+  <style>html,body{background:#0c0b14;color:#e8e6f0;}body{opacity:0;transition:opacity .15s ease;}body.ready{opacity:1;}</style>
+</head>
+<body>
+
+  <noscript>
+    <nav class="nav nav-fallback">
+      <div class="nav-inner">
+        <a href="/en/" class="nav-logo">AM<span>Labs</span></a>
+        <a href="/en/contact/" class="nav-cta">Contact</a>
+      </div>
+    </nav>
+  </noscript>
+
+  <div id="nav-placeholder"></div>
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/#projects">Work</a></li>
+            <li aria-current="page">L'Atelier Clamart</li>
+          </ol>
+        </nav>
+        <span class="page-eyebrow">Case study · Paying client, in production</span>
+        <h1 class="page-title">L'Atelier Clamart: a <span class="accent">complete platform</span> for a creative arts studio.</h1>
+        <p class="page-subtitle">Bookings, memberships, age-category credits, weekly scheduling, Stripe payments, smart waitlist, transactional emails, full back office. In production since March 2026.</p>
+        <div class="page-cta-row">
+          <a href="https://www.atelierclamart.fr" target="_blank" rel="noopener noreferrer" class="hero-cta">
+            Visit the live site
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="/en/contact/" class="hero-secondary">Start a similar project</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY FIGURES -->
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Key figures</span>
+          <h2 class="section-title">The scale of the project, at a glance.</h2>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-card reveal rd1">
+            <span class="metric-value">2,500+</span>
+            <span class="metric-label">Lines of backend code</span>
+          </div>
+          <div class="metric-card reveal rd2">
+            <span class="metric-value">15</span>
+            <span class="metric-label">PostgreSQL tables</span>
+          </div>
+          <div class="metric-card reveal rd3">
+            <span class="metric-value">8</span>
+            <span class="metric-label">Business modules shipped</span>
+          </div>
+          <div class="metric-card reveal rd4">
+            <span class="metric-value">March 2026</span>
+            <span class="metric-label">In production since</span>
+          </div>
+        </div>
+        <div class="tech-stack reveal" style="margin-top: 2.5rem;">
+          <span class="tech-stack-label">Tech stack</span>
+          <div class="tech-pills">
+            <span class="tech-pill">Next.js 14</span>
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">TypeScript</span>
+            <span class="tech-pill">Tailwind CSS</span>
+            <span class="tech-pill">Express</span>
+            <span class="tech-pill">PostgreSQL</span>
+            <span class="tech-pill">Stripe</span>
+            <span class="tech-pill">Brevo</span>
+            <span class="tech-pill">FullCalendar</span>
+            <span class="tech-pill">Vercel + Render</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">The context</span>
+          <h2 class="section-title">Before: paper, Excel and phone calls.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>L'Atelier Clamart is a creative arts studio in the Paris area (Clamart, plus a second venue) with several teachers, several class categories (babies, kids, teens, adults), recurring weekly classes, holiday workshops, and one-off events.</p>
+            <p>Before the platform: <strong>a paper notebook for the schedule, an Excel sheet for attendees, bookings by phone and text message, attendance ticked off by hand</strong>. The consequences: double-booked slots, cheque and cash payments that were hard to trace, tedious parent communication, and a team drowning in admin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">The solution</span>
+          <h2 class="section-title">A complete platform, not a generic booking tool.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>A custom web platform delivered in March 2026, covering the studio's entire business, on the customer side as much as the team side. It is used daily by clients (bookings, credits, payments) and by the team (scheduling, management, communication, finance).</p>
+            <p>Architecture: Next.js 14 frontend + Express backend, PostgreSQL database, Stripe payments, Brevo emails, hosted on Vercel + Render, optional SMS via Twilio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section method">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">What was delivered</span>
+          <h2 class="section-title">The whole business in one interface.</h2>
+        </div>
+        <div class="method-grid">
+          <div class="method-card reveal rd1">
+            <div class="method-card-header"><span class="method-num">01</span><h3>Client bookings</h3></div>
+            <p>Class catalog, visible weekly schedule, booking in 2 clicks, guest management (parents booking for their children).</p>
+          </div>
+          <div class="method-card reveal rd2">
+            <div class="method-card-header"><span class="method-num">02</span><h3>Age-category credits</h3></div>
+            <p>Each age group has its own credits, plans and expiry dates. Automatic alerts before expiry.</p>
+          </div>
+          <div class="method-card reveal rd3">
+            <div class="method-card-header"><span class="method-num">03</span><h3>Stripe payments</h3></div>
+            <p>Credit purchase + booking in a single transaction. Cards, Klarna installments, automatic invoices, conditional refunds within 12h.</p>
+          </div>
+          <div class="method-card reveal rd4">
+            <div class="method-card-header"><span class="method-num">04</span><h3>Weekly schedule + seasons</h3></div>
+            <p>Template week view, month calendar, season management (school year, French school holiday zones), automatic generation wizard.</p>
+          </div>
+          <div class="method-card reveal rd1">
+            <div class="method-card-header"><span class="method-num">05</span><h3>Smart waitlist</h3></div>
+            <p>A slot frees up → automatic notification to the first in line, with 2 hours to confirm. No answer → next in line.</p>
+          </div>
+          <div class="method-card reveal rd2">
+            <div class="method-card-header"><span class="method-num">06</span><h3>Complete admin back office</h3></div>
+            <p>KPI dashboard, client management, plans, teachers, venues. Financial stats (revenue, sales by plan). Multi-role admin/teacher/client.</p>
+          </div>
+          <div class="method-card reveal rd3">
+            <div class="method-card-header"><span class="method-num">07</span><h3>Multi-teacher</h3></div>
+            <p>Several teachers per class, assignment by availability, per-teacher schedule view, session requests submitted by teachers themselves.</p>
+          </div>
+          <div class="method-card reveal rd4">
+            <div class="method-card-header"><span class="method-num">08</span><h3>Transactional emails</h3></div>
+            <p>Booking confirmations, pre-class reminders, credit expiry alerts, secure token-based client invitations, next-day schedule sent to teachers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">In pictures</span>
+          <h2 class="section-title">The platform in production.</h2>
+        </div>
+        <div class="screenshots-gallery">
+          <figure class="screenshot-card reveal rd1">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/atelier-planning.png" alt="Weekly schedule - admin view with slots and teachers" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>Weekly schedule</h4>
+              <p>Admin view with slots and teachers.</p>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card reveal rd2">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/admin-overview.png" alt="Admin dashboard - KPIs and stats" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>Admin dashboard</h4>
+              <p>KPIs, financial stats, overview.</p>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card reveal rd3">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/admin-gestion.png" alt="Day-to-day management - schedule, bookings, clients, memberships" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>Day-to-day management</h4>
+              <p>Schedule, bookings, clients, memberships.</p>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card reveal rd1">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/admin-contenu.png" alt="Content and program - workshops, template week, plans, categories" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>Content &amp; program</h4>
+              <p>Workshops, template week, plans, categories.</p>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card reveal rd2">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/admin-comms.png" alt="Communication - teacher requests and shared notes" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>Communication</h4>
+              <p>Teacher requests, shared team notes.</p>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card reveal rd3">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/admin-finance-config.png" alt="Finance and configuration - payments, stats, access rights" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>Finance &amp; configuration</h4>
+              <p>Payments, stats, multi-role access rights.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Detailed tech stack</span>
+          <h2 class="section-title">Under the hood.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p><strong>Frontend</strong>: Next.js 14 (App Router) + React + TypeScript + Tailwind CSS, FullCalendar for the admin schedule view, custom design system (teal + terracotta palette).</p>
+            <p><strong>Backend</strong>: Node.js + Express + TypeScript, ~2,500 lines of code, 15 PostgreSQL tables, JWT authentication in HttpOnly cookies with double-submit CSRF protection.</p>
+            <p><strong>Security</strong>: server-side validation of every price, Stripe webhooks wrapped in PostgreSQL transactions with amount re-verification (anti-tampering), security headers (CSP, X-Frame-Options), CHECK constraints in the database.</p>
+            <p><strong>Integrations</strong>: Stripe (payments + Klarna + invoice-first billing), Brevo (transactional emails + newsletter), French government API for automatic school-holiday sync.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Results</span>
+          <h2 class="section-title">Before / After.</h2>
+        </div>
+        <div class="before-after-grid">
+          <div class="before-after-col is-before reveal rd1">
+            <h4>Before</h4>
+            <ul>
+              <li>A paper notebook for the schedule</li>
+              <li>An Excel sheet for attendees</li>
+              <li>Bookings by phone and text message</li>
+              <li>Attendance ticked off by hand</li>
+              <li>Cheques and invoices hard to trace</li>
+              <li>Parent communication by individual texts</li>
+              <li>Manual, unreliable credit tracking</li>
+            </ul>
+          </div>
+          <div class="before-after-col is-after reveal rd2">
+            <h4>After</h4>
+            <ul>
+              <li>100% of bookings online</li>
+              <li>Automated Stripe payments (cards + Klarna)</li>
+              <li>A schedule everyone can see (clients, teachers, admin)</li>
+              <li>A team freed from phone support</li>
+              <li>Credits managed automatically, expiry alerts</li>
+              <li>Automatic email communication with parents</li>
+              <li>Smart waitlist with automatic follow-up</li>
+            </ul>
+          </div>
+        </div>
+        <div class="about-grid" style="margin-top: 2rem;">
+          <div class="about-text reveal">
+            <p>The platform has been in production since March 2026, used daily by clients and by the team. It keeps evolving as needs grow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-cta-block reveal">
+          <h2>Planning a similar platform?</h2>
+          <p>Creative studio, music school, gym, coaching business, association… A custom booking + payment + admin platform, built around how you actually work.</p>
+          <a href="/en/contact/" class="hero-cta">
+            Start the conversation
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

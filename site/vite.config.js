@@ -38,6 +38,12 @@ export default defineConfig({
         contact: resolve(__dirname, 'contact/index.html'),
         mentionsLegales: resolve(__dirname, 'mentions-legales/index.html'),
 
+        // Version anglaise (/en/)
+        enHome: resolve(__dirname, 'en/index.html'),
+        enContact: resolve(__dirname, 'en/contact/index.html'),
+        enToolinnovEcommerce: resolve(__dirname, 'en/realisations/toolinnov-ecommerce/index.html'),
+        enAtelierClamart: resolve(__dirname, 'en/realisations/atelier-clamart/index.html'),
+        enToolInnovationPanama: resolve(__dirname, 'en/realisations/tool-innovation-panama/index.html'),
       },
     },
   },

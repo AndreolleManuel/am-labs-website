@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AM Labs · Full-stack developer · Custom business tools, websites &amp; ERP connectors</title>
+  <meta name="description" content="AM Labs · Manuel Andreolle, full-stack developer based in Montélimar, France. Custom business applications, ERP connectors and web platforms. 10 years in the field before writing code. Working remotely worldwide." />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- SEO -->
+  <meta name="author" content="Manuel Andreolle" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://amlabs.dev/en/" />
+  <link rel="alternate" hreflang="fr" href="https://amlabs.dev/" />
+  <link rel="alternate" hreflang="en" href="https://amlabs.dev/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://amlabs.dev/" />
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AM Labs · Full-stack developer · Custom business tools" />
+  <meta property="og:description" content="Custom business applications, ERP connectors and web platforms. 10 years in the field before writing code." />
+  <meta property="og:url" content="https://amlabs.dev/en/" />
+  <meta property="og:site_name" content="AM Labs" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://amlabs.dev/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AM Labs - Full-stack developer based in Montélimar, France" />
+  <meta name="twitter:image" content="https://amlabs.dev/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AM Labs · Full-stack developer · Custom business tools" />
+  <meta name="twitter:description" content="Custom business applications, ERP connectors and web platforms. 10 years in the field before writing code." />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://amlabs.dev/#business",
+    "name": "AM Labs",
+    "alternateName": "Andreolle Manuel Labs",
+    "description": "Full-stack development studio based in Montélimar, France. Custom websites, business applications and ERP/e-commerce connectors, delivered remotely worldwide.",
+    "url": "https://amlabs.dev/en/",
+    "logo": "https://amlabs.dev/favicon.png",
+    "telephone": "+33645543161",
+    "email": "contact@amlabs.dev",
+    "founder": {
+      "@type": "Person",
+      "name": "Manuel Andreolle",
+      "jobTitle": "Full-stack developer & founder, AM Labs",
+      "url": "https://www.linkedin.com/in/manuel-andreolle/"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Montélimar",
+      "addressRegion": "Drôme",
+      "postalCode": "26200",
+      "addressCountry": "FR"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "France" },
+      { "@type": "AdministrativeArea", "name": "Worldwide (remote)" }
+    ],
+    "serviceType": ["Website development", "Custom business applications", "ERP / e-commerce connectors", "SEO audit", "Website maintenance"],
+    "priceRange": "€€",
+    "knowsAbout": ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "PostgreSQL", "Stripe", "Zoho", "Odoo", "Wix", "Vite"],
+    "sameAs": ["https://www.linkedin.com/in/manuel-andreolle/"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does AM Labs offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Five core services: website development (€1,800-9,000), custom business applications (€5,500-15,000), ERP / e-commerce connectors (€3,500-8,000), SEO and digital audits (€500-1,500), and monthly website maintenance (€150-450/month)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does AM Labs work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AM Labs is based in Montélimar, France, and works remotely with clients everywhere. Current clients include a booking platform near Paris and a tool distributor in Panama, both delivered fully remotely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does a project run?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Four steps: 1) Free discovery call (30-60 min) to understand your needs, 2) A scoped quote within 24-48h with clear deliverables, pricing and milestones, 3) Staged development with client validation at every milestone, 4) Launch, training, and a 30-90 day guarantee depending on the service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Professional website: €1,800-3,500. Website with a business module: €4,500-9,000. Custom business application: €5,500-15,000. ERP / e-commerce connector: €3,500-8,000. SEO audit: €500-1,500. Monthly maintenance: €150-450/month. 30% deposit on order, never 100% on delivery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why AM Labs rather than a classic agency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Three reasons: a single point of contact from discovery to launch (you talk to the person writing the code), 10 years of field experience before code (I understand how a small business actually runs), and transparent pricing with no hidden fees."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/fonts/general-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <style>html,body{background:#0c0b14;color:#e8e6f0;}body{opacity:0;transition:opacity .15s ease;}body.ready{opacity:1;}</style>
+</head>
+<body>
+
+  <!-- Nav fallback (no JS) -->
+  <noscript>
+    <nav class="nav nav-fallback">
+      <div class="nav-inner">
+        <a href="/en/" class="nav-logo">AM<span>Labs</span></a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
+    </nav>
+  </noscript>
+
+  <!-- Placeholder injected by partials-loader.js (loads /partials/nav-en.html) -->
+  <div id="nav-placeholder"></div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <main>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-brand"><span class="brand-am">AM</span><span class="accent">Labs</span></div>
+      <p class="hero-tagline">Full-stack developer &amp; product builder, based in France</p>
+      <h1 class="hero-title">Your business is unique. Your tools should be <span class="accent">too</span>.</h1>
+      <p class="hero-subtitle">Websites, custom business applications and ERP connectors for small and mid-size companies. 10 years in the field before writing code.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="hero-cta">
+          Start a project
+          <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="#projects" class="hero-secondary">See the work</a>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        Available for new challenges
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">The AM Labs approach</span>
+        <h2 class="section-title">A craftsman's mindset. An engineer's precision.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal rd1">
+          <p>Ten years in the security industry. Technician, trainer, logistics lead, and the direct interface between field teams and dev teams. The person consulted before every rollout, because when a feature lands in front of 2,000 users who rely on it eight hours a day, <strong>it has to match how they actually work</strong>.</p>
+          <p>Having used and improved dozens of tools before building any changes everything about how you design them. Every feature is built for the person who will use it. <strong>Not for a demo</strong>.</p>
+          <div class="about-more" id="about-more">
+            <p>Full-stack developer training at O'Clock, then three products shipped: an ERP connector and a complete e-commerce website in Panama, and a booking platform near Paris. All used daily.</p>
+            <p class="about-location">Based in Montélimar, France. On-site across the Drôme-Ardèche region, remote everywhere else.</p>
+          </div>
+          <button class="about-toggle" id="about-toggle" type="button" data-more="Read more" data-less="Show less">Read more</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">What I build</span>
+        <h2 class="section-title">The tool your business is missing.</h2>
+        <p class="section-desc">From first idea to production, a single point of contact.</p>
+      </div>
+      <div class="services-list">
+        <div class="service-card reveal rd1">
+          <h3>Business applications</h3>
+          <p>Dashboards, management tools, automation. Applications shaped around your processes, not the other way round.</p>
+        </div>
+        <div class="service-card reveal rd2">
+          <h3>Connectors</h3>
+          <p>Your tools don't talk to each other? I connect them. ERP, e-commerce, CRM. Real-time sync, zero re-typing.</p>
+        </div>
+        <div class="service-card reveal rd3">
+          <h3>Websites &amp; platforms</h3>
+          <p>Showcase sites, e-commerce, booking platforms. Payments, client accounts and back office included.</p>
+        </div>
+      </div>
+      <div class="section-cta-break">
+        <a href="#contact" class="section-cta-link">Need something? Let's talk <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section class="section method" id="method">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Method</span>
+        <h2 class="section-title">From idea to production.</h2>
+      </div>
+      <div class="method-grid">
+        <div class="method-card reveal rd1">
+          <div class="method-card-header"><span class="method-num">01</span><h3>Discovery</h3></div>
+          <p>We map your blockers and your goals. Free conversation, clear vision.</p>
+        </div>
+        <div class="method-card reveal rd2">
+          <div class="method-card-header"><span class="method-num">02</span><h3>Plan</h3></div>
+          <p>A precise specification and a transparent quote. No surprises on price or timeline.</p>
+        </div>
+        <div class="method-card reveal rd3">
+          <div class="method-card-header"><span class="method-num">03</span><h3>Build</h3></div>
+          <p>Staged development. You test the tool as it takes shape, milestone after milestone.</p>
+        </div>
+        <div class="method-card reveal rd4">
+          <div class="method-card-header"><span class="method-num">04</span><h3>Delivery</h3></div>
+          <p>Launch, training and follow-up. The tool gets adopted by your team - no ghost deliveries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Where I work -->
+  <section class="section about" id="zones">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Where I work</span>
+        <h2 class="section-title">Based in <span class="accent">France</span>, working remotely worldwide.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>AM Labs is based in <strong>Montélimar, in the south of France</strong>. I meet clients in person across the Drôme-Ardèche region, and work remotely with everyone else.</p>
+          <p>Remote is not a fallback - it is a proven process: video calls, collaborative tools, staged deliveries. My closest client is 20 minutes away; the furthest, <a href="/en/realisations/toolinnov-ecommerce/">Tool Innovation in Panama</a>, got <a href="/en/realisations/tool-innovation-panama/">two products</a> delivered without a single in-person meeting. My <a href="/en/realisations/atelier-clamart/">Paris-area client</a> confirms: distance has never been the problem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Work</span>
+        <h2 class="section-title">In production.</h2>
+        <p class="section-desc">Three products shipped, deployed, used every day.</p>
+      </div>
+      <div class="projects-grid">
+
+        <article class="project-card reveal rd1">
+          <a href="/en/realisations/toolinnov-ecommerce/" class="project-card-link">
+            <div class="project-card-media">
+              <img src="/screenshots/toolinnov-home.png" alt="toolinnov.com - custom e-commerce website in Panama" loading="lazy" />
+              <span class="project-card-badge">2nd project for this client</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-card-client">Client · Tool Innovation Panamá</span>
+              <h3>E-commerce website toolinnov.com</h3>
+              <p>Wix replaced with a custom platform: catalog synced with Zoho Books, pro accounts, local payment methods, 3 languages, AI-assisted back office.</p>
+              <div class="project-stack">
+                <span>Next.js</span>
+                <span>TypeScript</span>
+                <span>PostgreSQL</span>
+                <span>Zoho Books</span>
+              </div>
+              <span class="project-card-cta">Read the case study
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+
+        <article class="project-card reveal rd2">
+          <a href="/en/realisations/atelier-clamart/" class="project-card-link">
+            <div class="project-card-media">
+              <img src="/screenshots/atelier-planning.png" alt="L'Atelier Clamart - booking platform and back office" loading="lazy" />
+              <span class="project-card-badge">Live · atelierclamart.fr</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-card-client">Client · L'Atelier Clamart</span>
+              <h3>Platform for a creative arts studio</h3>
+              <p>Bookings, memberships, credits, Stripe payments, scheduling and back office: paper notebooks and Excel replaced with a fully automated platform.</p>
+              <div class="project-stack">
+                <span>Next.js</span>
+                <span>PostgreSQL</span>
+                <span>Stripe</span>
+                <span>Brevo</span>
+              </div>
+              <span class="project-card-cta">Read the case study
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+
+        <article class="project-card reveal rd3">
+          <a href="/en/realisations/tool-innovation-panama/" class="project-card-link">
+            <div class="project-card-media">
+              <img src="/screenshots/dashboard.png" alt="Odoo Wix connector - real-time monitoring dashboard" loading="lazy" />
+              <span class="project-card-badge">1st Tool Innovation project</span>
+            </div>
+            <div class="project-card-body">
+              <span class="project-card-client">Client · Tool Innovation Panamá</span>
+              <h3>Odoo ↔ Wix connector</h3>
+              <p>Products, stock and orders synced in real time between the ERP and the online store, AI-generated SEO product content. Zero re-typing. Desktop app for Mac &amp; Windows.</p>
+              <div class="project-stack">
+                <span>Node.js</span>
+                <span>Electron</span>
+                <span>React</span>
+                <span>Gemini</span>
+              </div>
+              <span class="project-card-cta">Read the case study
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+            </div>
+          </a>
+        </article>
+
+      </div>
+      <div class="projects-cta reveal">
+        <a href="#contact" class="hero-cta">
+          Got a project in mind? Let's talk.
+          <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Frequently asked questions</span>
+        <h2 class="section-title">Your questions, my answers.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What does AM Labs offer?</summary>
+          <p>Five core services: website development (€1,800-9,000), custom business applications (€5,500-15,000), ERP / e-commerce connectors (€3,500-8,000), SEO and digital audits (€500-1,500), and monthly maintenance (€150-450/month). Detailed service pages are currently available <a href="/services/creation-site-web/">in French</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you work with clients outside France?</summary>
+          <p>Yes. AM Labs is based in Montélimar, France, and works remotely with clients everywhere. Tool Innovation, a tool distributor in Panama, got two products delivered fully remotely - including a complete e-commerce platform. Video calls, collaborative tools, staged deliveries: the process is proven.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does a project run?</summary>
+          <p>Four steps: 1) Free discovery call (30-60 min) to understand your needs, 2) A scoped quote within 24-48h with clear deliverables, pricing and milestones, 3) Staged development with your validation at every milestone, 4) Launch, training, and a 30-90 day guarantee depending on the service.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much does it cost?</summary>
+          <p>Professional website: €1,800-3,500. Website with a business module: €4,500-9,000. Custom business application: €5,500-15,000. ERP / e-commerce connector: €3,500-8,000. SEO audit: €500-1,500. Monthly maintenance: €150-450/month. 30% deposit on order, never 100% on delivery.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why you rather than a classic agency?</summary>
+          <p>Three reasons: a single point of contact from discovery to launch (you talk to the person writing the code), 10 years of field experience before code (I understand how a small business actually runs), and transparent pricing with no hidden fees and no vague "on request".</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Contact</span>
+      </div>
+      <div class="contact-inner contact-inner--flow">
+
+        <div class="flow" id="brief-doc">
+
+          <!-- Intent -->
+          <div class="flow-block" id="flow-intent">
+            <p class="flow-question">Shape your project.</p>
+            <div class="flow-cards flow-cards--2col">
+              <button class="flow-card flow-card--big" data-intent="project" type="button">
+                <span class="flow-card-title">I have a project to launch</span>
+                <span class="flow-card-desc">Application, website, connector, Web3...</span>
+              </button>
+              <button class="flow-card flow-card--big" data-intent="mission" type="button">
+                <span class="flow-card-title">I'm looking for a developer</span>
+                <span class="flow-card-desc">Freelance contract, full-time, fixed-term</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div class="flow-block flow-block--hidden" id="br-type-row">
+            <p class="flow-question">What are we building?</p>
+            <p class="flow-hint">Pick as many as you like.</p>
+            <div class="flow-cards">
+              <button class="flow-card" data-svc="app" type="button">
+                <span class="flow-card-title">Business application</span>
+                <span class="flow-card-desc">Dashboard, management, automation</span>
+              </button>
+              <button class="flow-card" data-svc="connector" type="button">
+                <span class="flow-card-title">Connector</span>
+                <span class="flow-card-desc">Link your existing tools</span>
+              </button>
+              <button class="flow-card" data-svc="site" type="button">
+                <span class="flow-card-title">Website &amp; platform</span>
+                <span class="flow-card-desc">Showcase, e-commerce, booking</span>
+              </button>
+              <button class="flow-card" data-svc="web3" type="button">
+                <span class="flow-card-title">Web3 / Blockchain</span>
+                <span class="flow-card-desc">On-chain analytics, tracking, crypto tools</span>
+              </button>
+              <button class="flow-card" data-svc="conseil" type="button">
+                <span class="flow-card-title">Advice &amp; vision</span>
+                <span class="flow-card-desc">No clear idea yet</span>
+              </button>
+              <button class="flow-card" data-svc="other" type="button">
+                <span class="flow-card-title">Something else</span>
+                <span class="flow-card-desc">Let's talk about it</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Modules -->
+          <div class="flow-block flow-block--hidden" id="br-modules-row">
+            <p class="flow-question">What do you need?</p>
+            <p class="flow-hint">Select the key features.</p>
+            <div class="flow-modules-grid" id="br-modules"></div>
+          </div>
+
+          <!-- Budget -->
+          <div class="flow-block flow-block--hidden" id="br-budget-row">
+            <p class="flow-question">What budget?</p>
+            <div class="flow-slider-wrap">
+              <div class="flow-budget-value" id="brief-slider-label">< €1,000</div>
+              <input type="range" class="flow-slider" id="brief-slider" min="0" max="4" value="0" step="1" />
+              <div class="flow-budget-range"><span>Small</span><span>Ambitious</span></div>
+              <div class="flow-budget-hint" id="brief-hint"></div>
+              <p class="flow-budget-disclaimer">Indicative range. The final budget is agreed together.</p>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="flow-block flow-block--hidden" id="br-timeline-row">
+            <p class="flow-question">What timeline?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-tl="asap" type="button">As soon as possible</button>
+              <button class="flow-pill" data-tl="1-3" type="button">1 to 3 months</button>
+              <button class="flow-pill" data-tl="norush" type="button">No rush</button>
+              <button class="flow-pill" data-tl="dunno" type="button">Not sure yet</button>
+            </div>
+          </div>
+
+          <!-- Mission: Profile -->
+          <div class="flow-block flow-block--hidden" id="br-mtype-row">
+            <p class="flow-question">What kind of profile?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-mt="fullstack" type="button">Full-stack</button>
+              <button class="flow-pill" data-mt="frontend" type="button">Frontend</button>
+              <button class="flow-pill" data-mt="backend" type="button">Backend</button>
+              <button class="flow-pill" data-mt="conseil" type="button">Technical advisory</button>
+            </div>
+          </div>
+
+          <!-- Mission: Contract -->
+          <div class="flow-block flow-block--hidden" id="br-mcadre-row">
+            <p class="flow-question">What arrangement?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-mc="freelance" type="button">Freelance</button>
+              <button class="flow-pill" data-mc="cdi" type="button">Full-time</button>
+              <button class="flow-pill" data-mc="cdd" type="button">Fixed-term</button>
+            </div>
+          </div>
+
+          <!-- Mission: Duration -->
+          <div class="flow-block flow-block--hidden" id="br-mduree-row">
+            <p class="flow-question">How long?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-md="court" type="button">Under a month</button>
+              <button class="flow-pill" data-md="moyen" type="button">1 to 3 months</button>
+              <button class="flow-pill" data-md="long" type="button">3 to 6 months</button>
+              <button class="flow-pill" data-md="xl" type="button">6 months+</button>
+            </div>
+          </div>
+
+          <!-- Mission: Remote -->
+          <div class="flow-block flow-block--hidden" id="br-mremote-row">
+            <p class="flow-question">Work setup?</p>
+            <div class="flow-pills">
+              <button class="flow-pill" data-mr="full" type="button">Fully remote</button>
+              <button class="flow-pill" data-mr="hybrid" type="button">Hybrid</button>
+              <button class="flow-pill" data-mr="onsite" type="button">On-site</button>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="flow-block flow-block--hidden" id="flow-contact">
+            <p class="flow-question">Shall we talk?</p>
+            <div class="flow-fields">
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+              <div class="form-group">
+                <label for="brief-name">Name</label>
+                <input type="text" id="brief-name" name="name" placeholder="Your name" maxlength="100" required />
+              </div>
+              <div class="form-group">
+                <label for="brief-email">Email</label>
+                <input type="email" id="brief-email" name="email" placeholder="your@email.com" maxlength="254" required />
+              </div>
+              <div class="form-group">
+                <label for="brief-message">Anything to add? <span style="opacity:0.5">(optional)</span></label>
+                <textarea id="brief-message" name="message" rows="3" placeholder="Context, details, questions..." maxlength="5000"></textarea>
+              </div>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAACukDbqptql46TBo" data-theme="dark"></div>
+              <label class="form-consent">
+                <input type="checkbox" id="brief-consent" required />
+                <span>By sending this form, I agree that my data will be processed in order to answer my request.</span>
+              </label>
+              <button class="flow-submit" id="brief-submit" type="button">Send my project</button>
+            </div>
+          </div>
+
+          <p class="contact-reassurance">Free conversation, no strings attached.</p>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Placeholder injected by partials-loader.js (loads /partials/footer-en.html) -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

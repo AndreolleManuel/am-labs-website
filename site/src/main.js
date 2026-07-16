@@ -99,7 +99,9 @@ const aboutMore = document.getElementById('about-more');
 if (aboutToggle && aboutMore) {
   aboutToggle.addEventListener('click', () => {
     const open = aboutMore.classList.toggle('is-open');
-    aboutToggle.textContent = open ? 'Voir moins' : 'En savoir plus';
+    aboutToggle.textContent = open
+      ? (aboutToggle.dataset.less || 'Voir moins')
+      : (aboutToggle.dataset.more || 'En savoir plus');
   });
 }
 

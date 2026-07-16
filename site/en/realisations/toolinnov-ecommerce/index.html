@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Case study: ToolInnov - custom Next.js e-commerce in Panama | AM Labs</title>
+  <meta name="description" content="Case study: custom Next.js e-commerce store synced with Zoho Books for Tool Innovation Panamá. Pro accounts, Yappy &amp; PagueloFácil payments, AI-assisted back office, 3 languages. 2nd project for this client." />
+  <link rel="canonical" href="https://amlabs.dev/en/realisations/toolinnov-ecommerce/" />
+  <link rel="alternate" hreflang="fr" href="https://amlabs.dev/realisations/toolinnov-ecommerce/" />
+  <link rel="alternate" hreflang="en" href="https://amlabs.dev/en/realisations/toolinnov-ecommerce/" />
+  <link rel="alternate" hreflang="x-default" href="https://amlabs.dev/realisations/toolinnov-ecommerce/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Case study: toolinnov.com, custom e-commerce | AM Labs" />
+  <meta property="og:description" content="The Odoo ↔ Wix connector client came back for more: a complete Next.js + Zoho Books e-commerce platform, live at toolinnov.com." />
+  <meta property="og:url" content="https://amlabs.dev/en/realisations/toolinnov-ecommerce/" />
+  <meta property="og:site_name" content="AM Labs" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://amlabs.dev/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AM Labs - Full-stack developer based in Montélimar, France" />
+  <meta name="twitter:image" content="https://amlabs.dev/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case study: toolinnov.com, custom e-commerce | AM Labs" />
+  <meta name="twitter:description" content="Next.js + Zoho Books e-commerce platform, pro accounts, local Panama payment methods." />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="author" content="Manuel Andreolle" />
+  <meta name="robots" content="index, follow" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://amlabs.dev/#business",
+    "name": "AM Labs",
+    "url": "https://amlabs.dev",
+    "logo": "https://amlabs.dev/favicon.png",
+    "telephone": "+33645543161",
+    "email": "contact@amlabs.dev",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Montélimar",
+      "addressRegion": "Drôme",
+      "postalCode": "26200",
+      "addressCountry": "FR"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "toolinnov.com e-commerce website for Tool Innovation Panamá",
+    "creator": { "@id": "https://amlabs.dev/#business" },
+    "about": "Custom Next.js e-commerce store synced with Zoho Books: multilingual catalog, professional accounts with negotiated pricing, local Yappy and PagueloFácil payments, complete AI-assisted back office",
+    "url": "https://toolinnov.com",
+    "datePublished": "2026-07-01",
+    "inLanguage": "en"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://amlabs.dev/en/" },
+      { "@type": "ListItem", "position": 2, "name": "ToolInnov e-commerce", "item": "https://amlabs.dev/en/realisations/toolinnov-ecommerce/" }
+    ]
+  }
+  </script>
+
+  <link rel="preload" href="/fonts/general-sans-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin />
+  <style>html,body{background:#0c0b14;color:#e8e6f0;}body{opacity:0;transition:opacity .15s ease;}body.ready{opacity:1;}</style>
+</head>
+<body>
+
+  <noscript>
+    <nav class="nav nav-fallback">
+      <div class="nav-inner">
+        <a href="/en/" class="nav-logo">AM<span>Labs</span></a>
+        <a href="/en/contact/" class="nav-cta">Contact</a>
+      </div>
+    </nav>
+  </noscript>
+
+  <div id="nav-placeholder"></div>
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/#projects">Work</a></li>
+            <li aria-current="page">ToolInnov e-commerce</li>
+          </ol>
+        </nav>
+        <span class="page-eyebrow">Case study · 2nd project for this client</span>
+        <h1 class="page-title">toolinnov.com: the <span class="accent">custom e-commerce store</span> of Tool Innovation Panamá.</h1>
+        <p class="page-subtitle">After the Odoo ↔ Wix connector, the client came back for more: replacing Wix with a complete platform. Catalog wired to Zoho Books, professional accounts with negotiated pricing, local Yappy &amp; PagueloFácil payments, full back office. Live at toolinnov.com.</p>
+        <div class="page-cta-row">
+          <a href="https://toolinnov.com" target="_blank" rel="noopener noreferrer" class="hero-cta">
+            Visit toolinnov.com
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="/en/contact/" class="hero-secondary">Start a similar project</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY FIGURES -->
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Key figures</span>
+          <h2 class="section-title">The scale of the project, at a glance.</h2>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-card reveal rd1">
+            <span class="metric-value">120+</span>
+            <span class="metric-label">Products in permanent stock</span>
+          </div>
+          <div class="metric-card reveal rd2">
+            <span class="metric-value">3 languages</span>
+            <span class="metric-label">Spanish, French, English</span>
+          </div>
+          <div class="metric-card reveal rd3">
+            <span class="metric-value">Yappy + cards</span>
+            <span class="metric-label">Local Panama payments</span>
+          </div>
+          <div class="metric-card reveal rd4">
+            <span class="metric-value">2nd project</span>
+            <span class="metric-label">For this same client</span>
+          </div>
+        </div>
+        <div class="tech-stack reveal" style="margin-top: 2.5rem;">
+          <span class="tech-stack-label">Tech stack</span>
+          <div class="tech-pills">
+            <span class="tech-pill">Next.js</span>
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">TypeScript</span>
+            <span class="tech-pill">Tailwind CSS</span>
+            <span class="tech-pill">PostgreSQL</span>
+            <span class="tech-pill">Prisma</span>
+            <span class="tech-pill">Zoho Books API</span>
+            <span class="tech-pill">Vertex AI</span>
+            <span class="tech-pill">Yappy</span>
+            <span class="tech-pill">PagueloFácil</span>
+            <span class="tech-pill">Resend</span>
+            <span class="tech-pill">Sentry</span>
+            <span class="tech-pill">Railway</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">The context</span>
+          <h2 class="section-title">Before: a Wix store that had hit its limits.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>In late 2025, I delivered an <a href="/en/realisations/tool-innovation-panama/">Odoo ↔ Wix connector</a> to Tool Innovation Panamá, putting an end to months of manual double entry. A few months later, the client came back with a more ambitious project: stop fighting Wix's limits and build <strong>a platform of their own</strong>.</p>
+            <p>The requirements were clear: <strong>negotiated professional pricing</strong> for B2B customers (impossible to manage cleanly on Wix), the <strong>local Panamanian payment methods</strong> (Yappy, the mobile payment everyone there uses), a <strong>multilingual catalog</strong> for Spanish, French and English-speaking customers, <strong>on-site tool demo booking</strong>, and a back office they fully own, wired to their new Zoho Books accounting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">The solution</span>
+          <h2 class="section-title">A complete platform, architected to last.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>The website never talks to Zoho directly: a <strong>sync worker</strong> continuously replicates products, stock, prices and customers into a PostgreSQL database, which the site reads. The result: fast pages, <strong>zero API quota consumed by visitors</strong>, and a site that stays up even if the sync goes down. On checkout, the order flows back to Zoho Books automatically.</p>
+            <p>On payments, zero tolerance: amounts and discounts are <strong>computed exclusively server-side</strong>, webhooks are cryptographically verified, and every state transition is idempotent. A double click or a replayed webhook can never produce two charges. And <strong>no card data ever touches the site</strong>: Yappy and PagueloFácil handle payment end to end.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section method">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">What was delivered</span>
+          <h2 class="section-title">8 major building blocks, one product.</h2>
+        </div>
+        <div class="method-grid">
+          <div class="method-card reveal rd1">
+            <div class="method-card-header"><span class="method-num">01</span><h3>Catalog &amp; search</h3></div>
+            <p>6 specialized categories, 7 official brands, instant search, real-time stock synced with Zoho Books. Rich product pages: photos, variants, specs, SEO.</p>
+          </div>
+          <div class="method-card reveal rd2">
+            <div class="method-card-header"><span class="method-num">02</span><h3>Professional accounts</h3></div>
+            <p>Sign-up with RUC (the Panamanian business ID), manual validation, then the pro discount applies automatically across the whole catalog. Built-in quote requests.</p>
+          </div>
+          <div class="method-card reveal rd3">
+            <div class="method-card-header"><span class="method-num">03</span><h3>Local online payments</h3></div>
+            <p>Yappy (Banco General) + PagueloFácil (Visa/Mastercard/Clave) through hosted checkout. Signed webhooks, idempotency, zero card data on the site.</p>
+          </div>
+          <div class="method-card reveal rd4">
+            <div class="method-card-header"><span class="method-num">04</span><h3>Zoho Books sync</h3></div>
+            <p>Bidirectional sync worker: Zoho stays the source of truth (stock, prices, customers), the site enriches on top (photos, SEO, highlights). Orders pushed to Zoho.</p>
+          </div>
+          <div class="method-card reveal rd1">
+            <div class="method-card-header"><span class="method-num">05</span><h3>Demos &amp; order tracking</h3></div>
+            <p>Tool demo booking directly on the customer's job site, online order tracking, automated transactional emails.</p>
+          </div>
+          <div class="method-card reveal rd2">
+            <div class="method-card-header"><span class="method-num">06</span><h3>Complete back office</h3></div>
+            <p>Catalog, orders, quotes, customers, blog, Instagram feed, statistics, loyalty, notifications, team and access rights. The client runs everything, depending on no one.</p>
+          </div>
+          <div class="method-card reveal rd3">
+            <div class="method-card-header"><span class="method-num">07</span><h3>Built-in AI assistant</h3></div>
+            <p>A conversational copilot inside the back office: order status, stock, today's sales, pending pro accounts, blog editing. The team queries their store in plain language.</p>
+          </div>
+          <div class="method-card reveal rd4">
+            <div class="method-card-header"><span class="method-num">08</span><h3>AI-generated product content</h3></div>
+            <p>Structured descriptions, SEO titles and alt texts generated from the manufacturer catalogs uploaded to the back office. Specs are extracted by exact reference, never invented.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">In pictures</span>
+          <h2 class="section-title">The site in production.</h2>
+        </div>
+        <div class="screenshots-gallery">
+          <figure class="screenshot-card reveal rd1">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/toolinnov-home.png" alt="toolinnov.com home page - hero with launch offer" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>Home page</h4>
+              <p>Launch offer, pro banner, 3-hour delivery in Panama City.</p>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card reveal rd2">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/toolinnov-catalogue.png" alt="toolinnov.com catalog - product grid with stock and prices" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>Catalog</h4>
+              <p>Product grid, real-time stock, promotions computed server-side.</p>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card reveal rd3">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/toolinnov-produit.png" alt="toolinnov.com product page with automatic pro pricing" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>Product page</h4>
+              <p>Variants, specs, and "Tu precio pro" applied automatically.</p>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card reveal rd1">
+            <div class="screenshot-card-media">
+              <img src="/screenshots/toolinnov-demo.png" alt="On-site demo booking - toolinnov.com" loading="lazy" />
+            </div>
+            <figcaption class="screenshot-card-caption">
+              <h4>On-site demos</h4>
+              <p>Tool demonstration booking, reserved for pro accounts.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Detailed tech stack</span>
+          <h2 class="section-title">Under the hood.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p><strong>Website</strong>: Next.js (App Router) + React + TypeScript + Tailwind CSS. Server rendering, optimized images, 3-language i18n, full SEO (sitemap, Open Graph, structured data).</p>
+            <p><strong>Data</strong>: PostgreSQL + Prisma. Node sync worker for Zoho Books (OAuth2, cron jobs): the site reads the database, never the API. Performance and resilience.</p>
+            <p><strong>Payments</strong>: Yappy and PagueloFácil through hosted checkout. Server-verified amounts, signed webhooks, idempotent transitions, full audit log.</p>
+            <p><strong>AI</strong>: Google Vertex AI (Gemini). A tool-using admin assistant (orders, stock, sales, blog, pro accounts) and product content generation grounded in the brands' PDF catalogs: the AI locates the product sheet by manufacturer reference and never invents a spec.</p>
+            <p><strong>Infrastructure</strong>: deployed on Railway (site + database + worker), domain through Cloudflare, transactional emails with Resend, error monitoring with Sentry.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Results</span>
+          <h2 class="section-title">Before / After.</h2>
+        </div>
+        <div class="before-after-grid">
+          <div class="before-after-col is-before reveal rd1">
+            <h4>Before</h4>
+            <ul>
+              <li>A generic Wix store, locked into a closed platform</li>
+              <li>No professional pricing online</li>
+              <li>No local mobile payment (Yappy)</li>
+              <li>Catalog and accounting disconnected</li>
+              <li>Product pages written by hand</li>
+              <li>One language, limited SEO</li>
+            </ul>
+          </div>
+          <div class="before-after-col is-after reveal rd2">
+            <h4>After</h4>
+            <ul>
+              <li>A custom platform the client fully owns</li>
+              <li>RUC-validated pro accounts, automatic discounts, online quotes</li>
+              <li>Yappy + card payments, secured end to end</li>
+              <li>Catalog continuously synced with Zoho Books</li>
+              <li>Descriptions and SEO generated by AI from manufacturer catalogs</li>
+              <li>3 languages, complete back office with an AI assistant</li>
+            </ul>
+          </div>
+        </div>
+        <div class="about-grid" style="margin-top: 2rem;">
+          <div class="about-text reveal">
+            <p>The site has been live at <a href="https://toolinnov.com" target="_blank" rel="noopener noreferrer">toolinnov.com</a> since July 2026. It is the second product delivered to this client, the strongest vote of confidence a client can give. First episode: <a href="/en/realisations/tool-innovation-panama/">the Odoo ↔ Wix connector</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-cta-block reveal">
+          <h2>Has your online store hit its limits?</h2>
+          <p>Wix, Shopify or an agency that no longer keeps up: when your business gets specific, custom becomes profitable. Free conversation + a scoped quote within 48h.</p>
+          <a href="/en/contact/" class="hero-cta">
+            Start the conversation
+            <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

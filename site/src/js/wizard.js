@@ -11,7 +11,38 @@ if (doc) {
   const $ = id => document.getElementById(id);
   const state = { intent: null, services: [], modules: [], budgetRange: 0, timeline: null, mType: null, mCadre: null, mDuree: null, mRemote: null };
 
-  const moduleData = {
+  const EN = document.documentElement.lang === 'en';
+
+  const moduleData = EN ? {
+    app: [
+      { id: 'dashboard', label: 'Dashboard', desc: 'KPIs, metrics, reporting' },
+      { id: 'users', label: 'Users', desc: 'Accounts, roles, permissions' },
+      { id: 'automation', label: 'Automation', desc: 'Workflows, scheduled tasks' },
+      { id: 'api', label: 'API', desc: 'Connect your existing tools' },
+      { id: 'admin', label: 'Back office', desc: 'Management interface' },
+      { id: 'notifs', label: 'Notifications', desc: 'Emails, alerts, reminders' },
+    ],
+    connector: [
+      { id: 'sync', label: 'Sync', desc: 'Real-time data' },
+      { id: 'monitoring', label: 'Monitoring', desc: 'Sync status, alerts' },
+      { id: 'webhooks', label: 'Webhooks', desc: 'Real-time events' },
+      { id: 'reconciliation', label: 'Reconciliation', desc: 'Conflict resolution' },
+    ],
+    site: [
+      { id: 'design', label: 'Design', desc: 'A visual identity of your own' },
+      { id: 'payment', label: 'Payments', desc: 'Stripe, cards, invoicing' },
+      { id: 'client-area', label: 'Client area', desc: 'Accounts, history, profile' },
+      { id: 'backoffice', label: 'Back office', desc: 'Content and order management' },
+      { id: 'seo', label: 'SEO', desc: 'Search-engine optimized' },
+      { id: 'newsletter', label: 'Newsletter', desc: 'Emails, automation' },
+    ],
+    web3: [
+      { id: 'chain-data', label: 'On-chain analytics', desc: 'Blockchain data extraction' },
+      { id: 'wallet-tracking', label: 'Wallet tracking', desc: 'Wallet monitoring, patterns' },
+      { id: 'token-tools', label: 'Token tools', desc: 'Analysis, filtering, alerts' },
+      { id: 'web3-integration', label: 'Web3 integration', desc: 'Blockchain inside an app' },
+    ],
+  } : {
     app: [
       { id: 'dashboard', label: 'Dashboard', desc: 'Tableaux de bord, métriques' },
       { id: 'users', label: 'Utilisateurs', desc: 'Comptes, rôles, droits' },
@@ -42,7 +73,9 @@ if (doc) {
     ],
   };
 
-  const budgetRanges = ['< 1 000 €', '1 000 - 3 000 €', '3 000 - 7 000 €', '7 000 - 15 000 €', '15 000 €+'];
+  const budgetRanges = EN
+    ? ['< €1,000', '€1,000 - €3,000', '€3,000 - €7,000', '€7,000 - €15,000', '€15,000+']
+    : ['< 1 000 €', '1 000 - 3 000 €', '3 000 - 7 000 €', '7 000 - 15 000 €', '15 000 €+'];
   const skipServices = ['other', 'conseil'];
 
   function bounce(el) { gsap.fromTo(el, { scale: 0.92 }, { scale: 1, duration: 0.25, ease: 'back.out(2)' }); }
@@ -130,7 +163,7 @@ if (doc) {
         renderModules();
         if (state.modules.length > 0) { showRow('br-budget-row'); } else { hideRow('br-budget-row'); hideRow('br-timeline-row'); hideRow('flow-contact'); }
         if (state.modules.length > 0) { showRow('br-timeline-row'); } else { hideRow('br-timeline-row'); hideRow('flow-contact'); }
-        if (state.timeline) { showRow('flow-contact'); buildProjectBrief(); } else { hideRow('flow-contact'); }
+        if (state.timeline) { showRow('flow-contact'); } else { hideRow('flow-contact'); }
       } else if (isSkip) {
         hideRow('br-modules-row'); hideRow('br-budget-row'); hideRow('br-timeline-row');
         showRow('flow-contact');      } else {
@@ -162,8 +195,8 @@ if (doc) {
     if (isProject && state.modules.length > 0) {
       const r = state.budgetRange, n = state.modules.length;
       const min = getMinRange();
-      if (r < min) { hint.textContent = `${n} fonctionnalités — cette fourchette est serrée.`; hint.classList.add('is-warning'); }
-      else { hint.textContent = 'Fourchette indicative — le budget définitif est discuté ensemble.'; hint.classList.remove('is-warning'); }
+      if (r < min) { hint.textContent = EN ? `${n} features selected: this range is tight.` : `${n} fonctionnalités : cette fourchette est serrée.`; hint.classList.add('is-warning'); }
+      else { hint.textContent = EN ? 'Indicative range. The final budget is agreed together.' : 'Fourchette indicative. Le budget définitif est discuté ensemble.'; hint.classList.remove('is-warning'); }
     } else {
       hint.textContent = '';
       hint.classList.remove('is-warning');
@@ -253,7 +286,7 @@ if (doc) {
 
     const formData = {
       access_key: '9682f3cd-cb66-4805-809b-4d310a042c79',
-      subject: `AM Labs · Nouveau ${state.intent === 'mission' ? 'contact mission' : 'brief projet'}`,
+      subject: `AM Labs · Nouveau ${state.intent === 'mission' ? 'contact mission' : 'brief projet'}${EN ? ' (site EN)' : ''}`,
       from_name: name,
       email,
       message: $('brief-message').value.trim(),
@@ -284,7 +317,7 @@ if (doc) {
       if (data.success) {
         gsap.timeline()
           .to(btn, { opacity: 0, y: -10, duration: 0.2, ease: 'power2.in' })
-          .call(() => { btn.textContent = 'C\'est parti ! Réponse sous 24h.'; btn.style.background = 'var(--color-success)'; })
+          .call(() => { btn.textContent = EN ? 'Sent! You\'ll hear back within 24h.' : 'C\'est parti ! Réponse sous 24h.'; btn.style.background = 'var(--color-success)'; })
           .to(btn, { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' })
           .to(btn, { duration: 3 })
           .call(() => {
@@ -302,12 +335,12 @@ if (doc) {
             });
           });
       } else {
-        btn.textContent = 'Erreur. Réessayez.';
+        btn.textContent = EN ? 'Error. Please try again.' : 'Erreur. Réessayez.';
         btn.style.background = '#e74c3c';
         setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 3000);
       }
     } catch {
-      btn.textContent = 'Erreur réseau. Réessayez.';
+      btn.textContent = EN ? 'Network error. Please try again.' : 'Erreur réseau. Réessayez.';
       btn.style.background = '#e74c3c';
       setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 3000);
     }

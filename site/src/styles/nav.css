@@ -229,3 +229,32 @@
   pointer-events: none;
   transition: none;
 }
+
+/* Sélecteur de langue FR/EN */
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.nav-lang a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-lang a:hover {
+  color: var(--color-text);
+}
+
+.nav-lang a.is-current {
+  color: var(--color-accent-hover);
+  font-weight: 700;
+}
+
+.nav-lang-sep {
+  opacity: 0.35;
+  color: var(--color-text-muted);
+}
