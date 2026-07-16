@@ -31,11 +31,13 @@ export default defineConfig({
         // Réalisations
         atelierClamart: resolve(__dirname, 'realisations/atelier-clamart/index.html'),
         toolInnovationPanama: resolve(__dirname, 'realisations/tool-innovation-panama/index.html'),
+        toolinnovEcommerce: resolve(__dirname, 'realisations/toolinnov-ecommerce/index.html'),
 
         // Pages institutionnelles
         aPropos: resolve(__dirname, 'a-propos/index.html'),
         contact: resolve(__dirname, 'contact/index.html'),
         mentionsLegales: resolve(__dirname, 'mentions-legales/index.html'),
+
       },
     },
   },

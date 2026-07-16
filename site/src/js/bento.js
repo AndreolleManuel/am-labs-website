@@ -1,9 +1,10 @@
-/* Feature Row — lightbox on click */
+/* Feature Row + galeries d'études de cas — lightbox on click */
 
 import { lenis } from './animations/index.js';
 
 const rows = document.querySelectorAll('.feature-row');
-if (rows.length) {
+const shots = document.querySelectorAll('.screenshot-card:not(.is-video) .screenshot-card-media');
+if (rows.length || shots.length) {
   // Make feature-rows keyboard accessible
   rows.forEach((row) => {
     if (row.dataset.src) {
@@ -71,6 +72,24 @@ if (rows.length) {
     }
     row.addEventListener('click', activate);
     row.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
+    });
+  });
+
+  shots.forEach((media) => {
+    const thumb = media.querySelector('img');
+    if (!thumb) return;
+    media.setAttribute('role', 'button');
+    media.setAttribute('tabindex', '0');
+    media.setAttribute('aria-label', thumb.alt || 'Voir en grand');
+    function activate() {
+      openLightbox(thumb.getAttribute('src'), thumb.alt || '');
+    }
+    media.addEventListener('click', activate);
+    media.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         activate();

@@ -13,6 +13,9 @@
   <meta name="author" content="Manuel Andreolle" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://amlabs.dev/" />
+  <link rel="alternate" hreflang="fr" href="https://amlabs.dev/" />
+  <link rel="alternate" hreflang="en" href="https://amlabs.dev/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://amlabs.dev/" />
 
   <!-- Open Graph (Facebook, LinkedIn) -->
   <meta property="og:type" content="website" />
@@ -197,7 +200,7 @@
           <p>10 ans de terrain dans la sécurité. Technicien, formateur, référent logistique, interface directe entre les équipes terrain et les équipes dev. La personne consultée avant chaque déploiement, parce que quand une fonctionnalité touche 2 000 utilisateurs qui s'en servent huit heures par jour, <strong>elle doit coller à leur réalité</strong>.</p>
           <p>Avoir utilisé et amélioré des dizaines d'outils avant d'en construire, ça change tout dans la manière de concevoir. Chaque fonctionnalité est pensée pour celui qui va l'utiliser. <strong>Pas pour une démo</strong>.</p>
           <div class="about-more" id="about-more">
-            <p>Formation développeur full-stack O'Clock, puis deux produits livrés : un connecteur ERP au Panama et une plateforme de réservation en région parisienne. Utilisés au quotidien.</p>
+            <p>Formation développeur full-stack O'Clock, puis trois produits livrés : un connecteur ERP et un site e-commerce complet au Panamá, une plateforme de réservation en région parisienne. Utilisés au quotidien.</p>
             <p class="about-location">Basé à Montélimar. Disponible sur place en Drôme-Ardèche et en remote partout ailleurs.</p>
           </div>
           <button class="about-toggle" id="about-toggle" type="button">En savoir plus</button>
@@ -272,7 +275,7 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <p>Basé à <strong>Montélimar (26200)</strong>, j'interviens en physique dans tout le sud de la Drôme et la Drôme provençale, ainsi qu'en Ardèche : <strong>Valence, Aubenas, Privas, Nyons, Pierrelatte, Tournon, Dieulefit, Crest, Bollène, Pont-Saint-Esprit, Romans</strong> et leurs alentours.</p>
-          <p>Pour les rendez-vous physiques, je me déplace dans un rayon d'environ <strong>60 km autour de Montélimar</strong> sans frais. Au-delà, je travaille à distance avec mes clients partout en France - visio + outils collaboratifs, processus rodé sur mes projets <a href="/realisations/atelier-clamart/">Atelier Clamart (région parisienne)</a> et <a href="/realisations/tool-innovation-panama/">Tool Innovation Panama (Amérique centrale)</a>.</p>
+          <p>Pour les rendez-vous physiques, je me déplace dans un rayon d'environ <strong>60 km autour de Montélimar</strong> sans frais. Au-delà, je travaille à distance avec mes clients partout en France - visio + outils collaboratifs, processus rodé sur mes projets <a href="/realisations/atelier-clamart/">Atelier Clamart (région parisienne)</a> et Tool Innovation Panamá (Amérique centrale) - <a href="/realisations/tool-innovation-panama/">deux</a> <a href="/realisations/toolinnov-ecommerce/">projets</a> livrés à ce même client, entièrement à distance.</p>
           <p><a href="/agence-web-montelimar/" class="cta-link">→ Voir la page dédiée Agence web Montélimar</a></p>
         </div>
       </div>
@@ -285,247 +288,77 @@
       <div class="section-header reveal">
         <span class="section-label">Réalisations</span>
         <h2 class="section-title">En production.</h2>
-        <p class="section-desc">Des produits livrés, déployés, utilisés au quotidien.</p>
+        <p class="section-desc">Trois produits livrés, déployés, utilisés au quotidien.</p>
       </div>
-      <div class="projects-list">
+      <div class="projects-grid">
 
-        <article class="showcase reveal rd1">
-          <div class="showcase-body">
-
-            <div class="showcase-header">
-              <span class="project-label">Client · Tool Innovation Panama</span>
-              <h3>Connecteur Odoo ↔ Wix</h3>
-              <p class="showcase-desc">Synchronisation bidirectionnelle Odoo ↔ Wix : dashboard temps réel, génération de contenu par IA, transit automatique des commandes. Application desktop livrée clé en main (Mac & Windows).</p>
-              <div class="showcase-impact">
-                <div class="impact-item">
-                  <span class="impact-label">Avant</span>
-                  <span>Ressaisie manuelle entre deux systèmes, erreurs de stock, commandes perdues</span>
-                </div>
-                <div class="impact-item impact-item--after">
-                  <span class="impact-label impact-label--after">Après</span>
-                  <span>Catalogue synchronisé en temps réel, commandes transitées sans intervention, zéro ressaisie</span>
-                </div>
-              </div>
+        <article class="project-card reveal rd1">
+          <a href="/realisations/toolinnov-ecommerce/" class="project-card-link">
+            <div class="project-card-media">
+              <img src="/screenshots/toolinnov-home.png" alt="toolinnov.com - boutique e-commerce sur mesure au Panamá" loading="lazy" />
+              <span class="project-card-badge">2ᵉ projet pour ce client</span>
             </div>
-
-            <div class="showcase-features is-collapsed">
-
-              <div class="feature-row reveal rd1" data-src="/screenshots/dashboard.png">
-                <div class="feature-media">
-                  <img src="/screenshots/dashboard.png" alt="Dashboard - monitoring temps réel" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Dashboard</span>
-                  <h4>Monitoring centralisé</h4>
-                  <p>État de la sync, alertes, métriques clés. Tout l'écosystème Odoo ↔ Wix en un coup d'œil.</p>
-                </div>
+            <div class="project-card-body">
+              <span class="project-card-client">Client · Tool Innovation Panamá</span>
+              <h3>Site e-commerce toolinnov.com</h3>
+              <p>Wix remplacé par une plateforme sur mesure : catalogue synchronisé avec Zoho Books, comptes pro, paiements locaux, 3 langues, back-office avec assistant IA.</p>
+              <div class="project-stack">
+                <span>Next.js</span>
+                <span>TypeScript</span>
+                <span>PostgreSQL</span>
+                <span>Zoho Books</span>
               </div>
-
-              <div class="feature-row feature-row--reverse" data-src="/screenshots/ia-seo.png">
-                <div class="feature-media feature-media--compact">
-                  <img src="/screenshots/ia-seo.png" alt="IA & SEO - génération Gemini" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">IA & SEO</span>
-                  <h4>Contenu produit généré par IA</h4>
-                  <p>Fiches produit rédigées par Google Gemini, SEO optimisé automatiquement sur tout le catalogue.</p>
-                </div>
-              </div>
-
-              <div class="feature-row" data-src="/screenshots/commande.png">
-                <div class="feature-media">
-                  <img src="/screenshots/commande.png" alt="Commandes - transit automatique Wix → Odoo" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Commandes</span>
-                  <h4>Commandes en transit automatique</h4>
-                  <p>Chaque commande Wix remonte dans Odoo avec le bon produit, le bon client, sans intervention.</p>
-                </div>
-              </div>
-
-              <div class="feature-row feature-row--reverse" data-src="/screenshots/produit.png">
-                <div class="feature-media">
-                  <img src="/screenshots/produit.png" alt="Produits - fiches produit synchronisées" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Produits</span>
-                  <h4>Catalogue unifié</h4>
-                  <p>Prix, stock, images, descriptions SEO. Le catalogue Odoo se reflète sur Wix en temps réel.</p>
-                </div>
-              </div>
-
-              <div class="feature-row" data-src="/screenshots/sync.png">
-                <div class="feature-media">
-                  <img src="/screenshots/sync.png" alt="Synchronisation bidirectionnelle Odoo ↔ Wix" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Synchronisation</span>
-                  <h4>Réconciliation automatique</h4>
-                  <p>Détection de conflits, résolution automatique, sync continue. Les deux systèmes restent alignés.</p>
-                </div>
-              </div>
-
+              <span class="project-card-cta">Lire l'étude de cas
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
             </div>
-
-            <button class="showcase-expand-btn" type="button">
-              Explorer les fonctionnalités
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-
-            <button class="showcase-demo-btn" id="showcase-demo-btn" type="button">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              Voir la démo
-            </button>
-
-            <div class="project-stack">
-              <span>Node.js</span>
-              <span>TypeScript</span>
-              <span>React</span>
-              <span>Express</span>
-              <span>SQLite</span>
-              <span>Google Gemini</span>
-              <span>API Odoo</span>
-              <span>API Wix</span>
-            </div>
-
-          </div>
+          </a>
         </article>
 
-        <article class="showcase showcase--atelier reveal rd2">
-          <div class="showcase-body">
-
-            <div class="showcase-header">
-              <span class="project-label">Client · L'Atelier Clamart</span>
-              <h3>Plateforme complète pour atelier d'arts créatifs</h3>
-              <p class="showcase-desc">Réservation, abonnements, crédits, planning, paiement Stripe, liste d'attente, mails transactionnels, back-office admin. Une plateforme pensée de A à Z pour remplacer les Google Sheets, les mails manuels et le tableau blanc.</p>
-              <div class="showcase-impact">
-                <div class="impact-item">
-                  <span class="impact-label">Avant</span>
-                  <span>Cahier papier, tableur Excel, réservations par téléphone, croix cochées à la main</span>
-                </div>
-                <div class="impact-item impact-item--after">
-                  <span class="impact-label impact-label--after">Après</span>
-                  <span>Réservations, paiements, planning et communication. 100% automatisés, zéro papier</span>
-                </div>
-              </div>
+        <article class="project-card reveal rd2">
+          <a href="/realisations/atelier-clamart/" class="project-card-link">
+            <div class="project-card-media">
+              <img src="/screenshots/atelier-planning.png" alt="L'Atelier Clamart - plateforme de réservation et back-office" loading="lazy" />
+              <span class="project-card-badge">En ligne · atelierclamart.fr</span>
             </div>
-
-            <a href="https://www.atelierclamart.fr" target="_blank" rel="noopener noreferrer" class="showcase-preview">
-              <div class="showcase-preview-frame">
-                <iframe src="https://www.atelierclamart.fr" title="L'Atelier Clamart - site live" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
-                <div class="showcase-preview-overlay"></div>
+            <div class="project-card-body">
+              <span class="project-card-client">Client · L'Atelier Clamart</span>
+              <h3>Plateforme pour atelier d'arts créatifs</h3>
+              <p>Réservations, abonnements, crédits, paiement Stripe, planning et back-office : le cahier papier et Excel remplacés par une plateforme 100 % automatisée.</p>
+              <div class="project-stack">
+                <span>Next.js</span>
+                <span>PostgreSQL</span>
+                <span>Stripe</span>
+                <span>Brevo</span>
               </div>
-              <span class="showcase-preview-cta">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Visiter le site
+              <span class="project-card-cta">Lire l'étude de cas
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
               </span>
-            </a>
-
-            <div class="showcase-features is-collapsed">
-
-              <div class="feature-row reveal rd1" data-src="/screenshots/atelier-planning.png">
-                <div class="feature-media">
-                  <img src="/screenshots/atelier-planning.png" alt="Planning hebdomadaire - vue admin avec créneaux et profs" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Planning</span>
-                  <h4>Vue semaine, jour par jour</h4>
-                  <p>Créneaux par prof, par lieu, par catégorie d'âge. Taux de remplissage en temps réel, récap charge enseignant en bas de page. Le planning qui remplace le tableau blanc.</p>
-                </div>
-              </div>
-
-              <div class="feature-row feature-row--reverse reveal" data-src="/screenshots/admin-overview.png">
-                <div class="feature-media">
-                  <img src="/screenshots/admin-overview.png" alt="Tableau de bord admin - KPIs et stats" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Tableau de bord</span>
-                  <h4>Les chiffres clés en un coup d'œil</h4>
-                  <p>Réservations du jour, activité du mois, nouveaux inscrits, clients actifs. Les 4 indicateurs essentiels visibles dès la connexion admin.</p>
-                </div>
-              </div>
-
-              <div class="feature-row reveal" data-src="/screenshots/admin-gestion.png">
-                <div class="feature-media">
-                  <img src="/screenshots/admin-gestion.png" alt="Gestion quotidienne - planning, réservations, clients, abonnements" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Gestion quotidienne</span>
-                  <h4>Tout le métier dans une interface</h4>
-                  <p>Planning, réservations, clients, abonnements. Chaque module ouvre sur une vue dédiée. Programme mensuel, semaine type, formules et catégories d'âge configurables.</p>
-                </div>
-              </div>
-
-              <div class="feature-row feature-row--reverse reveal" data-src="/screenshots/admin-contenu.png">
-                <div class="feature-media">
-                  <img src="/screenshots/admin-contenu.png" alt="Contenu & Programme - ateliers, semaine type, formules, catégories" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Contenu & Programme</span>
-                  <h4>Ateliers, formules et catégories</h4>
-                  <p>Programme thématique du mois, semaine type avec créneaux récurrents, formules de forfaits (10, 15, 20 séances), catégories par public et tranche d'âge.</p>
-                </div>
-              </div>
-
-              <div class="feature-row reveal" data-src="/screenshots/admin-comms.png">
-                <div class="feature-media">
-                  <img src="/screenshots/admin-comms.png" alt="Communication - demandes profs et notes partagées" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Communication</span>
-                  <h4>Coordination équipe intégrée</h4>
-                  <p>Demandes de séances par les profs, notes partagées entre l'équipe. Plus besoin de WhatsApp ou de post-its. Tout est centralisé dans l'outil.</p>
-                </div>
-              </div>
-
-              <div class="feature-row feature-row--reverse reveal" data-src="/screenshots/admin-finance-config.png">
-                <div class="feature-media">
-                  <img src="/screenshots/admin-finance-config.png" alt="Finance et configuration - paiements, stats, droits d'accès" loading="lazy" />
-                </div>
-                <div class="feature-text">
-                  <span class="feature-label">Finance & Config</span>
-                  <h4>Paiements, stats et paramétrage</h4>
-                  <p>Suivi des paiements, stats financières (CA, revenus, ventes par formule). Configuration complète : activités artistiques, profs, lieux, intégration Instagram, mise en avant et droits d'accès par rôle.</p>
-                </div>
-              </div>
-
             </div>
+          </a>
+        </article>
 
-            <button class="showcase-expand-btn" type="button">
-              Explorer les fonctionnalités
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-
-            <div class="showcase-highlights">
-              <div class="showcase-highlight">
-                <span class="showcase-highlight-title">Crédits par catégorie</span>
-                <span class="showcase-highlight-desc">Chaque tranche d'âge a ses crédits, ses formules, ses dates d'expiration. Alertes auto quand ça approche.</span>
-              </div>
-              <div class="showcase-highlight">
-                <span class="showcase-highlight-title">Abonnements annuels</span>
-                <span class="showcase-highlight-desc">Choix du créneau, réservation automatique chaque semaine, exclusion des vacances scolaires. Changement de créneau en cours d'année.</span>
-              </div>
-              <div class="showcase-highlight">
-                <span class="showcase-highlight-title">Liste d'attente intelligente</span>
-                <span class="showcase-highlight-desc">File d'attente automatique. Place libérée → notification avec 2h pour confirmer. Pas de réponse → passage au suivant.</span>
-              </div>
-              <div class="showcase-highlight">
-                <span class="showcase-highlight-title">Checkout Stripe intégré</span>
-                <span class="showcase-highlight-desc">Achat de crédits + réservation directe dans la même transaction. CB, factures auto, remboursement conditionnel.</span>
-              </div>
+        <article class="project-card reveal rd3">
+          <a href="/realisations/tool-innovation-panama/" class="project-card-link">
+            <div class="project-card-media">
+              <img src="/screenshots/dashboard.png" alt="Connecteur Odoo Wix - dashboard de monitoring temps réel" loading="lazy" />
+              <span class="project-card-badge">1ᵉʳ projet Tool Innovation</span>
             </div>
-
-            <div class="project-stack">
-              <span>Next.js</span>
-              <span>React</span>
-              <span>TypeScript</span>
-              <span>PostgreSQL</span>
-              <span>Stripe</span>
-              <span>Tailwind</span>
-              <span>Brevo</span>
+            <div class="project-card-body">
+              <span class="project-card-client">Client · Tool Innovation Panamá</span>
+              <h3>Connecteur Odoo ↔ Wix</h3>
+              <p>Produits, stocks et commandes synchronisés en temps réel entre l'ERP et la boutique, fiches SEO générées par IA. Zéro ressaisie. App desktop Mac &amp; Windows.</p>
+              <div class="project-stack">
+                <span>Node.js</span>
+                <span>Electron</span>
+                <span>React</span>
+                <span>Gemini</span>
+              </div>
+              <span class="project-card-cta">Lire l'étude de cas
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
             </div>
-
-          </div>
+          </a>
         </article>
 
       </div>
@@ -737,17 +570,6 @@
 
   <!-- Placeholder injecté par partials-loader.js (charge /partials/footer.html) -->
   <div id="footer-placeholder"></div>
-
-  <!-- Video Modal -->
-  <div class="video-modal" id="video-modal" aria-hidden="true">
-    <div class="video-modal-backdrop"></div>
-    <div class="video-modal-content">
-      <button class="video-modal-close" aria-label="Fermer">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
-      </button>
-      <video id="video-modal-player" src="/video/demo-tool-innovation.mp4" controls preload="none"></video>
-    </div>
-  </div>
 
   <!-- Back to top -->
   <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">
