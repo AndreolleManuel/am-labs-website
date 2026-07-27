@@ -2,7 +2,7 @@
 
 .section.projects {
   background: var(--color-bg-alt);
-  z-index: 4;
+  z-index: 6;
   box-shadow: 0 -10px 60px rgba(139, 92, 246, 0.1),
               0 -1px 0 rgba(139, 92, 246, 0.18);
   /* top computed dynamically by JS to stick when the bottom reaches the viewport */

@@ -211,36 +211,37 @@
    insérées sur la home (zones d'intervention + FAQ).
 
    La home empile les sections par z-index croissant + position sticky :
-   hero(0) -> about(2) -> services(3) -> method(3) -> projects(4) -> contact(5) -> footer(10)
+   hero(0) -> services(2) -> about(3) -> method(4) -> zones(5)
+   -> projects(6) -> faq(7) -> contact(8) -> footer(11)
 
    On insère :
-   - zones entre method (3) et projects (4) -> z-index 4
-   - faq entre projects (4) et contact (5) -> z-index 5
+   - zones entre method (4) et projects (6) -> z-index 5
+   - faq entre projects (6) et contact (8) -> z-index 7
 
    Et on remonte contact + footer pour qu'ils continuent a couvrir derriere.
    ============================================== */
 
-/* Section "Zones d'intervention" - couvre method/services (z 3)
+/* Section "Zones d'intervention" - couvre method (z 4)
    La classe .section.about lui donne deja background var(--color-bg-alt) - opaque, c'est OK
    Sticky pour s'empiler comme les autres sections de la home */
 .section.about#zones {
-  z-index: 4;
+  z-index: 5;
   position: sticky;
   top: 0;
 }
 
-/* Section "FAQ" - couvre projects (z 4)
+/* Section "FAQ" - couvre projects (z 6)
    Pas de classe specifique => on lui donne explicitement background opaque + sticky */
 .section#faq {
-  z-index: 5;
+  z-index: 7;
   position: sticky;
   top: 0;
   background: var(--color-bg);
 }
 
-/* Contact remonte a 6 pour couvrir FAQ (5) */
+/* Contact remonte a 8 pour couvrir FAQ (7) */
 .section.contact {
-  z-index: 6;
+  z-index: 8;
 }
 
 /* Footer remonte a 11 pour rester au-dessus de tout */

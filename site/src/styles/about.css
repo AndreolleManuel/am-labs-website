@@ -2,7 +2,7 @@
 
 .section.about {
   background: var(--color-bg-alt);
-  z-index: 2;
+  z-index: 3;
 }
 
 .about-grid {

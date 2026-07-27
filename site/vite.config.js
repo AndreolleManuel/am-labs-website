@@ -24,6 +24,7 @@ export default defineConfig({
         // Services
         creationSiteWeb: resolve(__dirname, 'services/creation-site-web/index.html'),
         applicationSurMesure: resolve(__dirname, 'services/application-sur-mesure/index.html'),
+        assistantIaSurMesure: resolve(__dirname, 'services/assistant-ia-sur-mesure/index.html'),
         connecteurErpEcommerce: resolve(__dirname, 'services/connecteur-erp-ecommerce/index.html'),
         auditSeoNumerique: resolve(__dirname, 'services/audit-seo-numerique/index.html'),
         maintenanceSiteWeb: resolve(__dirname, 'services/maintenance-site-web/index.html'),

@@ -9,7 +9,7 @@ const doc = document.getElementById('brief-doc');
 if (doc) {
 
   const $ = id => document.getElementById(id);
-  const state = { intent: null, services: [], modules: [], budgetRange: 0, timeline: null, mType: null, mCadre: null, mDuree: null, mRemote: null };
+  const state = { intent: null, services: [], modules: [], budgetRange: null, timeline: null, mType: null, mCadre: null, mDuree: null, mRemote: null };
 
   const EN = document.documentElement.lang === 'en';
 
@@ -18,6 +18,7 @@ if (doc) {
       { id: 'dashboard', label: 'Dashboard', desc: 'KPIs, metrics, reporting' },
       { id: 'users', label: 'Users', desc: 'Accounts, roles, permissions' },
       { id: 'automation', label: 'Automation', desc: 'Workflows, scheduled tasks' },
+      { id: 'ai-assistant', label: 'AI assistant', desc: 'Built into the application' },
       { id: 'api', label: 'API', desc: 'Connect your existing tools' },
       { id: 'admin', label: 'Back office', desc: 'Management interface' },
       { id: 'notifs', label: 'Notifications', desc: 'Emails, alerts, reminders' },
@@ -35,6 +36,23 @@ if (doc) {
       { id: 'backoffice', label: 'Back office', desc: 'Content and order management' },
       { id: 'seo', label: 'SEO', desc: 'Search-engine optimized' },
       { id: 'newsletter', label: 'Newsletter', desc: 'Emails, automation' },
+      { id: 'ai-search', label: 'AI search', desc: 'Products, content, support' },
+      { id: 'ai-content', label: 'AI content', desc: 'Pages, listings, descriptions' },
+    ],
+    automation: [
+      { id: 'workflows', label: 'Workflows', desc: 'Automated multi-step tasks' },
+      { id: 'document-generation', label: 'Documents', desc: 'Quotes, reports, PDFs' },
+      { id: 'email-workflows', label: 'Emails', desc: 'Follow-ups, replies, alerts' },
+      { id: 'tool-integration', label: 'Integrations', desc: 'Data flowing between tools' },
+      { id: 'ai-processing', label: 'AI processing', desc: 'Sort, extract, summarize' },
+    ],
+    ai: [
+      { id: 'knowledge-search', label: 'Knowledge search', desc: 'Answers from your documents' },
+      { id: 'content-drafting', label: 'Content drafting', desc: 'Replies, quotes, listings' },
+      { id: 'document-analysis', label: 'Document analysis', desc: 'Extract and summarize' },
+      { id: 'request-sorting', label: 'Request sorting', desc: 'Classify and prioritize' },
+      { id: 'tool-actions', label: 'Actions in tools', desc: 'Prepare or run operations' },
+      { id: 'human-validation', label: 'Human approval', desc: 'You keep final control' },
     ],
     web3: [
       { id: 'chain-data', label: 'On-chain analytics', desc: 'Blockchain data extraction' },
@@ -47,6 +65,7 @@ if (doc) {
       { id: 'dashboard', label: 'Dashboard', desc: 'Tableaux de bord, métriques' },
       { id: 'users', label: 'Utilisateurs', desc: 'Comptes, rôles, droits' },
       { id: 'automation', label: 'Automatisations', desc: 'Workflows, tâches auto' },
+      { id: 'ai-assistant', label: 'Assistant IA', desc: "Intégré à l'application" },
       { id: 'api', label: 'API', desc: 'Connexion à vos outils' },
       { id: 'admin', label: 'Back-office', desc: 'Interface de gestion' },
       { id: 'notifs', label: 'Notifications', desc: 'Emails, alertes, rappels' },
@@ -64,6 +83,23 @@ if (doc) {
       { id: 'backoffice', label: 'Back-office', desc: 'Gestion contenu et commandes' },
       { id: 'seo', label: 'SEO', desc: 'Référencement optimisé' },
       { id: 'newsletter', label: 'Newsletter', desc: 'Mails, automation' },
+      { id: 'ai-search', label: 'Recherche IA', desc: 'Produits, contenus, assistance' },
+      { id: 'ai-content', label: 'Contenus par IA', desc: 'Pages, fiches, descriptions' },
+    ],
+    automation: [
+      { id: 'workflows', label: 'Workflows', desc: 'Tâches automatiques en chaîne' },
+      { id: 'document-generation', label: 'Documents', desc: 'Devis, rapports, PDF' },
+      { id: 'email-workflows', label: 'Emails', desc: 'Relances, réponses, alertes' },
+      { id: 'tool-integration', label: 'Intégrations', desc: 'Données entre vos outils' },
+      { id: 'ai-processing', label: 'Traitement par IA', desc: 'Trier, extraire, résumer' },
+    ],
+    ai: [
+      { id: 'knowledge-search', label: 'Recherche documentaire', desc: 'Réponses depuis vos documents' },
+      { id: 'content-drafting', label: 'Préparation de contenus', desc: 'Réponses, devis, fiches' },
+      { id: 'document-analysis', label: 'Analyse de documents', desc: 'Extraire et résumer' },
+      { id: 'request-sorting', label: 'Tri des demandes', desc: 'Classer et prioriser' },
+      { id: 'tool-actions', label: 'Actions dans vos outils', desc: 'Préparer ou exécuter' },
+      { id: 'human-validation', label: 'Validation humaine', desc: 'Vous gardez le contrôle' },
     ],
     web3: [
       { id: 'chain-data', label: 'Analyse on-chain', desc: 'Extraction données blockchain' },
@@ -74,8 +110,22 @@ if (doc) {
   };
 
   const budgetRanges = EN
-    ? ['< €1,000', '€1,000 - €3,000', '€3,000 - €7,000', '€7,000 - €15,000', '€15,000+']
-    : ['< 1 000 €', '1 000 - 3 000 €', '3 000 - 7 000 €', '7 000 - 15 000 €', '15 000 €+'];
+    ? {
+        unknown: "Let's define it together",
+        lt3: 'Under €3,000',
+        '3-7': '€3,000 to €7,000',
+        '7-15': '€7,000 to €15,000',
+        '15-30': '€15,000 to €30,000',
+        '30plus': 'Over €30,000',
+      }
+    : {
+        unknown: 'À définir ensemble',
+        lt3: 'Moins de 3 000 €',
+        '3-7': '3 000 à 7 000 €',
+        '7-15': '7 000 à 15 000 €',
+        '15-30': '15 000 à 30 000 €',
+        '30plus': 'Plus de 30 000 €',
+      };
   const skipServices = ['other', 'conseil'];
 
   function bounce(el) { gsap.fromTo(el, { scale: 0.92 }, { scale: 1, duration: 0.25, ease: 'back.out(2)' }); }
@@ -90,27 +140,6 @@ if (doc) {
   function hideRow(id) {
     const row = $(id);
     if (row && !row.classList.contains('flow-block--hidden')) row.classList.add('flow-block--hidden');
-  }
-
-  function getMinRange() {
-    const svcCount = state.services.filter(s => !skipServices.includes(s)).length;
-    const modCount = state.modules.length;
-
-    // Score = services x 2 + modules
-    // 1 service + 1 module = 3, 2 services + 5 modules = 9
-    const score = svcCount * 2 + modCount;
-
-    if (score <= 3) return 0;   // < 1 000 € — 1 service + 1 module
-    if (score <= 6) return 1;   // 1 000 - 3 000 € — 1 service + 2-4 modules
-    if (score <= 10) return 2;  // 3 000 - 7 000 € — 1-2 services + a few modules
-    if (score <= 16) return 3;  // 7 000 - 15 000 € — 2 services + many modules
-    return 4;                   // 15 000 €+ — large multi-service project
-  }
-
-  function updateSliderTrack() {
-    const s = $('brief-slider');
-    const pct = ((+s.value - +s.min) / (+s.max - +s.min)) * 100;
-    s.style.background = `linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-hover) ${pct}%, rgba(139,92,246,0.15) ${pct}%)`;
   }
 
   // ========== Render module buttons ==========
@@ -139,11 +168,6 @@ if (doc) {
         bounce(btn);
         if (state.modules.includes(mod.id)) state.modules = state.modules.filter(m => m !== mod.id);
         else state.modules.push(mod.id);
-        // Auto-adjust budget to match selection
-        const slider = $('brief-slider');
-        const minR = getMinRange();
-        state.budgetRange = minR;
-        slider.value = minR;
         refresh();
       });
       container.appendChild(btn);
@@ -162,8 +186,8 @@ if (doc) {
       if (state.services.length > 0 && !isSkip) {
         renderModules();
         if (state.modules.length > 0) { showRow('br-budget-row'); } else { hideRow('br-budget-row'); hideRow('br-timeline-row'); hideRow('flow-contact'); }
-        if (state.modules.length > 0) { showRow('br-timeline-row'); } else { hideRow('br-timeline-row'); hideRow('flow-contact'); }
-        if (state.timeline) { showRow('flow-contact'); } else { hideRow('flow-contact'); }
+        if (state.budgetRange) { showRow('br-timeline-row'); } else { hideRow('br-timeline-row'); hideRow('flow-contact'); }
+        if (state.budgetRange && state.timeline) { showRow('flow-contact'); } else { hideRow('flow-contact'); }
       } else if (isSkip) {
         hideRow('br-modules-row'); hideRow('br-budget-row'); hideRow('br-timeline-row');
         showRow('flow-contact');      } else {
@@ -186,29 +210,6 @@ if (doc) {
 
     if (!isProject && !isMission) hideRow('flow-contact');
 
-    // Budget display
-    $('brief-slider-label').textContent = budgetRanges[state.budgetRange];
-    updateSliderTrack();
-
-    // Hint
-    const hint = $('brief-hint');
-    if (isProject && state.modules.length > 0) {
-      const r = state.budgetRange, n = state.modules.length;
-      const min = getMinRange();
-      if (r < min) { hint.textContent = EN ? `${n} features selected: this range is tight.` : `${n} fonctionnalités : cette fourchette est serrée.`; hint.classList.add('is-warning'); }
-      else { hint.textContent = EN ? 'Indicative range. The final budget is agreed together.' : 'Fourchette indicative. Le budget définitif est discuté ensemble.'; hint.classList.remove('is-warning'); }
-    } else {
-      hint.textContent = '';
-      hint.classList.remove('is-warning');
-    }
-
-    // Easter egg
-
-    // Easter egg
-    if (state.budgetRange >= 4) {
-      const v = $('brief-slider-label');
-      if (!v.dataset.egged) { v.dataset.egged = '1'; gsap.fromTo(v, { scale: 1.15 }, { scale: 1, duration: 0.5, ease: 'back.out(3)' }); }
-    } else { $('brief-slider-label').dataset.egged = ''; }
   }
 
   // ========== Setup clickable tag groups ==========
@@ -244,11 +245,20 @@ if (doc) {
   setupTags('[data-intent]', 'intent', 'intent', 'single', () => {
     // Reset the other flow
     if (state.intent === 'project') { state.mType = null; state.mCadre = null; state.mDuree = null; state.mRemote = null; doc.querySelectorAll('[data-mt],[data-mc],[data-md],[data-mr]').forEach(t => t.classList.remove('is-selected')); }
-    else { state.services = []; state.modules = []; state.timeline = null; doc.querySelectorAll('[data-svc]').forEach(t => t.classList.remove('is-selected')); doc.querySelectorAll('#br-timeline .brief-tag').forEach(t => t.classList.remove('is-selected')); }
+    else {
+      state.services = [];
+      state.modules = [];
+      state.budgetRange = null;
+      state.timeline = null;
+      doc.querySelectorAll('[data-svc],[data-budget],[data-tl]').forEach(t => t.classList.remove('is-selected'));
+    }
   });
 
   // Services (multi-select) — cards
   setupTags('[data-svc]', 'svc', 'services', 'multi');
+
+  // Budget (single)
+  setupTags('[data-budget]', 'budget', 'budgetRange', 'single');
 
   // Timeline (single)
   setupTags('[data-tl]', 'tl', 'timeline', 'single');
@@ -261,11 +271,6 @@ if (doc) {
   });
   setupTags('[data-md]', 'md', 'mDuree', 'single');
   setupTags('[data-mr]', 'mr', 'mRemote', 'single');
-
-  // Slider
-  const slider = $('brief-slider');
-  slider.addEventListener('input', () => { state.budgetRange = +slider.value; refresh(); });
-  updateSliderTrack();
 
   // ========== Submit ==========
   let lastSubmit = 0;
@@ -326,7 +331,7 @@ if (doc) {
             $('brief-name').value = '';
             $('brief-email').value = '';
             $('brief-message').value = '';
-            state.intent = null; state.services = []; state.modules = []; state.budgetRange = 0; state.timeline = null;
+            state.intent = null; state.services = []; state.modules = []; state.budgetRange = null; state.timeline = null;
             state.mType = null; state.mCadre = null; state.mDuree = null; state.mRemote = null;
             doc.querySelectorAll('.is-selected').forEach(el => el.classList.remove('is-selected'));
             ['br-type-row', 'br-modules-row', 'br-budget-row', 'br-timeline-row', 'br-mtype-row', 'br-mcadre-row', 'br-mduree-row', 'br-mremote-row', 'flow-contact'].forEach(id => {
