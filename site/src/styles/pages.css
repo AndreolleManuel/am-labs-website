@@ -290,6 +290,12 @@ a, button, .hero-cta, .hero-secondary, .nav-cta {
   cursor: pointer;
 }
 
+a.service-card,
+a.service-card h3,
+a.service-card p {
+  cursor: pointer;
+}
+
 /* ==============================================
    Études de cas — composants visuels
    (Chiffres clés, stack pills, avant/après)
