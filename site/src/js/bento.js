@@ -23,7 +23,7 @@ if (rows.length || shots.length) {
   lightbox.innerHTML = `
     <div class="bento-lightbox-backdrop"></div>
     <div class="bento-lightbox-scroll">
-      <img class="bento-lightbox-img" src="" alt="" />
+      <img class="bento-lightbox-img" src="" alt="" width="1" height="1" />
     </div>
     <button class="bento-lightbox-close" aria-label="Fermer">
       <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
@@ -37,8 +37,12 @@ if (rows.length || shots.length) {
   const img = lightbox.querySelector('.bento-lightbox-img');
   let previousFocus = null;
 
-  function openLightbox(src, alt) {
+  function openLightbox(src, alt, sourceImage) {
     previousFocus = document.activeElement;
+    const width = Number(sourceImage?.getAttribute('width')) || sourceImage?.naturalWidth || 1;
+    const height = Number(sourceImage?.getAttribute('height')) || sourceImage?.naturalHeight || 1;
+    img.setAttribute('width', String(width));
+    img.setAttribute('height', String(height));
     img.src = src;
     img.alt = alt;
     lightbox.classList.add('open');
@@ -67,8 +71,9 @@ if (rows.length || shots.length) {
   rows.forEach((row) => {
     function activate() {
       const src = row.dataset.src;
-      const alt = row.querySelector('img')?.alt || '';
-      if (src) openLightbox(src, alt);
+      const sourceImage = row.querySelector('img');
+      const alt = sourceImage?.alt || '';
+      if (src) openLightbox(src, alt, sourceImage);
     }
     row.addEventListener('click', activate);
     row.addEventListener('keydown', (e) => {
@@ -86,7 +91,7 @@ if (rows.length || shots.length) {
     media.setAttribute('tabindex', '0');
     media.setAttribute('aria-label', thumb.alt || 'Voir en grand');
     function activate() {
-      openLightbox(thumb.getAttribute('src'), thumb.alt || '');
+      openLightbox(thumb.getAttribute('src'), thumb.alt || '', thumb);
     }
     media.addEventListener('click', activate);
     media.addEventListener('keydown', (e) => {
