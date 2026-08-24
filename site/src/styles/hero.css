@@ -69,14 +69,14 @@
   align-items: center;
 }
 
-/* Anti-FOUC: hero elements invisible before GSAP */
+/* Keep the commercial hero visible from the first paint. */
 .hero-brand,
 .hero-tagline,
 .hero-title,
 .hero-subtitle,
 .hero-actions,
 .hero-badge {
-  opacity: 0;
+  opacity: 1;
   will-change: clip-path;
 }
 

@@ -3,7 +3,7 @@
  *
  * A single laser dot sweeps the entire hero-inner from top to bottom,
  * zigzagging horizontally (like a CNC head on its rail).
- * ALL elements are revealed simultaneously as the laser passes.
+ * The commercial content stays visible while the decorative sweep runs.
  *
  * Safari mobile fix (mars 2026):
  *   - Uses a real <div> clip wrapper instead of per-frame webkitMaskImage updates
@@ -90,16 +90,6 @@ export async function initHeroAnimation() {
   for (const el of elements) {
     gsap.set(el, { opacity: 1 });
   }
-
-  // Reveal mechanism:
-  //   - Safari: use clip-path inset (NOT webkitMaskImage which recalcs gradient every frame)
-  //   - Others: same clip-path inset (consistent, GPU-composited)
-  //
-  // Previous Safari code used webkitMaskImage with a linear-gradient updated every frame.
-  // This caused massive perf issues on mobile Safari because WebKit rasterizes the
-  // mask image on the CPU each time the gradient string changes.
-  // clip-path: inset() is GPU-composited on all browsers including Safari.
-  gsap.set(inner, { clipPath: 'inset(0 0 100% 0)', willChange: 'clip-path' });
 
   // Force reflow to ensure rects are accurate
   inner.offsetHeight;
@@ -217,11 +207,6 @@ export async function initHeroAnimation() {
         const sparkX = sparkMargin + (laserVpX - innerLeft);
         const sparkY = sparkMargin + (laserVpY - innerTop);
 
-        // Reveal — clip-path inset (GPU-composited on all browsers including Safari)
-        const revealPx = laserVpY - innerTop;
-        const revealPct = Math.max(0, Math.min((revealPx / innerRect.height) * 100, 100));
-        inner.style.clipPath = `inset(0 0 ${Math.max(100 - revealPct, 0)}% 0)`;
-
         // Dot fade at end
         if (progress > 0.93) {
           dot.style.opacity = String(Math.max(0, (1 - progress) / 0.07));
@@ -260,7 +245,7 @@ export async function initHeroAnimation() {
           canvasRunning = false;
           dot.remove();
           if (sparkCanvas) sparkCanvas.remove();
-          gsap.set(inner, { clearProps: 'clipPath,willChange' });
+          gsap.set(inner, { clearProps: 'willChange' });
           for (const el of elements) {
             gsap.set(el, { clearProps: 'willChange' });
           }
