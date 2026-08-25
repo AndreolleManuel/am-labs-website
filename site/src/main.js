@@ -23,12 +23,14 @@ import './js/wizard.js';
 import './js/bento.js';
 import './js/videoModal.js';
 import './js/showcaseExpand.js';
+import { initClickAnalytics } from './js/clickAnalytics.js';
 
 import './js/easter.js';
 
 // Charge nav + footer dans les pages qui ont les placeholders
 // (sur la home actuelle qui a sa nav inline, le loader détecte l'absence de placeholder et ne fait rien)
 loadPartials();
+initClickAnalytics();
 
 // Animations (GSAP + Lenis)
 import { lenis } from './js/animations/index.js';
@@ -141,4 +143,3 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   });
 });
-
