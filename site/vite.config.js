@@ -5,7 +5,20 @@ import { dirname } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-export default defineConfig({
+const cloudflareWebAnalytics = {
+  name: 'cloudflare-web-analytics',
+  transformIndexHtml: {
+    order: 'post',
+    handler(html) {
+      const snippet = `<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"bb16935c50d048f4b2555c94532fa9b5"}'></script><!-- End Cloudflare Web Analytics -->`;
+
+      return html.replace('</body>', `  ${snippet}\n</body>`);
+    },
+  },
+};
+
+export default defineConfig(({ command }) => ({
+  plugins: command === 'build' ? [cloudflareWebAnalytics] : [],
   server: {
     port: 3000,
     allowedHosts: true,
@@ -48,4 +61,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
