@@ -28,9 +28,6 @@ import './js/showcaseExpand.js';
 import { initClickAnalytics } from './js/clickAnalytics.js';
 import { getSectionScrollTarget, initializeStackingScroll } from './js/stacking-scroll.js';
 
-import './js/easter.js';
-
-document.body.classList.add('ready');
 initializeCookieConsent(document, window);
 
 // Charge nav + footer dans les pages qui ont les placeholders
@@ -38,25 +35,18 @@ initializeCookieConsent(document, window);
 loadPartials();
 initClickAnalytics();
 
-// Animations (GSAP + Lenis)
-import { lenis } from './js/animations/index.js';
-import { initHeroAnimation } from './js/animations/hero.js';
-import { initReveals } from './js/animations/reveals.js';
-
-// Start hero animation without delaying first paint for font loading.
-initHeroAnimation();
-initReveals();
-
 // Sticky stacking shared by the home and internal page heroes.
 initializeStackingScroll(document, window);
 
-// Back to top
+// Back to top — native, immediate scrolling.
 const backToTop = document.getElementById('back-to-top');
 if (backToTop) {
-  lenis.on('scroll', () => {
+  const updateBackToTop = () => {
     backToTop.classList.toggle('is-visible', window.scrollY > window.innerHeight);
-  });
-  backToTop.addEventListener('click', () => lenis.scrollTo(0, { duration: 1.2 }));
+  };
+  window.addEventListener('scroll', updateBackToTop, { passive: true });
+  updateBackToTop();
+  backToTop.addEventListener('click', () => window.scrollTo(0, 0));
 }
 
 // Legal notice modal
@@ -86,30 +76,31 @@ if (aboutToggle && aboutMore) {
 // Scroll progress bar
 const progressBar = document.getElementById('scroll-progress');
 if (progressBar) {
-  lenis.on('scroll', () => {
+  const updateProgressBar = () => {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     progressBar.style.width = `${progress}%`;
-  });
+  };
+  window.addEventListener('scroll', updateProgressBar, { passive: true });
+  updateProgressBar();
 }
 
-// Anchor links → smooth scroll via Lenis
+// Anchor links — native, immediate scroll.
 // Sticky sections use their cumulative normal-flow height as target.
-
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', (e) => {
     const href = anchor.getAttribute('href');
     if (href === '#') {
       e.preventDefault();
-      lenis.scrollTo(0);
+      window.scrollTo(0, 0);
       return;
     }
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
       const pos = getSectionScrollTarget(target, document);
-      lenis.scrollTo(pos, { offset: 0 });
+      window.scrollTo(0, pos);
     }
   });
 });

@@ -50,13 +50,6 @@
     radial-gradient(ellipse at 30% 50%, rgba(89, 21, 109, 0.12) 0%, transparent 50%),
     radial-gradient(ellipse at 70% 50%, rgba(42, 0, 53, 0.08) 0%, transparent 50%);
   filter: blur(60px);
-  animation: glowDrift 12s ease-in-out infinite;
-}
-
-@keyframes glowDrift {
-  0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
-  33% { transform: translateX(-48%) translateY(-15px) scale(1.02); }
-  66% { transform: translateX(-52%) translateY(10px) scale(0.98); }
 }
 
 /* Inner — centered stack */
@@ -80,7 +73,6 @@
 .hero-actions,
 .hero-badge {
   opacity: 1;
-  will-change: clip-path;
 }
 
 /* Official brand lockup */
@@ -209,17 +201,6 @@
   border-radius: 50%;
   background: #34d399;
   box-shadow: 0 0 8px rgba(52, 211, 153, 0.5);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-glow { animation: none; }
-  .hero-badge-dot { animation: none; }
 }
 
 /* Safari mobile performance: reduce blur radius which is very expensive on WebKit */

@@ -3,8 +3,6 @@
  * Everything on one screen, inline selections, zero steps
  */
 
-import { gsap } from 'gsap';
-
 const doc = document.getElementById('brief-doc');
 if (doc) {
 
@@ -128,13 +126,10 @@ if (doc) {
       };
   const skipServices = ['other', 'conseil'];
 
-  function bounce(el) { gsap.fromTo(el, { scale: 0.92 }, { scale: 1, duration: 0.25, ease: 'back.out(2)' }); }
-
   function showRow(id) {
     const row = $(id);
     if (!row || !row.classList.contains('flow-block--hidden')) return;
     row.classList.remove('flow-block--hidden');
-    gsap.fromTo(row, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
   }
 
   function hideRow(id) {
@@ -165,7 +160,6 @@ if (doc) {
       if (state.modules.includes(mod.id)) btn.classList.add('is-selected');
       btn.addEventListener('click', () => {
         btn.classList.toggle('is-selected');
-        bounce(btn);
         if (state.modules.includes(mod.id)) state.modules = state.modules.filter(m => m !== mod.id);
         else state.modules.push(mod.id);
         refresh();
@@ -234,7 +228,6 @@ if (doc) {
             state[stateKey].push(val);
           }
         }
-        bounce(tag);
         if (onSelect) onSelect();
         refresh();
       });
@@ -278,12 +271,13 @@ if (doc) {
     if (Date.now() - lastSubmit < 30000) return; // 30s rate limit
     const btn = $('brief-submit');
     const name = $('brief-name').value.trim(), email = $('brief-email').value.trim();
-    if (!name || !email) { gsap.to(btn, { x: -6, duration: 0.08, repeat: 5, yoyo: true, ease: 'power2.inOut' }); return; }
+    if (!name) { $('brief-name').focus(); return; }
+    if (!email) { $('brief-email').focus(); return; }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) { $('brief-email').focus(); gsap.to(btn, { x: -6, duration: 0.08, repeat: 5, yoyo: true, ease: 'power2.inOut' }); return; }
-    if (!$('brief-consent').checked) { gsap.to(btn, { x: -6, duration: 0.08, repeat: 5, yoyo: true, ease: 'power2.inOut' }); return; }
+    if (!emailRegex.test(email)) { $('brief-email').focus(); return; }
+    if (!$('brief-consent').checked) { $('brief-consent').focus(); return; }
     const turnstileToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
-    if (!turnstileToken) { gsap.to(btn, { x: -6, duration: 0.08, repeat: 5, yoyo: true, ease: 'power2.inOut' }); return; }
+    if (!turnstileToken) { btn.focus(); return; }
 
     const orig = btn.textContent;
     btn.disabled = true;
@@ -320,25 +314,24 @@ if (doc) {
 
       lastSubmit = Date.now();
       if (data.success) {
-        gsap.timeline()
-          .to(btn, { opacity: 0, y: -10, duration: 0.2, ease: 'power2.in' })
-          .call(() => { btn.textContent = EN ? 'Sent! You\'ll hear back within 24h.' : 'C\'est parti ! Réponse sous 24h.'; btn.style.background = 'var(--color-success)'; })
-          .to(btn, { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' })
-          .to(btn, { duration: 3 })
-          .call(() => {
-            btn.textContent = orig; btn.style.background = ''; btn.disabled = false; gsap.set(btn, { clearProps: 'all' });
-            // Reset form
-            $('brief-name').value = '';
-            $('brief-email').value = '';
-            $('brief-message').value = '';
-            state.intent = null; state.services = []; state.modules = []; state.budgetRange = null; state.timeline = null;
-            state.mType = null; state.mCadre = null; state.mDuree = null; state.mRemote = null;
-            doc.querySelectorAll('.is-selected').forEach(el => el.classList.remove('is-selected'));
-            ['br-type-row', 'br-modules-row', 'br-budget-row', 'br-timeline-row', 'br-mtype-row', 'br-mcadre-row', 'br-mduree-row', 'br-mremote-row', 'flow-contact'].forEach(id => {
-              const el = $(id);
-              if (el) el.classList.add('flow-block--hidden');
-            });
+        btn.textContent = EN ? 'Sent! You\'ll hear back within 24h.' : 'C\'est parti ! Réponse sous 24h.';
+        btn.style.background = 'var(--color-success)';
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.style.background = '';
+          btn.disabled = false;
+          // Reset form
+          $('brief-name').value = '';
+          $('brief-email').value = '';
+          $('brief-message').value = '';
+          state.intent = null; state.services = []; state.modules = []; state.budgetRange = null; state.timeline = null;
+          state.mType = null; state.mCadre = null; state.mDuree = null; state.mRemote = null;
+          doc.querySelectorAll('.is-selected').forEach(el => el.classList.remove('is-selected'));
+          ['br-type-row', 'br-modules-row', 'br-budget-row', 'br-timeline-row', 'br-mtype-row', 'br-mcadre-row', 'br-mduree-row', 'br-mremote-row', 'flow-contact'].forEach(id => {
+            const el = $(id);
+            if (el) el.classList.add('flow-block--hidden');
           });
+        }, 3000);
       } else {
         btn.textContent = EN ? 'Error. Please try again.' : 'Erreur. Réessayez.';
         btn.style.background = '#e74c3c';

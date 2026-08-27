@@ -37,19 +37,44 @@ test('les tokens globaux définissent le thème clair violet atténué', async (
   assert.match(css, /--color-border:\s*rgba\(42,\s*0,\s*53,\s*0\.18\)/i);
 });
 
-test('toutes les entrées Vite démarrent sur le fond atténué sans flash sombre', async () => {
+test('toutes les entrées Vite sont visibles dès le premier rendu sans porte body.ready', async () => {
   assert.equal(pagePaths.length, 19);
   for (const path of pagePaths) {
     const html = await read(path);
     assert.match(html, /<script type="module" src="\/src\/main\.js"><\/script>/, path);
     assert.match(html, /html,body\{background:#f7f7f8;color:#111214;/i, path);
     assert.doesNotMatch(html, /background:#0c0b14|color:#e8e6f0/i, path);
+    assert.doesNotMatch(html, /body\s*\{[^}]*opacity\s*:\s*0|body\.ready\s*\{/s, `${path}: aucune opacité initiale`);
   }
 });
 
-test('le point d’entrée révèle toujours le body masqué par le style initial', async () => {
+test('le point d’entrée ne dépend plus d’une classe ready pour afficher la page', async () => {
   const main = await read('src/main.js');
-  assert.match(main, /document\.body\.classList\.add\(['"]ready['"]\);/);
+  assert.doesNotMatch(main, /document\.body\.classList\.add\(['"]ready['"]\);/);
+});
+
+test('le site reste statique sans charger de bibliothèque ou module d’animation', async () => {
+  const [main, wizard, showcase, bento, videoModal, reset, hero, packageJson] = await Promise.all([
+    read('src/main.js'),
+    read('src/js/wizard.js'),
+    read('src/js/showcaseExpand.js'),
+    read('src/js/bento.js'),
+    read('src/js/videoModal.js'),
+    read('src/styles/reset.css'),
+    read('src/styles/hero.css'),
+    read('package.json'),
+  ]);
+  const runtime = `${main}\n${wizard}\n${showcase}\n${bento}\n${videoModal}`;
+  assert.doesNotMatch(runtime, /animations\/|\bgsap\b|\bLenis\b|\blenis\b|easter\.js/);
+  assert.doesNotMatch(reset, /\.reveal\s*\{[^}]*opacity:\s*0/s);
+  assert.doesNotMatch(reset, /lenis/i);
+  assert.doesNotMatch(hero, /@keyframes|\banimation\s*:/);
+
+  const pkg = JSON.parse(packageJson);
+  assert.equal(pkg.dependencies?.gsap, undefined);
+  assert.equal(pkg.dependencies?.lenis, undefined);
+  assert.match(pkg.scripts.test, /tests\/\*\.test\.js/);
+  assert.match(pkg.scripts.test, /tests\/\*\.test\.mjs/);
 });
 
 test('la navigation et le scroll superposé utilisent des surfaces claires lisibles', async () => {

@@ -1,7 +1,5 @@
 /* Feature Row + galeries d'études de cas — lightbox on click */
 
-import { lenis } from './animations/index.js';
-
 const rows = document.querySelectorAll('.feature-row');
 const shots = document.querySelectorAll('.screenshot-card:not(.is-video) .screenshot-card-media');
 if (rows.length || shots.length) {
@@ -48,14 +46,12 @@ if (rows.length || shots.length) {
     lightbox.classList.add('open');
     scrollContainer.scrollTop = 0;
     document.body.style.overflow = 'hidden';
-    lenis.stop();
     closeBtn.focus();
   }
 
   function closeLightbox() {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
-    lenis.start();
     if (previousFocus) previousFocus.focus();
   }
 

@@ -17,17 +17,6 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-/* Lenis smooth scroll */
-html.lenis, html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
 body {
   font-family: var(--font-body);
   font-weight: 400;
@@ -104,12 +93,6 @@ button {
   font-size: 0.95rem;
   max-width: 500px;
   line-height: 1.7;
-}
-
-/* Reveal — initial state, GSAP handles the animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
 }
 
 /* Focus visible — global style */

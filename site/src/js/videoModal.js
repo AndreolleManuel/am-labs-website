@@ -1,7 +1,5 @@
 /* Video Modal — open / close + keyboard support + focus trap */
 
-import { lenis } from './animations/index.js';
-
 const trigger = document.getElementById('showcase-demo-btn');
 const modal = document.getElementById('video-modal');
 const player = document.getElementById('video-modal-player');
@@ -15,7 +13,6 @@ function openModal() {
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
-  lenis.stop();
   player.currentTime = 0;
   player.play();
   closeBtn?.focus();
@@ -26,7 +23,6 @@ function closeModal() {
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
-  lenis.start();
   player.pause();
   if (previousFocus) previousFocus.focus();
 }
