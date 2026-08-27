@@ -11,8 +11,8 @@
 }
 
 .service-card {
-  padding: var(--space-xl) var(--space-lg);
-  background: rgba(139, 92, 246, 0.04);
+  padding: var(--space-lg);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -20,9 +20,9 @@
 
 .service-card:hover {
   border-color: var(--color-border-hover);
-  background: rgba(139, 92, 246, 0.08);
+  background: var(--color-surface-hover);
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 12px 28px rgba(17, 18, 20, 0.08);
 }
 
 .service-card h3 {

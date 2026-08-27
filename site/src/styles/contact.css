@@ -5,7 +5,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-bottom: 200px;
+  padding-bottom: 120px;
 }
 
 .section.contact > .container {
@@ -97,7 +97,7 @@
   align-items: flex-start;
   text-align: left;
   padding: var(--space-md) var(--space-lg);
-  background: rgba(139, 92, 246, 0.04);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   cursor: pointer;
@@ -106,14 +106,14 @@
 
 .flow-card:hover {
   border-color: var(--color-border-hover);
-  background: rgba(139, 92, 246, 0.08);
+  background: var(--color-surface-hover);
   transform: translateY(-2px);
 }
 
 .flow-card.is-selected {
   border-color: var(--color-accent);
-  background: rgba(139, 92, 246, 0.12);
-  box-shadow: 0 0 0 1px var(--color-accent), 0 4px 20px rgba(139, 92, 246, 0.15);
+  background: rgba(89, 21, 109, 0.12);
+  box-shadow: 0 0 0 1px var(--color-accent), 0 4px 20px rgba(89, 21, 109, 0.15);
 }
 
 .flow-card--big {
@@ -160,7 +160,7 @@
   align-items: center;
   text-align: center;
   padding: var(--space-md);
-  background: rgba(139, 92, 246, 0.04);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   cursor: pointer;
@@ -169,14 +169,14 @@
 
 .flow-module:hover {
   border-color: var(--color-border-hover);
-  background: rgba(139, 92, 246, 0.08);
+  background: var(--color-surface-hover);
   transform: translateY(-2px);
 }
 
 .flow-module.is-selected {
   border-color: var(--color-accent);
-  background: rgba(139, 92, 246, 0.12);
-  box-shadow: 0 0 0 1px var(--color-accent), 0 4px 15px rgba(139, 92, 246, 0.15);
+  background: rgba(89, 21, 109, 0.12);
+  box-shadow: 0 0 0 1px var(--color-accent), 0 4px 15px rgba(89, 21, 109, 0.15);
 }
 
 .flow-module-label {
@@ -228,7 +228,7 @@
 
 .flow-pill.is-selected {
   border-color: var(--color-accent);
-  background: rgba(139, 92, 246, 0.15);
+  background: rgba(89, 21, 109, 0.15);
   color: #fff;
   box-shadow: 0 0 0 1px var(--color-accent);
 }
@@ -254,7 +254,7 @@
 .form-group textarea {
   width: 100%;
   padding: 0.65rem 0.9rem;
-  background: var(--color-bg);
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   color: var(--color-text);
@@ -296,8 +296,8 @@
 .flow-submit {
   width: 100%;
   padding: 0.85rem;
-  background: var(--color-accent);
-  color: var(--color-bg);
+  background: var(--color-accent-dim);
+  color: #fff;
   border: none;
   border-radius: var(--radius-sm);
   font-weight: 600;
@@ -310,5 +310,5 @@
 .flow-submit:hover {
   background: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 8px 30px rgba(89, 21, 109, 0.35);
 }

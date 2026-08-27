@@ -6,6 +6,8 @@
   font-size: 0.78rem;
   color: var(--color-text-muted);
   z-index: 10;
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
 }
 
 .footer .container {
@@ -76,18 +78,17 @@
 }
 
 .footer-logo {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--color-text);
-  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
   margin-bottom: var(--space-sm);
 }
 
-.footer-logo span {
-  color: var(--color-accent);
+.footer-logo img {
+  display: block;
+  width: 146px;
+  height: 54px;
+  object-fit: contain;
 }
 
 .footer-tagline {
@@ -110,7 +111,7 @@
   align-items: center;
   gap: var(--space-md);
   padding-top: var(--space-md);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-border);
   font-size: 0.78rem;
   color: var(--color-text-muted);
   flex-wrap: wrap;
@@ -201,6 +202,7 @@
   border: 1px solid var(--color-border-hover);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
+  box-shadow: 0 24px 60px rgba(17, 18, 20, 0.16);
 }
 
 .mentions-content h3 {
@@ -244,5 +246,5 @@
 }
 
 .mentions-close:hover {
-  background: rgba(139, 92, 246, 0.6);
+  background: rgba(89, 21, 109, 0.6);
 }

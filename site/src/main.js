@@ -13,18 +13,23 @@ import './styles/services.css';
 import './styles/projects.css';
 import './styles/contact.css';
 import './styles/footer.css';
+import './styles/cookie-consent.css';
 import './styles/pages.css'; // Composants pages internes (page-hero, breadcrumb, FAQ, etc.)
 import './styles/responsive.css';
 
 // JS
+import { initializeCookieConsent } from './js/cookie-consent.js';
 import { loadPartials } from './js/partials-loader.js';
 import './js/nav.js';
 import './js/wizard.js';
 import './js/bento.js';
 import './js/videoModal.js';
 import './js/showcaseExpand.js';
+import { getSectionScrollTarget, initializeStackingScroll } from './js/stacking-scroll.js';
 
 import './js/easter.js';
+
+initializeCookieConsent(document, window);
 
 // Charge nav + footer dans les pages qui ont les placeholders
 // (sur la home actuelle qui a sa nav inline, le loader détecte l'absence de placeholder et ne fait rien)
@@ -44,33 +49,8 @@ document.fonts.ready.then(async () => {
 });
 initReveals();
 
-// Dynamic sticky for sections taller than the viewport
-// The section scrolls normally then freezes when its bottom reaches the viewport bottom
-const stickySections = document.querySelectorAll('.hero ~ .section, .hero ~ section');
-
-function updateTallStickyTops() {
-  const vh = window.innerHeight;
-  stickySections.forEach((section) => {
-    if (getComputedStyle(section).position !== 'sticky') {
-      section.style.top = '';
-      return;
-    }
-    const h = section.offsetHeight;
-    if (h > vh) {
-      section.style.top = `${vh - h}px`;
-    } else {
-      section.style.top = '0px';
-    }
-  });
-}
-updateTallStickyTops();
-window.addEventListener('resize', updateTallStickyTops);
-
-// ResizeObserver to recalculate when sections change size
-if (typeof ResizeObserver !== 'undefined') {
-  const ro = new ResizeObserver(updateTallStickyTops);
-  stickySections.forEach((section) => ro.observe(section));
-}
+// Sticky stacking shared by the home and internal page heroes.
+initializeStackingScroll(document, window);
 
 // Back to top
 const backToTop = document.getElementById('back-to-top');
@@ -117,18 +97,7 @@ if (progressBar) {
 }
 
 // Anchor links → smooth scroll via Lenis
-// We compute cumulative position (sum of heights) instead of offsetTop
-// because sticky sections return incorrect offsetTop when stuck
-function getSectionScrollTarget(el) {
-  let pos = 0;
-  const hero = document.querySelector('.hero');
-  let sibling = hero;
-  while (sibling && sibling !== el) {
-    pos += sibling.offsetHeight;
-    sibling = sibling.nextElementSibling;
-  }
-  return pos;
-}
+// Sticky sections use their cumulative normal-flow height as target.
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', (e) => {
@@ -141,7 +110,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
-      const pos = getSectionScrollTarget(target);
+      const pos = getSectionScrollTarget(target, document);
       lenis.scrollTo(pos, { offset: 0 });
     }
   });

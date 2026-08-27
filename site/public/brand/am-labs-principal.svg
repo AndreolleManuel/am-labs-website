@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1104" height="680" viewBox="75 285 1104 680" role="img" aria-labelledby="title desc">
+  <title id="title">AM Labs</title>
+  <desc id="desc">Logo AM Labs, A noir et M violet, traversés par un bandeau blanc portant LABS.</desc>
+
+  <defs>
+    <radialGradient id="a-top" cx="42%" cy="27%" r="78%">
+      <stop offset="0" stop-color="#343638"/>
+      <stop offset="0.24" stop-color="#242628"/>
+      <stop offset="0.57" stop-color="#111214"/>
+      <stop offset="1" stop-color="#030405"/>
+    </radialGradient>
+    <radialGradient id="a-bottom" cx="51%" cy="17%" r="92%">
+      <stop offset="0" stop-color="#2d2f31"/>
+      <stop offset="0.26" stop-color="#1d1f21"/>
+      <stop offset="0.66" stop-color="#0b0c0e"/>
+      <stop offset="1" stop-color="#020304"/>
+    </radialGradient>
+    <radialGradient id="m-main" cx="31%" cy="42%" r="88%">
+      <stop offset="0" stop-color="#711887"/>
+      <stop offset="0.34" stop-color="#4d1063"/>
+      <stop offset="0.68" stop-color="#260536"/>
+      <stop offset="1" stop-color="#120019"/>
+    </radialGradient>
+    <linearGradient id="m-lower" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#611377"/>
+      <stop offset="0.48" stop-color="#350846"/>
+      <stop offset="1" stop-color="#13001b"/>
+    </linearGradient>
+    <linearGradient id="letters" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1d1f"/>
+      <stop offset="0.45" stop-color="#08090a"/>
+      <stop offset="1" stop-color="#020203"/>
+    </linearGradient>
+  </defs>
+
+  <!-- A: surfaces -->
+  <path d="M318 328H458L548 606H437L383 450L328 606H217Z" fill="url(#a-top)"/>
+  <path d="M190 721H576L640 922H533L495 799H269L225 922H113Z" fill="url(#a-bottom)"/>
+
+  <!-- A: clean outer and structural contours, no stroke along the LABS band -->
+  <path d="M217 606L318 328H458L548 606" fill="none" stroke="#4a4d50" stroke-width="3.5" stroke-linejoin="miter"/>
+  <path d="M328 606L383 450L437 606" fill="none" stroke="#4a4d50" stroke-width="3.5" stroke-linejoin="miter"/>
+  <path d="M190 721L113 922H225L269 799H495L533 922H640L576 721" fill="none" stroke="#4a4d50" stroke-width="3.5" stroke-linejoin="miter"/>
+
+  <!-- restrained silver detail on A, away from the central band -->
+  <path d="M320 331H456" fill="none" stroke="#b7b9bc" stroke-width="1.25" stroke-linecap="round" opacity="0.55"/>
+  <path d="M379 461L331 594" fill="none" stroke="#c2c4c7" stroke-width="1.1" stroke-linecap="round" opacity="0.48"/>
+  <path d="M272 803H492L529 914" fill="none" stroke="#c1c3c6" stroke-width="1.05" stroke-linecap="round" opacity="0.44"/>
+
+  <!-- M: surfaces -->
+  <path d="M570 328H702L821 606H699L674 552V606H570ZM970 328H1096V606H984V550L957 606H839Z" fill="url(#m-main)"/>
+  <path d="M592 721H674V922H657Z" fill="url(#m-lower)"/>
+  <path d="M750 721H898L820 881Z" fill="url(#m-lower)"/>
+  <path d="M984 721H1096V922H984Z" fill="url(#m-lower)"/>
+
+  <!-- M: crisp contours, deliberately absent on every band-facing edge -->
+  <path d="M570 606V328H702L821 606M839 606L970 328H1096V606" fill="none" stroke="#552364" stroke-width="3.5" stroke-linejoin="miter"/>
+  <path d="M592 721L657 922H674V721" fill="none" stroke="#552364" stroke-width="3.5" stroke-linejoin="miter"/>
+  <path d="M750 721L820 881L898 721" fill="none" stroke="#552364" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M984 721V922H1096V721" fill="none" stroke="#552364" stroke-width="3.5" stroke-linejoin="miter"/>
+
+  <!-- LABS: one coherent Michroma typeface, converted to vector outlines -->
+  <g fill="url(#letters)" stroke="#050607" stroke-width="3" stroke-linejoin="round">
+    <!-- L, intentionally inclined to continue the A diagonal -->
+    <path transform="matrix(1.4 0 -0.34 1 222 630)" d="M0 70L0 0L8.75 0L8.75 62.71L64.17 62.71L64.17 70Z"/>
+
+    <!-- A -->
+    <path transform="matrix(1.15 0 0 1 444.33 630)" d="M0 70L40.83 0L52.50 0L93.33 70L83.13 70L74.38 53.96L18.96 53.96L10.21 70ZM23.33 46.67L70 46.67L46.67 5.83Z"/>
+
+    <!-- B -->
+    <path transform="matrix(1.15 0 0 1 727.04 630)" d="M0 70L0 0L55.78 0Q63.71 0 68.79 1.48Q73.87 2.96 76.31 6.72Q78.75 10.48 78.75 17.36Q78.75 23.56 75.88 27.62Q73.01 31.67 67.08 32.08Q74.83 32.86 78.25 37.62Q81.67 42.38 81.67 49.58Q81.67 55.83 80.23 59.84Q78.80 63.85 75.42 66.06Q72.05 68.27 66.29 69.13Q60.52 70 51.91 70ZM8.75 29.17L49.54 29.17Q56.60 29.17 61.11 28.67Q65.63 28.16 67.81 25.70Q70 23.24 70 17.36Q70 12.76 68.70 10.62Q67.40 8.48 64.30 7.88Q61.20 7.29 55.78 7.29L8.75 7.29ZM8.75 62.71L51.91 62.71Q58.15 62.71 62.23 62.39Q66.31 62.07 68.66 60.84Q71 59.61 71.96 56.94Q72.92 54.28 72.92 49.58Q72.92 44.75 71.12 42.06Q69.32 39.38 66.10 38.19Q62.89 37.01 58.65 36.73Q54.41 36.46 49.54 36.46L8.75 36.46Z"/>
+
+    <!-- S -->
+    <path transform="matrix(1.15 0 0 1 1002.55 630)" d="M74.11 49.18Q74.11 45.28 73.50 43.05Q72.89 40.82 70.74 39.75Q68.60 38.68 64.09 38.35Q59.59 38.02 51.76 37.89L27.43 37.54Q18.42 37.41 12.95 36.44Q7.48 35.48 4.68 33.40Q1.88 31.33 0.94 27.83Q0 24.33 0 19.08Q0 13.34 1.29 9.63Q2.58 5.91 5.97 3.81Q9.36 1.71 15.58 0.85Q21.79 0 31.63 0L50.36 0Q59.28 0 65.23 0.57Q71.18 1.14 74.68 3.19Q78.18 5.25 79.69 9.58Q81.20 13.91 81.20 21.48L72.80 21.48Q72.80 15.62 71.68 12.62Q70.57 9.63 68.01 8.53Q65.45 7.44 61.12 7.35Q56.79 7.26 50.36 7.26L32.07 7.26Q24.24 7.26 19.53 7.57Q14.83 7.88 12.43 8.97Q10.02 10.06 9.21 12.47Q8.40 14.88 8.40 19.08Q8.40 22.62 8.97 24.76Q9.54 26.91 11.53 28.02Q13.52 29.14 17.68 29.55Q21.83 29.97 29.01 30.06L55.08 30.41Q64.27 30.54 69.76 31.48Q75.25 32.42 77.98 34.52Q80.72 36.62 81.62 40.18Q82.51 43.75 82.51 49.18Q82.51 55.08 81.40 59.08Q80.28 63.09 77.09 65.49Q73.89 67.90 67.86 68.95Q61.82 70 51.98 70L31.50 70Q22.53 70 16.45 69.21Q10.37 68.43 6.76 66.04Q3.15 63.66 1.57 58.93Q0 54.21 0 46.33L8.40 46.33Q8.40 52.50 9.41 55.87Q10.41 59.24 12.93 60.70Q15.44 62.17 19.97 62.45Q24.50 62.74 31.50 62.74L51.54 62.74Q59.37 62.74 63.92 62.23Q68.47 61.73 70.66 60.31Q72.84 58.89 73.48 56.22Q74.11 53.55 74.11 49.18Z"/>
+  </g>
+</svg>
