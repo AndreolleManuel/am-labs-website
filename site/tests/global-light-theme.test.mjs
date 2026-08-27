@@ -47,6 +47,11 @@ test('toutes les entrées Vite démarrent sur le fond atténué sans flash sombr
   }
 });
 
+test('le point d’entrée révèle toujours le body masqué par le style initial', async () => {
+  const main = await read('src/main.js');
+  assert.match(main, /document\.body\.classList\.add\(['"]ready['"]\);/);
+});
+
 test('la navigation et le scroll superposé utilisent des surfaces claires lisibles', async () => {
   const [nav, hero, responsive] = await Promise.all([
     read('src/styles/nav.css'),

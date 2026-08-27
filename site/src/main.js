@@ -30,6 +30,7 @@ import { getSectionScrollTarget, initializeStackingScroll } from './js/stacking-
 
 import './js/easter.js';
 
+document.body.classList.add('ready');
 initializeCookieConsent(document, window);
 
 // Charge nav + footer dans les pages qui ont les placeholders
