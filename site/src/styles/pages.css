@@ -5,8 +5,11 @@
 
 /* ===== Page hero (intro pour pages internes) ===== */
 .page-hero {
-  padding: calc(var(--nav-height) + 60px) 0 80px;
-  background: radial-gradient(ellipse at top center, rgba(139, 92, 246, 0.08), transparent 60%);
+  padding: calc(var(--nav-height) + 40px) 0 52px;
+  background: var(--color-bg);
+  position: sticky;
+  top: 0;
+  z-index: 0;
 }
 
 .page-hero .container {
@@ -102,8 +105,8 @@
 }
 
 .faq-item {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md, 12px);
   padding: var(--space-md) var(--space-lg);
   margin-bottom: var(--space-sm);
@@ -111,12 +114,12 @@
 }
 
 .faq-item:hover {
-  border-color: rgba(139, 92, 246, 0.2);
+  border-color: rgba(89, 21, 109, 0.2);
 }
 
 .faq-item[open] {
-  background: rgba(139, 92, 246, 0.04);
-  border-color: rgba(139, 92, 246, 0.25);
+  background: rgba(89, 21, 109, 0.04);
+  border-color: rgba(89, 21, 109, 0.25);
 }
 
 .faq-item summary {
@@ -163,8 +166,8 @@
 .contact-cta-block {
   text-align: center;
   padding: var(--space-xl) var(--space-lg);
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(139, 92, 246, 0.02));
-  border: 1px solid rgba(139, 92, 246, 0.15);
+  background: var(--color-surface);
+  border: 1px solid rgba(89, 21, 109, 0.15);
   border-radius: var(--radius-lg, 24px);
   max-width: 720px;
   margin: 0 auto;
@@ -202,7 +205,7 @@
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .page-hero {
-    padding: calc(var(--nav-height) + 40px) 0 60px;
+    padding: calc(var(--nav-height) + 24px) 0 40px;
   }
 }
 
@@ -312,15 +315,15 @@ a.service-card p {
 .metric-card {
   text-align: center;
   padding: var(--space-lg) var(--space-md);
-  background: rgba(139, 92, 246, 0.04);
-  border: 1px solid rgba(139, 92, 246, 0.15);
+  background: var(--color-surface);
+  border: 1px solid rgba(89, 21, 109, 0.15);
   border-radius: var(--radius-md, 12px);
   transition: border-color 0.2s ease, transform 0.2s ease;
   cursor: default;
 }
 
 .metric-card:hover {
-  border-color: rgba(139, 92, 246, 0.35);
+  border-color: rgba(89, 21, 109, 0.35);
   transform: translateY(-2px);
 }
 
@@ -366,8 +369,8 @@ a.service-card p {
 .tech-pill {
   display: inline-block;
   padding: 0.4rem 0.85rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: var(--color-surface);
+  border: 1px solid rgba(89, 21, 109, 0.2);
   border-radius: 100px;
   font-size: 0.82rem;
   font-weight: 500;
@@ -377,8 +380,8 @@ a.service-card p {
 }
 
 .tech-pill:hover {
-  background: rgba(139, 92, 246, 0.12);
-  border-color: rgba(139, 92, 246, 0.45);
+  background: rgba(89, 21, 109, 0.12);
+  border-color: rgba(89, 21, 109, 0.45);
 }
 
 /* ===== Avant / Après en grille 2 colonnes ===== */
@@ -495,8 +498,8 @@ a.service-card p {
 }
 
 .screenshot-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(139, 92, 246, 0.12);
+  background: var(--color-surface);
+  border: 1px solid rgba(89, 21, 109, 0.12);
   border-radius: var(--radius-md, 12px);
   overflow: hidden;
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
@@ -504,9 +507,9 @@ a.service-card p {
 }
 
 .screenshot-card:hover {
-  border-color: rgba(139, 92, 246, 0.4);
+  border-color: rgba(89, 21, 109, 0.4);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(139, 92, 246, 0.15);
+  box-shadow: 0 12px 32px rgba(17, 18, 20, 0.1), 0 0 0 1px rgba(89, 21, 109, 0.15);
 }
 
 .screenshot-card-media {
@@ -514,7 +517,7 @@ a.service-card p {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  background: #0a0913;
+  background: var(--color-bg-alt);
   overflow: hidden;
 }
 
@@ -561,7 +564,7 @@ a.service-card p {
   transform: translate(-50%, -50%);
   width: 56px;
   height: 56px;
-  background: rgba(139, 92, 246, 0.9);
+  background: rgba(89, 21, 109, 0.9);
   border-radius: 50%;
   pointer-events: none;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>');

@@ -22,7 +22,7 @@
     height: calc(100dvh - var(--nav-height));
     /* Fond opaque, sans backdrop-filter : imbriqué sous celui de .nav.scrolled,
        le blur ne s'applique pas et le contenu derrière restait lisible. */
-    background: #0f0f15;
+    background: var(--color-bg);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -110,7 +110,9 @@
 
   /* Stacking sticky on mobile — disabled */
   .hero ~ .section,
-  .hero ~ section {
+  .hero ~ section,
+  .page-hero ~ .section,
+  .page-hero ~ section {
     position: relative;
     border-radius: 8px 8px 0 0;
   }

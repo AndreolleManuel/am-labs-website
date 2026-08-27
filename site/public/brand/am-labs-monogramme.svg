@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="844" height="580" viewBox="90 220 844 580" role="img" aria-labelledby="title desc">
+  <title id="title">AM Labs compact</title>
+  <desc id="desc">Vectorisation de la version compacte AM Labs, A noir, M violet et LABS en dessous.</desc>
+
+  <defs>
+    <radialGradient id="a-fill" cx="45%" cy="25%" r="86%">
+      <stop offset="0" stop-color="#37383a"/>
+      <stop offset="0.28" stop-color="#27292b"/>
+      <stop offset="0.62" stop-color="#121416"/>
+      <stop offset="1" stop-color="#020304"/>
+    </radialGradient>
+    <radialGradient id="m-fill" cx="29%" cy="39%" r="91%">
+      <stop offset="0" stop-color="#6b267d"/>
+      <stop offset="0.30" stop-color="#59156d"/>
+      <stop offset="0.66" stop-color="#330642"/>
+      <stop offset="1" stop-color="#15001e"/>
+    </radialGradient>
+    <linearGradient id="word-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#202224"/>
+      <stop offset="0.48" stop-color="#0a0b0d"/>
+      <stop offset="1" stop-color="#020203"/>
+    </linearGradient>
+  </defs>
+
+  <!-- M, silhouette relevée sur la référence Gemini -->
+  <path d="M542 754L464 500V266H575L677 510L790 266H896V754H803V440L671 722L550 450V754Z"
+        fill="url(#m-fill)" stroke="#552364" stroke-width="3" stroke-linejoin="miter"/>
+
+  <!-- A, relevé sur la référence 1024 px et placé devant le M -->
+  <path fill-rule="evenodd"
+        d="M259 266H374L532 754H433L406 650H216L187 754H90ZM313 367L382 566H243Z"
+        fill="url(#a-fill)" stroke="#56595c" stroke-width="3" stroke-linejoin="miter"/>
+  <path d="M261 269H372" fill="none" stroke="#c0c2c5" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>
+  <path d="M311 377L246 559" fill="none" stroke="#c4c6c9" stroke-width="1" stroke-linecap="round" opacity="0.42"/>
+  <path d="M218 653H404L430 746" fill="none" stroke="#c1c3c6" stroke-width="1" stroke-linecap="round" opacity="0.42"/>
+</svg>
